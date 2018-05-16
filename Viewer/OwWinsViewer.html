@@ -6,19 +6,74 @@
 	<title>Overwatch Wins Counter</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" media="screen" href="./data/css/main.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="./data/css/jquery-ui.min.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="./data/css/jquery-ui.structure.min.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="./data/css/jquery-ui.theme.min.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="./data/css/owlogo.css" />
 	<script src="./data/js/jquery-3.3.1.min.js"></script>
+	<script src="./data/js/jquery-ui.min.js"></script>
+	<script src="./data/js/jquery.easing.1.3.js"></script>
+	<script src='https://cdn.rawgit.com/admsev/jquery-play-sound/master/jquery.playSound.js'></script>
+	<script src="./data/js/main.js"></script>
 </head>
-<body>
+<body onload="Initialize();">
+	<!-- 普段表示用 -->
+	<div id="ScoreBoard">
+		<div class="TodaysScore">
+			<div class="Caption">
+				<span class="Small">Today's</span>
+				<span class="Big">Score</span>
+			</div>
+			<div class="Score">
+				<span class="Win">00</span> -
+				<span class="Lose">00</span> -
+				<span class="Draw">00</span>
+			</div>
+		</div>
+		<div class="Spacer"></div>
+		<div class="StartingRate">
+				<div class="Caption">
+					<span class="Small">Starting</span>
+					<span class="Big">Rate</span>
+				</div>
+				<div class="Rate">
+						<img class="Division Bronze" src="./data/img/DivisionIcons/Bronze.png">
+						<img class="Division Silver" src="./data/img/DivisionIcons/Silver.png">
+						<img class="Division Gold" src="./data/img/DivisionIcons/Gold.png">
+						<img class="Division Platinum" src="./data/img/DivisionIcons/Platinum.png">
+						<img class="Division Diamond" src="./data/img/DivisionIcons/Diamond.png">
+						<img class="Division Master" src="./data/img/DivisionIcons/Master.png">
+						<img class="Division Grandmaster" src="./data/img/DivisionIcons/Grandmaster.png">
+						<span class="sr">0000</span>
+				</div>
+			</div>
+	</div>
+	<!-- 演出用 -->
+	<div id="EdgeLeft"></div>
+	<div id="EdgeRight"></div>
+	<div id="Transition" class="Board"></div>
 	<div id="Wins" class="Board">
-		<span class="Logo"><img src="https://placehold.jp/800x800.png"></span>
+		<span class="Logo"><img src="./data/svg/cat.svg"></span>
 		<span class="Name">HIJIKIsw</span>
 		<span class="Result">Wins!</span>
 	</div>
 	<div id="Loses" class="Board">
-		<!-- <span class="Logo">Logo</span> -->
-		<span class="Logo"><img src="https://placehold.jp/800x800.png"></span>
+		<span class="Logo"><img src="./data/svg/cat.svg"></span>
 		<span class="Name">HIJIKIsw</span>
 		<span class="Result">Loses...</span>
+	</div>
+	<div id="Draw" class="Board">
+		<span class="Result">Draw</span>
+	</div>
+	<div id="Scores" class="Board">
+		<div class="ScorePanel">
+			<span class="Caption">Today's Score</span>
+			<span class="Score">
+				<span class="Win">00</span> -
+				<span class="Lose">00</span> -
+				<span class="Draw">00</span>
+			</span>
+		</div>
 	</div>
 </body>
 </html>
