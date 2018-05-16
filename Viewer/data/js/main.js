@@ -48,7 +48,6 @@
 
 		if( !IsPlaying )
 		{
-			console.log("Loading...");
 			xhr.open('GET', "./data.json?dummy="+Date.now(), true);
 			xhr.send();
 			xhr.onreadystatechange = function(){
@@ -69,7 +68,7 @@
 					if( !IsInitialized )
 					{
 						IsInitialized = true;
-						UpdateScoreBoard();
+						DataSet();
 					}
 					DataScrutiny();
 				}
