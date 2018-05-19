@@ -44,9 +44,18 @@
 			this.DrawButton = new System.Windows.Forms.Button();
 			this.LoseButton = new System.Windows.Forms.Button();
 			this.WinButton = new System.Windows.Forms.Button();
-			this.StopUpdateCheckbox = new System.Windows.Forms.CheckBox();
-			this.VersionLabel = new System.Windows.Forms.Label();
-			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.SaveTimer = new System.Windows.Forms.Timer(this.components);
+			this.MenuBar = new System.Windows.Forms.MenuStrip();
+			this.FileMenu = new System.Windows.Forms.ToolStripMenuItem();
+			this.MenuItem_Exit = new System.Windows.Forms.ToolStripMenuItem();
+			this.OptionMenu = new System.Windows.Forms.ToolStripMenuItem();
+			this.MenuItem_StopUpdate = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.MenuItem_Settings = new System.Windows.Forms.ToolStripMenuItem();
+			this.HelpMenu = new System.Windows.Forms.ToolStripMenuItem();
+			this.MenuItem_Manual = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.MenuItem_Version = new System.Windows.Forms.ToolStripMenuItem();
 			this.ScoreGroupBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.DrawsUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.LosesUpDown)).BeginInit();
@@ -54,6 +63,7 @@
 			this.StartingRateGroupBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.StartingRateUpDown)).BeginInit();
 			this.groupBox1.SuspendLayout();
+			this.MenuBar.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// ScoreGroupBox
@@ -64,7 +74,7 @@
 			this.ScoreGroupBox.Controls.Add(this.LosesLabel);
 			this.ScoreGroupBox.Controls.Add(this.WinsUpDown);
 			this.ScoreGroupBox.Controls.Add(this.WinsLabel);
-			this.ScoreGroupBox.Location = new System.Drawing.Point(17, 17);
+			this.ScoreGroupBox.Location = new System.Drawing.Point(17, 34);
 			this.ScoreGroupBox.Margin = new System.Windows.Forms.Padding(8);
 			this.ScoreGroupBox.Name = "ScoreGroupBox";
 			this.ScoreGroupBox.Padding = new System.Windows.Forms.Padding(8);
@@ -151,7 +161,7 @@
 			// StartingRateGroupBox
 			// 
 			this.StartingRateGroupBox.Controls.Add(this.StartingRateUpDown);
-			this.StartingRateGroupBox.Location = new System.Drawing.Point(17, 185);
+			this.StartingRateGroupBox.Location = new System.Drawing.Point(17, 202);
 			this.StartingRateGroupBox.Margin = new System.Windows.Forms.Padding(8);
 			this.StartingRateGroupBox.Name = "StartingRateGroupBox";
 			this.StartingRateGroupBox.Padding = new System.Windows.Forms.Padding(8);
@@ -201,7 +211,7 @@
 			this.groupBox1.Controls.Add(this.DrawButton);
 			this.groupBox1.Controls.Add(this.LoseButton);
 			this.groupBox1.Controls.Add(this.WinButton);
-			this.groupBox1.Location = new System.Drawing.Point(177, 17);
+			this.groupBox1.Location = new System.Drawing.Point(177, 34);
 			this.groupBox1.Margin = new System.Windows.Forms.Padding(8);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Padding = new System.Windows.Forms.Padding(8, 8, 8, 83);
@@ -244,53 +254,112 @@
 			this.WinButton.UseVisualStyleBackColor = true;
 			this.WinButton.Click += new System.EventHandler(this.WinButton_Click);
 			// 
-			// StopUpdateCheckbox
+			// SaveTimer
 			// 
-			this.StopUpdateCheckbox.AutoSize = true;
-			this.StopUpdateCheckbox.Location = new System.Drawing.Point(177, 225);
-			this.StopUpdateCheckbox.Margin = new System.Windows.Forms.Padding(8);
-			this.StopUpdateCheckbox.Name = "StopUpdateCheckbox";
-			this.StopUpdateCheckbox.Size = new System.Drawing.Size(95, 19);
-			this.StopUpdateCheckbox.TabIndex = 3;
-			this.StopUpdateCheckbox.Text = "StopUpdate";
-			this.StopUpdateCheckbox.UseVisualStyleBackColor = true;
-			this.StopUpdateCheckbox.CheckedChanged += new System.EventHandler(this.StopUpdateCheckbox_CheckedChanged);
+			this.SaveTimer.Interval = 1000;
+			this.SaveTimer.Tick += new System.EventHandler(this.SaveTimer_Tick);
 			// 
-			// VersionLabel
+			// MenuBar
 			// 
-			this.VersionLabel.AutoSize = true;
-			this.VersionLabel.BackColor = System.Drawing.SystemColors.ControlDark;
-			this.VersionLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.VersionLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-			this.VersionLabel.Location = new System.Drawing.Point(226, 258);
-			this.VersionLabel.Name = "VersionLabel";
-			this.VersionLabel.Size = new System.Drawing.Size(84, 17);
-			this.VersionLabel.TabIndex = 4;
-			this.VersionLabel.Text = "Version 1.0.0";
+			this.MenuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FileMenu,
+            this.OptionMenu,
+            this.HelpMenu});
+			this.MenuBar.Location = new System.Drawing.Point(0, 0);
+			this.MenuBar.Name = "MenuBar";
+			this.MenuBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.MenuBar.Size = new System.Drawing.Size(322, 26);
+			this.MenuBar.TabIndex = 4;
+			this.MenuBar.Text = "MenuBar";
 			// 
-			// timer1
+			// FileMenu
 			// 
-			this.timer1.Interval = 1000;
-			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			this.FileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItem_Exit});
+			this.FileMenu.Name = "FileMenu";
+			this.FileMenu.Size = new System.Drawing.Size(85, 22);
+			this.FileMenu.Text = "ファイル(&F)";
 			// 
-			// Form1
+			// MenuItem_Exit
+			// 
+			this.MenuItem_Exit.Name = "MenuItem_Exit";
+			this.MenuItem_Exit.Size = new System.Drawing.Size(118, 22);
+			this.MenuItem_Exit.Text = "終了(&X)";
+			// 
+			// OptionMenu
+			// 
+			this.OptionMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItem_StopUpdate,
+            this.toolStripSeparator1,
+            this.MenuItem_Settings});
+			this.OptionMenu.Name = "OptionMenu";
+			this.OptionMenu.Size = new System.Drawing.Size(99, 22);
+			this.OptionMenu.Text = "オプション(&O)";
+			// 
+			// MenuItem_StopUpdate
+			// 
+			this.MenuItem_StopUpdate.CheckOnClick = true;
+			this.MenuItem_StopUpdate.Name = "MenuItem_StopUpdate";
+			this.MenuItem_StopUpdate.Size = new System.Drawing.Size(160, 22);
+			this.MenuItem_StopUpdate.Text = "反映を一時停止";
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(157, 6);
+			// 
+			// MenuItem_Settings
+			// 
+			this.MenuItem_Settings.Name = "MenuItem_Settings";
+			this.MenuItem_Settings.Size = new System.Drawing.Size(160, 22);
+			this.MenuItem_Settings.Text = "設定(&C)";
+			// 
+			// HelpMenu
+			// 
+			this.HelpMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItem_Manual,
+            this.toolStripSeparator2,
+            this.MenuItem_Version});
+			this.HelpMenu.Name = "HelpMenu";
+			this.HelpMenu.Size = new System.Drawing.Size(75, 22);
+			this.HelpMenu.Text = "ヘルプ(&H)";
+			// 
+			// MenuItem_Manual
+			// 
+			this.MenuItem_Manual.Name = "MenuItem_Manual";
+			this.MenuItem_Manual.Size = new System.Drawing.Size(172, 22);
+			this.MenuItem_Manual.Text = "ヘルプ";
+			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(169, 6);
+			// 
+			// MenuItem_Version
+			// 
+			this.MenuItem_Version.Name = "MenuItem_Version";
+			this.MenuItem_Version.Size = new System.Drawing.Size(172, 22);
+			this.MenuItem_Version.Text = "バージョン情報...";
+			this.MenuItem_Version.Click += new System.EventHandler(this.MenuItem_Version_Click);
+			// 
+			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.ClientSize = new System.Drawing.Size(322, 284);
-			this.Controls.Add(this.VersionLabel);
-			this.Controls.Add(this.StopUpdateCheckbox);
+			this.ClientSize = new System.Drawing.Size(322, 295);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.StartingRateGroupBox);
 			this.Controls.Add(this.ScoreGroupBox);
+			this.Controls.Add(this.MenuBar);
 			this.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.MainMenuStrip = this.MenuBar;
 			this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-			this.Name = "Form1";
-			this.Text = "OwWinsCounter";
-			this.Load += new System.EventHandler(this.Form1_Load);
+			this.Name = "MainForm";
+			this.Text = "OwScoreBoard";
+			this.Load += new System.EventHandler(this.OnLoad);
 			this.ScoreGroupBox.ResumeLayout(false);
 			this.ScoreGroupBox.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.DrawsUpDown)).EndInit();
@@ -299,6 +368,8 @@
 			this.StartingRateGroupBox.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.StartingRateUpDown)).EndInit();
 			this.groupBox1.ResumeLayout(false);
+			this.MenuBar.ResumeLayout(false);
+			this.MenuBar.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -320,9 +391,18 @@
         private System.Windows.Forms.Button WinButton;
         private System.Windows.Forms.Button DrawButton;
         private System.Windows.Forms.Button LoseButton;
-        private System.Windows.Forms.CheckBox StopUpdateCheckbox;
-        private System.Windows.Forms.Label VersionLabel;
-        private System.Windows.Forms.Timer timer1;
-    }
+        private System.Windows.Forms.Timer SaveTimer;
+		private System.Windows.Forms.MenuStrip MenuBar;
+		private System.Windows.Forms.ToolStripMenuItem FileMenu;
+		private System.Windows.Forms.ToolStripMenuItem OptionMenu;
+		private System.Windows.Forms.ToolStripMenuItem HelpMenu;
+		private System.Windows.Forms.ToolStripMenuItem MenuItem_Exit;
+		private System.Windows.Forms.ToolStripMenuItem MenuItem_Version;
+		private System.Windows.Forms.ToolStripMenuItem MenuItem_StopUpdate;
+		private System.Windows.Forms.ToolStripMenuItem MenuItem_Settings;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripMenuItem MenuItem_Manual;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+	}
 }
 

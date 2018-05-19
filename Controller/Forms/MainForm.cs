@@ -22,8 +22,11 @@ namespace OwWinsCounterController
 			InitializeComponent();
 		}
 
-		private void Form1_Load( object sender, EventArgs e )
+		private void OnLoad( object sender, EventArgs e )
 		{
+			// 最大化ボタンを無効化
+			this.MaximizeBox = false;
+
 			// Json がない場合はデフォルト設定で作成
 			if( !File.Exists( JsonFilePath ) )
 			{
@@ -65,66 +68,66 @@ namespace OwWinsCounterController
 				LosesUpDown.Value = 0;
 			}
 
-			if( !StopUpdateCheckbox.Checked )
+			if( !MenuItem_StopUpdate.Checked )
 			{
 				ResetTimer();
 			}
 			else
 			{
-				timer1.Enabled = false;
+				SaveTimer.Enabled = false;
 			}
 		}
 
 		private void WinsUpDown_ValueChanged( object sender, EventArgs e )
 		{
-			if( !StopUpdateCheckbox.Checked )
+			if( !MenuItem_StopUpdate.Checked )
 			{
 				ResetTimer();
 			}
 			else
 			{
-				timer1.Enabled = false;
+				SaveTimer.Enabled = false;
 			}
 		}
 
 		private void StartingRateUpDown_ValueChanged( object sender, EventArgs e )
 		{
-			if( !StopUpdateCheckbox.Checked )
+			if( !MenuItem_StopUpdate.Checked )
 			{
 				ResetTimer();
 			}
 			else
 			{
-				timer1.Enabled = false;
+				SaveTimer.Enabled = false;
 			}
 		}
 
 		private void DrawsUpDown_ValueChanged( object sender, EventArgs e )
 		{
-			if( !StopUpdateCheckbox.Checked )
+			if( !MenuItem_StopUpdate.Checked )
 			{
 				ResetTimer();
 			}
 			else
 			{
-				timer1.Enabled = false;
+				SaveTimer.Enabled = false;
 			}
 		}
 
-		private void timer1_Tick( object sender, EventArgs e )
+		private void SaveTimer_Tick( object sender, EventArgs e )
 		{
 			SaveData();
 		}
 
 		private void ResetTimer()
 		{
-			timer1.Enabled = false;
-			timer1.Enabled = true;
+			SaveTimer.Enabled = false;
+			SaveTimer.Enabled = true;
 		}
 
 		private void SaveData()
 		{
-			timer1.Enabled = false;
+			SaveTimer.Enabled = false;
 
 			WinButton.Enabled = true;
 			LoseButton.Enabled = true;
@@ -153,7 +156,7 @@ namespace OwWinsCounterController
 		{
 			WinsUpDown.Value++;
 
-			if( !StopUpdateCheckbox.Checked )
+			if( !MenuItem_StopUpdate.Checked )
 			{
 				WinButton.Enabled = false;
 				LoseButton.Enabled = false;
@@ -167,7 +170,7 @@ namespace OwWinsCounterController
 		{
 			LosesUpDown.Value++;
 
-			if( !StopUpdateCheckbox.Checked )
+			if( !MenuItem_StopUpdate.Checked )
 			{
 				WinButton.Enabled = false;
 				LoseButton.Enabled = false;
@@ -181,7 +184,7 @@ namespace OwWinsCounterController
 		{
 			DrawsUpDown.Value++;
 
-			if( !StopUpdateCheckbox.Checked )
+			if( !MenuItem_StopUpdate.Checked )
 			{
 				WinButton.Enabled = false;
 				LoseButton.Enabled = false;
@@ -205,7 +208,7 @@ namespace OwWinsCounterController
 				LosesUpDown.Value = 0;
 				DrawsUpDown.Value = 0;
 
-				if( !StopUpdateCheckbox.Checked )
+				if( !MenuItem_StopUpdate.Checked )
 				{
 					WinButton.Enabled = false;
 					LoseButton.Enabled = false;
@@ -218,10 +221,19 @@ namespace OwWinsCounterController
 
 		private void StopUpdateCheckbox_CheckedChanged( object sender, EventArgs e )
 		{
-			if( !StopUpdateCheckbox.Checked )
+			if( !MenuItem_StopUpdate.Checked )
 			{
 				ResetTimer();
 			}
+		}
+
+		private void MenuItem_Version_Click( object sender, EventArgs e )
+		{
+			Console.WriteLine( "OpenInfo" );
+			Form VersionInfoForm = new VersionInfoForm();
+			VersionInfoForm.ShowInTaskbar = false;
+			VersionInfoForm.ShowDialog();
+			Console.WriteLine( "ClosedInfo" );
 		}
 	}
 
