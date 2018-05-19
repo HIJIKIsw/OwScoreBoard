@@ -229,11 +229,31 @@ namespace OwWinsCounterController
 
 		private void MenuItem_Version_Click( object sender, EventArgs e )
 		{
-			Console.WriteLine( "OpenInfo" );
 			Form VersionInfoForm = new VersionInfoForm();
 			VersionInfoForm.ShowInTaskbar = false;
 			VersionInfoForm.ShowDialog();
-			Console.WriteLine( "ClosedInfo" );
+		}
+
+		private void MenuItem_Manual_Click( object sender, EventArgs e )
+		{
+			System.Diagnostics.Process.Start( "https://github.com/HIJIKIsw/OwScoreBoard/blob/master/Help.md" );
+		}
+
+		private void MenuItem_AlwayOnTop_Click( object sender, EventArgs e )
+		{
+			this.TopMost = MenuItem_AlwayOnTop.Checked;
+		}
+
+		private void MenuItem_Exit_Click( object sender, EventArgs e )
+		{
+			this.Close();
+		}
+
+		private void MenuItem_Settings_Click( object sender, EventArgs e )
+		{
+			Form SettingsForm = new SettingsForm();
+			SettingsForm.ShowInTaskbar = false;
+			SettingsForm.ShowDialog();
 		}
 	}
 

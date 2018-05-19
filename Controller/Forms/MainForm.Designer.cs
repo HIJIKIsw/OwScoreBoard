@@ -49,6 +49,7 @@
 			this.FileMenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.MenuItem_Exit = new System.Windows.Forms.ToolStripMenuItem();
 			this.OptionMenu = new System.Windows.Forms.ToolStripMenuItem();
+			this.MenuItem_AlwayOnTop = new System.Windows.Forms.ToolStripMenuItem();
 			this.MenuItem_StopUpdate = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.MenuItem_Settings = new System.Windows.Forms.ToolStripMenuItem();
@@ -285,10 +286,12 @@
 			this.MenuItem_Exit.Name = "MenuItem_Exit";
 			this.MenuItem_Exit.Size = new System.Drawing.Size(118, 22);
 			this.MenuItem_Exit.Text = "終了(&X)";
+			this.MenuItem_Exit.Click += new System.EventHandler(this.MenuItem_Exit_Click);
 			// 
 			// OptionMenu
 			// 
 			this.OptionMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItem_AlwayOnTop,
             this.MenuItem_StopUpdate,
             this.toolStripSeparator1,
             this.MenuItem_Settings});
@@ -296,23 +299,32 @@
 			this.OptionMenu.Size = new System.Drawing.Size(99, 22);
 			this.OptionMenu.Text = "オプション(&O)";
 			// 
+			// MenuItem_AlwayOnTop
+			// 
+			this.MenuItem_AlwayOnTop.CheckOnClick = true;
+			this.MenuItem_AlwayOnTop.Name = "MenuItem_AlwayOnTop";
+			this.MenuItem_AlwayOnTop.Size = new System.Drawing.Size(172, 22);
+			this.MenuItem_AlwayOnTop.Text = "常に最前面に表示";
+			this.MenuItem_AlwayOnTop.Click += new System.EventHandler(this.MenuItem_AlwayOnTop_Click);
+			// 
 			// MenuItem_StopUpdate
 			// 
 			this.MenuItem_StopUpdate.CheckOnClick = true;
 			this.MenuItem_StopUpdate.Name = "MenuItem_StopUpdate";
-			this.MenuItem_StopUpdate.Size = new System.Drawing.Size(160, 22);
+			this.MenuItem_StopUpdate.Size = new System.Drawing.Size(172, 22);
 			this.MenuItem_StopUpdate.Text = "反映を一時停止";
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(157, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
 			// 
 			// MenuItem_Settings
 			// 
 			this.MenuItem_Settings.Name = "MenuItem_Settings";
-			this.MenuItem_Settings.Size = new System.Drawing.Size(160, 22);
-			this.MenuItem_Settings.Text = "設定(&C)";
+			this.MenuItem_Settings.Size = new System.Drawing.Size(172, 22);
+			this.MenuItem_Settings.Text = "設定(&C)...";
+			this.MenuItem_Settings.Click += new System.EventHandler(this.MenuItem_Settings_Click);
 			// 
 			// HelpMenu
 			// 
@@ -329,6 +341,7 @@
 			this.MenuItem_Manual.Name = "MenuItem_Manual";
 			this.MenuItem_Manual.Size = new System.Drawing.Size(172, 22);
 			this.MenuItem_Manual.Text = "ヘルプ";
+			this.MenuItem_Manual.Click += new System.EventHandler(this.MenuItem_Manual_Click);
 			// 
 			// toolStripSeparator2
 			// 
@@ -403,6 +416,7 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripMenuItem MenuItem_Manual;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+		private System.Windows.Forms.ToolStripMenuItem MenuItem_AlwayOnTop;
 	}
 }
 
