@@ -1,6 +1,6 @@
 ﻿namespace OwWinsCounterController
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
 			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.ScoreGroupBox = new System.Windows.Forms.GroupBox();
 			this.DrawsLabel = new System.Windows.Forms.Label();
 			this.DrawsUpDown = new System.Windows.Forms.NumericUpDown();
