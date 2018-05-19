@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ namespace OwWinsCounterController
 {
 	public partial class SettingsForm : Form
 	{
+		private static string LogoFileNameWithoutExtension = "./user/Logo";
+
 		public SettingsForm()
 		{
 			InitializeComponent();
@@ -84,7 +87,15 @@ namespace OwWinsCounterController
 
 			if( ofd.ShowDialog() == DialogResult.OK )
 			{
-				LogoPictureBox.ImageLocation = ofd.FileName;
+				// user ディレクトリが存在しなければ作成
+				if( !Directory.Exists( Path.GetDirectoryName( LogoFileNameWithoutExtension ) ) )
+				{
+					Directory.CreateDirectory( Path.GetDirectoryName( LogoFileNameWithoutExtension ) );
+				}
+
+				string Extension = Path.GetExtension( ofd.SafeFileName );
+				File.Copy( ofd.FileName, LogoFileNameWithoutExtension + Extension, true );
+				LogoPictureBox.ImageLocation = LogoFileNameWithoutExtension + Extension;
 			}
 		}
 	}
