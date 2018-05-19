@@ -30,6 +30,7 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.label6 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.NameTextBox = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.VolumeTrackbar = new System.Windows.Forms.TrackBar();
 			this.Tooltip = new System.Windows.Forms.ToolTip(this.components);
-			this.label6 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
 			this.groupBox2.SuspendLayout();
@@ -72,14 +72,23 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "ユーザー設定";
 			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(92, 222);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(122, 15);
+			this.label6.TabIndex = 6;
+			this.label6.Text = "※正方形の画像を推奨";
+			// 
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(114, 63);
+			this.label3.Location = new System.Drawing.Point(102, 63);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(100, 15);
+			this.label3.Size = new System.Drawing.Size(112, 15);
 			this.label3.TabIndex = 5;
-			this.label3.Text = "※半角英数字のみ";
+			this.label3.Text = "※半角英数字を推奨";
 			// 
 			// NameTextBox
 			// 
@@ -226,15 +235,6 @@
 			this.VolumeTrackbar.TabIndex = 0;
 			this.VolumeTrackbar.TickStyle = System.Windows.Forms.TickStyle.None;
 			this.VolumeTrackbar.Scroll += new System.EventHandler(this.VolumeTrackbar_Scroll);
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(92, 222);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(122, 15);
-			this.label6.TabIndex = 6;
-			this.label6.Text = "※正方形の画像を推奨";
 			// 
 			// SettingsForm
 			// 
