@@ -118,7 +118,7 @@ namespace OwWinsCounterController
 			// config.json がある場合は読み込む
 			else
 			{
-				StreamReader sr = new StreamReader( ConfigFilePath, Encoding.ASCII );
+				StreamReader sr = new StreamReader( ConfigFilePath, Encoding.UTF8 );
 				string ConfigRaw = sr.ReadToEnd();
 				sr.Close();
 
