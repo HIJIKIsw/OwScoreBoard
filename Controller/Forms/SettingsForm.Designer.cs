@@ -28,43 +28,46 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.label3 = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.NameTextBox = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.LogoPictureBox = new System.Windows.Forms.PictureBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.button1 = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.pictureBox3 = new System.Windows.Forms.PictureBox();
+			this.SubColorBox = new System.Windows.Forms.PictureBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
+			this.MainColorBox = new System.Windows.Forms.PictureBox();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-			this.trackBar1 = new System.Windows.Forms.TrackBar();
+			this.VolumeTrackbar = new System.Windows.Forms.TrackBar();
+			this.Tooltip = new System.Windows.Forms.ToolTip(this.components);
+			this.label6 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
 			this.groupBox2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.SubColorBox)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.MainColorBox)).BeginInit();
 			this.groupBox3.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.VolumeTrackbar)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.label6);
 			this.groupBox1.Controls.Add(this.label3);
-			this.groupBox1.Controls.Add(this.textBox1);
+			this.groupBox1.Controls.Add(this.NameTextBox);
 			this.groupBox1.Controls.Add(this.label2);
-			this.groupBox1.Controls.Add(this.pictureBox1);
+			this.groupBox1.Controls.Add(this.LogoPictureBox);
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.Location = new System.Drawing.Point(17, 17);
 			this.groupBox1.Margin = new System.Windows.Forms.Padding(8);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Padding = new System.Windows.Forms.Padding(8);
-			this.groupBox1.Size = new System.Drawing.Size(236, 240);
+			this.groupBox1.Size = new System.Drawing.Size(236, 256);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "ユーザー設定";
@@ -78,13 +81,13 @@
 			this.label3.TabIndex = 5;
 			this.label3.Text = "※半角英数字のみ";
 			// 
-			// textBox1
+			// NameTextBox
 			// 
-			this.textBox1.Location = new System.Drawing.Point(86, 32);
-			this.textBox1.Margin = new System.Windows.Forms.Padding(8);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(128, 23);
-			this.textBox1.TabIndex = 4;
+			this.NameTextBox.Location = new System.Drawing.Point(86, 32);
+			this.NameTextBox.Margin = new System.Windows.Forms.Padding(8);
+			this.NameTextBox.Name = "NameTextBox";
+			this.NameTextBox.Size = new System.Drawing.Size(128, 23);
+			this.NameTextBox.TabIndex = 4;
 			// 
 			// label2
 			// 
@@ -96,17 +99,18 @@
 			this.label2.TabIndex = 3;
 			this.label2.Text = "名前:";
 			// 
-			// pictureBox1
+			// LogoPictureBox
 			// 
-			this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.pictureBox1.Location = new System.Drawing.Point(86, 86);
-			this.pictureBox1.Margin = new System.Windows.Forms.Padding(8);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(128, 128);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.pictureBox1.TabIndex = 1;
-			this.pictureBox1.TabStop = false;
-			this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+			this.LogoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.LogoPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.LogoPictureBox.Location = new System.Drawing.Point(86, 86);
+			this.LogoPictureBox.Margin = new System.Windows.Forms.Padding(8);
+			this.LogoPictureBox.Name = "LogoPictureBox";
+			this.LogoPictureBox.Size = new System.Drawing.Size(128, 128);
+			this.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.LogoPictureBox.TabIndex = 1;
+			this.LogoPictureBox.TabStop = false;
+			this.LogoPictureBox.Click += new System.EventHandler(this.LogoPictureBox_Click);
 			// 
 			// label1
 			// 
@@ -120,10 +124,10 @@
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(284, 236);
+			this.button1.Location = new System.Drawing.Point(274, 250);
 			this.button1.Margin = new System.Windows.Forms.Padding(8);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
+			this.button1.Size = new System.Drawing.Size(80, 23);
 			this.button1.TabIndex = 1;
 			this.button1.Text = "OK";
 			this.button1.UseVisualStyleBackColor = true;
@@ -131,10 +135,10 @@
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(375, 236);
+			this.button2.Location = new System.Drawing.Point(370, 250);
 			this.button2.Margin = new System.Windows.Forms.Padding(8);
 			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 23);
+			this.button2.Size = new System.Drawing.Size(80, 23);
 			this.button2.TabIndex = 2;
 			this.button2.Text = "キャンセル";
 			this.button2.UseVisualStyleBackColor = true;
@@ -142,10 +146,10 @@
 			// 
 			// groupBox2
 			// 
-			this.groupBox2.Controls.Add(this.pictureBox3);
+			this.groupBox2.Controls.Add(this.SubColorBox);
 			this.groupBox2.Controls.Add(this.label5);
 			this.groupBox2.Controls.Add(this.label4);
-			this.groupBox2.Controls.Add(this.pictureBox2);
+			this.groupBox2.Controls.Add(this.MainColorBox);
 			this.groupBox2.Location = new System.Drawing.Point(269, 17);
 			this.groupBox2.Margin = new System.Windows.Forms.Padding(8);
 			this.groupBox2.Name = "groupBox2";
@@ -155,16 +159,17 @@
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "演出時の背景色";
 			// 
-			// pictureBox3
+			// SubColorBox
 			// 
-			this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox3.Location = new System.Drawing.Point(97, 72);
-			this.pictureBox3.Margin = new System.Windows.Forms.Padding(8);
-			this.pictureBox3.Name = "pictureBox3";
-			this.pictureBox3.Size = new System.Drawing.Size(68, 24);
-			this.pictureBox3.TabIndex = 3;
-			this.pictureBox3.TabStop = false;
+			this.SubColorBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.SubColorBox.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.SubColorBox.Location = new System.Drawing.Point(97, 72);
+			this.SubColorBox.Margin = new System.Windows.Forms.Padding(8);
+			this.SubColorBox.Name = "SubColorBox";
+			this.SubColorBox.Size = new System.Drawing.Size(68, 24);
+			this.SubColorBox.TabIndex = 3;
+			this.SubColorBox.TabStop = false;
+			this.SubColorBox.Click += new System.EventHandler(this.SubColorBox_Click);
 			// 
 			// label5
 			// 
@@ -186,21 +191,21 @@
 			this.label4.Text = "メインカラー:";
 			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// pictureBox2
+			// MainColorBox
 			// 
-			this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox2.Location = new System.Drawing.Point(97, 32);
-			this.pictureBox2.Margin = new System.Windows.Forms.Padding(8);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(68, 24);
-			this.pictureBox2.TabIndex = 0;
-			this.pictureBox2.TabStop = false;
-			this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+			this.MainColorBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.MainColorBox.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.MainColorBox.Location = new System.Drawing.Point(97, 32);
+			this.MainColorBox.Margin = new System.Windows.Forms.Padding(8);
+			this.MainColorBox.Name = "MainColorBox";
+			this.MainColorBox.Size = new System.Drawing.Size(68, 24);
+			this.MainColorBox.TabIndex = 0;
+			this.MainColorBox.TabStop = false;
+			this.MainColorBox.Click += new System.EventHandler(this.pictureBox2_Click);
 			// 
 			// groupBox3
 			// 
-			this.groupBox3.Controls.Add(this.trackBar1);
+			this.groupBox3.Controls.Add(this.VolumeTrackbar);
 			this.groupBox3.Location = new System.Drawing.Point(269, 148);
 			this.groupBox3.Margin = new System.Windows.Forms.Padding(8);
 			this.groupBox3.Name = "groupBox3";
@@ -210,21 +215,31 @@
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "演出の音量";
 			// 
-			// trackBar1
+			// VolumeTrackbar
 			// 
-			this.trackBar1.AutoSize = false;
-			this.trackBar1.Location = new System.Drawing.Point(16, 32);
-			this.trackBar1.Margin = new System.Windows.Forms.Padding(8);
-			this.trackBar1.Name = "trackBar1";
-			this.trackBar1.Size = new System.Drawing.Size(149, 24);
-			this.trackBar1.TabIndex = 0;
-			this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+			this.VolumeTrackbar.AutoSize = false;
+			this.VolumeTrackbar.Location = new System.Drawing.Point(16, 32);
+			this.VolumeTrackbar.Margin = new System.Windows.Forms.Padding(8);
+			this.VolumeTrackbar.Name = "VolumeTrackbar";
+			this.VolumeTrackbar.Size = new System.Drawing.Size(149, 24);
+			this.VolumeTrackbar.TabIndex = 0;
+			this.VolumeTrackbar.TickStyle = System.Windows.Forms.TickStyle.None;
+			this.VolumeTrackbar.Scroll += new System.EventHandler(this.VolumeTrackbar_Scroll);
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(92, 222);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(122, 15);
+			this.label6.TabIndex = 6;
+			this.label6.Text = "※正方形の画像を推奨";
 			// 
 			// SettingsForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(474, 277);
+			this.ClientSize = new System.Drawing.Size(474, 293);
 			this.Controls.Add(this.groupBox3);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.button2);
@@ -238,12 +253,12 @@
 			this.Load += new System.EventHandler(this.SettingsForm_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).EndInit();
 			this.groupBox2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.SubColorBox)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.MainColorBox)).EndInit();
 			this.groupBox3.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.VolumeTrackbar)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -256,15 +271,16 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.GroupBox groupBox3;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox NameTextBox;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.PictureBox LogoPictureBox;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.PictureBox pictureBox2;
-		private System.Windows.Forms.PictureBox pictureBox3;
-		private System.Windows.Forms.ColorDialog colorDialog1;
-		private System.Windows.Forms.TrackBar trackBar1;
+		private System.Windows.Forms.PictureBox MainColorBox;
+		private System.Windows.Forms.PictureBox SubColorBox;
+		private System.Windows.Forms.TrackBar VolumeTrackbar;
+		private System.Windows.Forms.ToolTip Tooltip;
+		private System.Windows.Forms.Label label6;
 	}
 }

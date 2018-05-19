@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace OwWinsCounterController
 {
-	public static class DataManager
+	public static class ScoreManager
 	{
-		public static class Data
+		public static class Score
 		{
 			public static int Wins;
 			public static int Loses;
