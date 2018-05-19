@@ -19,11 +19,16 @@ namespace OwWinsCounterController
 
 		private void SettingsForm_Load( object sender, EventArgs e )
 		{
+			// 最大化を無効に
 			this.MaximizeBox = false;
 
-			VolumeTrackbar.Minimum = 0;
-			VolumeTrackbar.Maximum = 200;
-			VolumeTrackbar.Value = 100;
+			// コンフィグを読み込んで値をセット
+			ConfigManager.Config Config = ConfigManager.Load();
+			NameTextBox.Text = Config.Name;
+			LogoPictureBox.ImageLocation = Config.LogoImageFilePath;
+			MainColorBox.BackColor = Config.MainColor;
+			SubColorBox.BackColor = Config.SubColor;
+			VolumeTrackbar.Value = Config.SoundVolume;
 		}
 
 		private void button1_Click( object sender, EventArgs e )
