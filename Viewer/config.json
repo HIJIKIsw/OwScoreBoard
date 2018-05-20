@@ -1,10 +1,10 @@
 {
-  "Name": "HIJIKIsw",
+  "Name": "You",
   "LogoImageFilePath": "./user/Logo.png",
-  "MainColor": "0, 128, 255",
-  "MainColorHtml": "#0080FF",
-  "SubColor": "255, 128, 0",
-  "SubColorHtml": "#FF8000",
+  "MainColor": "3, 35, 64",
+  "MainColorHtml": "#032340",
+  "SubColor": "219, 124, 0",
+  "SubColorHtml": "#DB7C00",
   "SoundVolume": 100,
-  "TimeStamp": "2018/05/20 19:10:06"
+  "TimeStamp": "2000/01/01 00:00:00"
 }
