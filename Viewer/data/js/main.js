@@ -131,7 +131,7 @@
 		$('#Wins > .Name, #Loses > .Name').text(ConfigFile.Name);
 
 		// ロゴ画像を反映
-		$('#Wins > .Logo > img, #Loses > .Logo > img').attr('src', ConfigFile.LogoImageFilePath);
+		$('#Wins > .Logo > img, #Loses > .Logo > img').attr('src', ConfigFile.LogoImageFilePath+"?dummy="+Date.now());
 
 		// メインカラーを反映
 		$('#Wins, #Loses, #Draw').css('background', ConfigFile.MainColorHtml);
