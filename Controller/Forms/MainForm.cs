@@ -14,9 +14,6 @@ namespace OwWinsCounterController
 {
 	public partial class MainForm : Form
 	{
-
-		private string JsonFilePath = "./data.json";
-
 		public MainForm()
 		{
 			InitializeComponent();
@@ -27,38 +24,12 @@ namespace OwWinsCounterController
 			// 最大化ボタンを無効化
 			this.MaximizeBox = false;
 
-			// Json がない場合はデフォルト設定で作成
-			if( !File.Exists( JsonFilePath ) )
-			{
-				DataJson DefaultData = new DataJson
-				{
-					Wins = 0,
-					Loses = 0,
-					Draws = 0,
-					StartingRate = 1,
-				};
-				string Json = JsonConvert.SerializeObject( DefaultData, Formatting.Indented );
-
-				FileStream fs = new FileStream( JsonFilePath, FileMode.CreateNew, FileAccess.Write, FileShare.ReadWrite);
-				StreamWriter sw = new StreamWriter( fs );
-				sw.Write( Json );
-				sw.Close();
-				fs.Close();
-			}
-			// Json がある場合は読み込んで値をセット
-			else
-			{
-				StreamReader sr = new StreamReader( JsonFilePath, Encoding.ASCII );
-				string RawData = sr.ReadToEnd();
-				sr.Close();
-
-				DataJson Data = JsonConvert.DeserializeObject<DataJson>( RawData );
-
-				WinsUpDown.Value = Data.Wins;
-				LosesUpDown.Value = Data.Loses;
-				DrawsUpDown.Value = Data.Draws;
-				StartingRateUpDown.Value = Data.StartingRate;
-			}
+			// Score を読み込んで値をセット
+			ScoreManager.Score Score = ScoreManager.Load();
+			WinsUpDown.Value = Score.Wins;
+			LosesUpDown.Value = Score.Loses;
+			DrawsUpDown.Value = Score.Draws;
+			StartingRateUpDown.Value = Score.StartingRate;
 		}
 
 		private void LosesUpDown_ValueChanged( object sender, EventArgs e )
@@ -116,40 +87,14 @@ namespace OwWinsCounterController
 
 		private void SaveTimer_Tick( object sender, EventArgs e )
 		{
-			SaveData();
+			ScoreManager.Score Score = new ScoreManager.Score( (int)WinsUpDown.Value, (int)LosesUpDown.Value, (int)DrawsUpDown.Value, (int)StartingRateUpDown.Value );
+			ScoreManager.Save( Score );
 		}
 
 		private void ResetTimer()
 		{
 			SaveTimer.Enabled = false;
 			SaveTimer.Enabled = true;
-		}
-
-		private void SaveData()
-		{
-			SaveTimer.Enabled = false;
-
-			WinButton.Enabled = true;
-			LoseButton.Enabled = true;
-			DrawButton.Enabled = true;
-			ResetButton.Enabled = true;
-
-			DataJson Data = new DataJson
-			{
-				Wins = (int)WinsUpDown.Value,
-				Loses = (int)LosesUpDown.Value,
-				Draws = (int)DrawsUpDown.Value,
-				StartingRate = (int)StartingRateUpDown.Value
-			};
-
-			string Json = JsonConvert.SerializeObject( Data, Formatting.Indented );
-			FileStream fs = new FileStream( JsonFilePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite );
-			StreamWriter sw = new StreamWriter( fs );
-			sw.Write( Json );
-			sw.Close();
-			fs.Close();
-
-			Console.WriteLine( Json );
 		}
 
 		private void WinButton_Click( object sender, EventArgs e )
@@ -200,7 +145,7 @@ namespace OwWinsCounterController
 				"スコアのリセット",
 				MessageBoxButtons.OKCancel,
 				MessageBoxIcon.Information,
-				MessageBoxDefaultButton.Button2);
+				MessageBoxDefaultButton.Button2 );
 
 			if( Result == DialogResult.OK )
 			{

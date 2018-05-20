@@ -9,102 +9,73 @@ using Newtonsoft.Json;
 
 namespace OwWinsCounterController
 {
+	/// <summary>
+	/// Config ファイルを取り扱うクラス
+	/// </summary>
 	public static class ConfigManager
 	{
+		// コンフィグファイルへの相対パス
 		private static string ConfigFilePath = "./config.json";
 
+		/// <summary>
+		/// Config クラス
+		/// </summary>
 		public class Config
 		{
 			public string Name;
 			public string LogoImageFilePath;
 			public Color MainColor;
+			public string MainColorHtml;
 			public Color SubColor;
+			public string SubColorHtml;
 			public int SoundVolume;
 
-			public ConfigJson ToConfigJson()
+			/// <summary>
+			/// コンストラクタ
+			/// </summary>
+			public Config( string Name, string LogoImageFilePath, Color MainColor, Color SubColor, int SoundVolume )
 			{
-				string _Name = Name;
-				string _LogoImageFilePath = LogoImageFilePath;
-				string _MainColor = ColorTranslator.ToHtml( MainColor );
-				string _SubColor = ColorTranslator.ToHtml( SubColor );
-				int _SoundVolume = SoundVolume;
-
-				ConfigJson ret = new ConfigJson
-				{
-					Name = _Name,
-					LogoImageFilePath = _LogoImageFilePath,
-					MainColor = _MainColor,
-					SubColor = _SubColor,
-					SoundVolume = _SoundVolume
-				};
-				return ret;
+				this.Name = Name;
+				this.LogoImageFilePath = LogoImageFilePath;
+				this.MainColor = MainColor;
+				this.MainColorHtml = ColorTranslator.ToHtml( MainColor );
+				this.SubColor = SubColor;
+				this.SubColorHtml = ColorTranslator.ToHtml( SubColor );
+				this.SoundVolume = SoundVolume;
 			}
 		}
 
-		public class ConfigJson
+		/// <summary>
+		/// Config を Json ファイルに保存
+		/// </summary>
+		public static void Save( Config Config )
 		{
-			public string Name;
-			public string LogoImageFilePath;
-			public string MainColor;
-			public string SubColor;
-			public int SoundVolume;
-
-			public Config ToConfig()
-			{
-				string _Name = Name;
-				string _LogoImageFilePath = LogoImageFilePath;
-				Color _MainColor = ColorTranslator.FromHtml( MainColor );
-				Color _SubColor = ColorTranslator.FromHtml( SubColor );
-				int _SoundVolume = SoundVolume;
-
-				Config ret = new Config
-				{
-					Name = _Name,
-					LogoImageFilePath = _LogoImageFilePath,
-					MainColor = _MainColor,
-					SubColor = _SubColor,
-					SoundVolume = _SoundVolume
-				};
-				return ret;
-			}
-		}
-
-		public static void Save( string _Name, string _LogoImageFilePath, Color _MainColor, Color _SubColor, int _SoundVolume )
-		{
-			Config Config = new Config
-			{
-				Name = _Name,
-				LogoImageFilePath = _LogoImageFilePath,
-				MainColor = _MainColor,
-				SubColor = _SubColor,
-				SoundVolume = _SoundVolume
-			};
-
-			ConfigJson ConfigJson = Config.ToConfigJson();
-
-			string ConfigString = JsonConvert.SerializeObject( ConfigJson, Formatting.Indented );
+			string ConfigJson = JsonConvert.SerializeObject( Config, Formatting.Indented );
 			FileStream fs = new FileStream( ConfigFilePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite );
 			StreamWriter sw = new StreamWriter( fs );
-			sw.Write( ConfigString );
+			sw.Write( ConfigJson );
 			sw.Close();
 			fs.Close();
 		}
 
+		/// <summary>
+		/// Json ファイルから Config を読み込み
+		/// </summary>
 		public static Config Load()
 		{
-			Config ret = new Config();
+			Config ret;
 
 			// config.json がない場合はデフォルト設定で作成
 			if( !File.Exists( ConfigFilePath ) )
 			{
-				ConfigJson DefaultConfig = new ConfigJson
-				{
-					Name = string.Empty,
-					LogoImageFilePath = string.Empty,
-					MainColor = "#032340",
-					SubColor = "#DB7C00",
-					SoundVolume = 100
-				};
+				Config DefaultConfig = new Config
+				(
+					string.Empty,
+					string.Empty,
+					ColorTranslator.FromHtml( "#032340" ),
+					ColorTranslator.FromHtml( "#DB7C00" ),
+					100
+				);
 				string DefaultConfigJson = JsonConvert.SerializeObject( DefaultConfig, Formatting.Indented );
 
 				FileStream fs = new FileStream( DefaultConfigJson, FileMode.CreateNew, FileAccess.Write, FileShare.ReadWrite );
@@ -113,18 +84,16 @@ namespace OwWinsCounterController
 				sw.Close();
 				fs.Close();
 
-				ret = DefaultConfig.ToConfig();
+				ret = DefaultConfig;
 			}
 			// config.json がある場合は読み込む
 			else
 			{
 				StreamReader sr = new StreamReader( ConfigFilePath, Encoding.UTF8 );
-				string ConfigRaw = sr.ReadToEnd();
+				string ConfigJson = sr.ReadToEnd();
 				sr.Close();
 
-				ConfigJson ConfigJson = JsonConvert.DeserializeObject<ConfigJson>( ConfigRaw );
-
-				ret = ConfigJson.ToConfig();
+				ret = JsonConvert.DeserializeObject<Config>( ConfigJson );
 			}
 
 			return ret;

@@ -13,6 +13,7 @@ namespace OwWinsCounterController
 {
 	public partial class SettingsForm : Form
 	{
+		// ロゴ画像への相対パス (拡張子なし)
 		private static string LogoFileNameWithoutExtension = "./user/Logo";
 
 		public SettingsForm()
@@ -36,13 +37,9 @@ namespace OwWinsCounterController
 
 		private void button1_Click( object sender, EventArgs e )
 		{
-			ConfigManager.Save(
-				NameTextBox.Text,
-				LogoPictureBox.ImageLocation,
-				MainColorBox.BackColor,
-				SubColorBox.BackColor,
-				VolumeTrackbar.Value
-				);
+			ConfigManager.Config Config = new ConfigManager.Config( NameTextBox.Text, LogoPictureBox.ImageLocation, MainColorBox.BackColor, SubColorBox.BackColor, VolumeTrackbar.Value );
+
+			ConfigManager.Save( Config );
 			this.Close();
 		}
 
