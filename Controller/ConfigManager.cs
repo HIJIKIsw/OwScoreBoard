@@ -32,6 +32,7 @@ namespace OwScoreBoardController
 			public Color SubColor;
 			public string SubColorHtml;
 			public int SoundVolume;
+			public string TimeStamp;
 
 			/// <summary>
 			/// コンストラクタ
@@ -66,6 +67,7 @@ namespace OwScoreBoardController
 			}
 
 			// Json ファイルに保存
+			Config.TimeStamp = System.DateTime.Now.ToString();
 			string ConfigJson = JsonConvert.SerializeObject( Config, Formatting.Indented );
 			FileStream fs = new FileStream( ConfigFilePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite );
 			StreamWriter sw = new StreamWriter( fs );

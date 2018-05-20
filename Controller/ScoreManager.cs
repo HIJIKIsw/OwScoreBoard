@@ -25,6 +25,7 @@ namespace OwScoreBoardController
 			public int Loses;
 			public int Draws;
 			public int StartingRate;
+			public string TimeStamp;
 
 			/// <summary>
 			/// コンストラクタ
@@ -43,6 +44,8 @@ namespace OwScoreBoardController
 		/// </summary>
 		public static void Save( Score Score )
 		{
+			Score.TimeStamp = System.DateTime.Now.ToString();
+
 			string ScoreJson = JsonConvert.SerializeObject( Score, Formatting.Indented );
 			FileStream fs = new FileStream( ScoreFilePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite );
 			StreamWriter sw = new StreamWriter( fs );
