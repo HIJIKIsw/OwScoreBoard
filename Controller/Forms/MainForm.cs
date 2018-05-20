@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 
-namespace OwWinsCounterController
+namespace OwScoreBoardController
 {
 	public partial class MainForm : Form
 	{

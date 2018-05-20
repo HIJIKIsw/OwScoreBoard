@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace OwWinsCounterController
+namespace OwScoreBoardController
 {
 	/// <summary>
 	/// Config ファイルを取り扱うクラス

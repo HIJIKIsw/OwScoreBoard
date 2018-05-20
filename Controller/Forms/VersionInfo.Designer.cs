@@ -1,4 +1,4 @@
-﻿namespace OwWinsCounterController
+﻿namespace OwScoreBoardController
 {
 	partial class VersionInfoForm
 	{
@@ -41,7 +41,7 @@
 			// 
 			// pictureBox2
 			// 
-			this.pictureBox2.Image = global::OwWinsCounterController.Properties.Resources.logo;
+			this.pictureBox2.Image = global::OwScoreBoardController.Properties.Resources.logo;
 			this.pictureBox2.Location = new System.Drawing.Point(97, 17);
 			this.pictureBox2.Margin = new System.Windows.Forms.Padding(8);
 			this.pictureBox2.Name = "pictureBox2";
@@ -52,7 +52,7 @@
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.Image = global::OwWinsCounterController.Properties.Resources.OwWinsCounter64;
+			this.pictureBox1.Image = global::OwScoreBoardController.Properties.Resources.OwWinsCounter64;
 			this.pictureBox1.Location = new System.Drawing.Point(17, 17);
 			this.pictureBox1.Margin = new System.Windows.Forms.Padding(8);
 			this.pictureBox1.Name = "pictureBox1";

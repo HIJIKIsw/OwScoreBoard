@@ -1,4 +1,4 @@
-﻿namespace OwWinsCounterController
+﻿namespace OwScoreBoardController
 {
 	partial class SettingsForm
 	{
