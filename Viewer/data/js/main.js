@@ -3,11 +3,14 @@
 //------------------------------------------------------------------------------
 
 	var xhr = new XMLHttpRequest();
-	var oldFile;
-	var file;
+	var ScoreFile;
+	var OldScoreFile;
+	var ConfigFile;
+	var OldConfigFile;
 	var Elements;
 	var IsPlaying = false;
-	var IsInitialized = false;
+	var ScoreFilePath = "./score.json";
+	var ConfigFilePath = "./config.json";
 
 	//--------------------------------------------------------------------------
 	// Initialize
@@ -27,84 +30,129 @@
 		}
 
 		xhr.overrideMimeType('application/json');
-		setInterval("DataLoad()", 1000);
-		//setTimeout("AntiLoadMiss()", 3000)	//一部環境上(例えばOBS)でのロードミスを防ぐ
 
-		// テストコード
-		Sleep(500).done(function(){
-			//Draw();
-		})
+		LoadScore();
+		setInterval("LoadScore()", 1000);
 
-		Sleep(8000).done(function(){
-		//	Defeat();
-		})
+		LoadConfig()
+		setInterval("LoadConfig()", 5000);
 	}
 
 	//--------------------------------------------------------------------------
-	// DataLoad
+	// LoadScore
 	//--------------------------------------------------------------------------
-	function DataLoad() {
-		console.log("DataLoad");
+	function LoadScore() {
+		console.log("LoadScore");
 
 		if( !IsPlaying )
 		{
-			xhr.open('GET', "./data.json?dummy="+Date.now(), true);
+			xhr.open('GET', ScoreFilePath+"?dummy="+Date.now(), true);
 			xhr.send();
 			xhr.onreadystatechange = function(){
 				if (xhr.readyState === 4) {
 					// 前回の状態を記憶
-					if( file != undefined )
+					if( ScoreFile != undefined )
 					{
-						oldFile = file;
+						OldScoreFile = ScoreFile;
 					}
 					// 読み込んだ json をパースする
-					file = JSON.parse(xhr.responseText);
-					// 初回のみ同期する
-					if( oldFile == undefined )
+					ScoreFile = JSON.parse(xhr.responseText);
+					// 初回はOldScoreFileと同期し、スコアボードを更新する
+					if( OldScoreFile == undefined )
 					{
-						oldFile = file;
+						OldScoreFile = ScoreFile;
+						SetScore();
 					}
-					// 初回はスコアボードを更新
-					if( !IsInitialized )
+					else
 					{
-						IsInitialized = true;
-						DataSet();
+						ScoreScrutiny();
 					}
-					DataScrutiny();
 				}
 			}		
 		}
 	}
 
 	//--------------------------------------------------------------------------
-	// DataSet
+	// SetScore
 	//--------------------------------------------------------------------------
-	function DataSet() {
-		console.log("DataSet");
+	function SetScore() {
+		console.log("SetScore");
 
-		Elements.Wins1.text(file.Wins);
-		Elements.Wins2.text(file.Wins);
-		Elements.Loses1.text(file.Loses);
-		Elements.Loses2.text(file.Loses);
-		Elements.Draws1.text(file.Draws);
-		Elements.Draws2.text(file.Draws);
+		Elements.Wins1.text(ScoreFile.Wins);
+		Elements.Wins2.text(ScoreFile.Wins);
+		Elements.Loses1.text(ScoreFile.Loses);
+		Elements.Loses2.text(ScoreFile.Loses);
+		Elements.Draws1.text(ScoreFile.Draws);
+		Elements.Draws2.text(ScoreFile.Draws);
 
-		SetStartingRate(file.StartingRate);
+		SetStartingRate(ScoreFile.StartingRate);
+	}
+
+	//--------------------------------------------------------------------------
+	// LoadConfig
+	//--------------------------------------------------------------------------
+	function LoadConfig()
+	{
+		console.log("LoadConfig");
+
+		xhr.open('GET', ConfigFilePath+"?dummy="+Date.now(), true);
+		xhr.send();
+		xhr.onreadystatechange = function(){
+			if (xhr.readyState === 4) {
+				// 前回の状態を記憶
+				if( ConfigFile != undefined )
+				{
+					OldConfigFile = ConfigFile;
+				}
+				// 読み込んだ json をパースする
+				ConfigFile = JSON.parse(xhr.responseText);
+				// 初回はOldScoreFileと同期し、Configを反映する
+				if( OldConfigFile == undefined )
+				{
+					OldConfigFile = ConfigFile;
+					SetConfig();
+				}
+				else
+				{
+					ConfigScrutiny();
+				}
+			}
+		}		
+	}
+
+	//--------------------------------------------------------------------------
+	// SetConfig
+	//--------------------------------------------------------------------------
+	function SetConfig()
+	{
+		console.log("SetConfig");
+
+		// 名前を反映
+		$('#Wins > .Name, #Loses > .Name').text(ConfigFile.Name);
+
+		// ロゴ画像を反映
+		$('#Wins > .Logo > img, #Loses > .Logo > img').attr('src', ConfigFile.LogoImageFilePath);
+
+		// メインカラーを反映
+		$('#Wins, #Loses, #Draw').css('background', ConfigFile.MainColorHtml);
+
+		// サブカラーを反映
+		$('#Transition, #EdgeLeft, #EdgeRight').css('background', ConfigFile.SubColorHtml);
 	}
 
 	//--------------------------------------------------------------------------	
-	// DataScrutiny
+	// ScoreScrutiny
 	//--------------------------------------------------------------------------
-	function DataScrutiny()
+	function ScoreScrutiny()
 	{
-		console.log("DataScrutiny");
+		console.log("ScoreScrutiny");
 
 		var UpdateType = undefined;
 		var IsRateUpdated = false;
 
-		if( file.Wins != oldFile.Wins )
+		if( ScoreFile.Wins != OldScoreFile.Wins )
 		{
-			if( UpdateType == undefined && file.Wins > oldFile.Wins )
+			if( UpdateType == undefined && ScoreFile.Wins > OldScoreFile.Wins )
 			{
 				UpdateType = "Win";
 			}
@@ -113,9 +161,9 @@
 				UpdateType = "General";
 			}
 		}
-		if( file.Loses != oldFile.Loses )
+		if( ScoreFile.Loses != OldScoreFile.Loses )
 		{
-			if( UpdateType == undefined && file.Loses > oldFile.Loses  )
+			if( UpdateType == undefined && ScoreFile.Loses > OldScoreFile.Loses  )
 			{
 				UpdateType = "Lose";
 			}
@@ -124,9 +172,9 @@
 				UpdateType = "General";
 			}
 		}
-		if( file.Draws != oldFile.Draws )
+		if( ScoreFile.Draws != OldScoreFile.Draws )
 		{
-			if( UpdateType == undefined && file.Draws > oldFile.Draws )
+			if( UpdateType == undefined && ScoreFile.Draws > OldScoreFile.Draws )
 			{
 				UpdateType = "Draw";
 			}
@@ -135,7 +183,7 @@
 				UpdateType = "General";
 			}
 		}
-		if( file.StartingRate != oldFile.StartingRate ){ IsRateUpdated = true; }
+		if( ScoreFile.StartingRate != OldScoreFile.StartingRate ){ IsRateUpdated = true; }
 
 		switch (UpdateType) {
 			case "Win":
@@ -159,24 +207,37 @@
 	}
 
 	//--------------------------------------------------------------------------
+	// ConfigScrutiny
+	//--------------------------------------------------------------------------
+	function ConfigScrutiny()
+	{
+		console.log("ConfigScrutiny");
+
+		if( ConfigFile.TimeStamp != OldConfigFile.TimeStamp )
+		{
+			SetConfig();
+		}
+	}
+
+	//--------------------------------------------------------------------------
 	// Victory
 	//--------------------------------------------------------------------------
 	function Victory()
 	{
 		IsPlaying = true;
 
-		$.playSound("./data/wav/wins.wav")
+		$.playSound("./data/wav/wins.wav", ConfigFile.SoundVolume);
 		$('#Transition').show().animate({"margin-left": "0"}, 200, 'easeInSine',
 			function(){
 				$('#Wins').show();
 				$('#Transition').animate({"margin-left": "100%"}, 266, 'easeOutSine');
 				$('#EdgeLeft').animate({'left': '0'}, 500);
 				$('#EdgeRight').animate({'right': '0'}, 500);
-				DataSet();
+				SetScore();
 			}
 		);
 		Sleep(2500).done(function(){
-			$.playSound("./data/wav/transition2.wav")
+			$.playSound("./data/wav/transition2.wav", ConfigFile.SoundVolume)
 			$('#Transition').show().animate({"margin-left": "0"}, 200, 'easeInSine',
 				function(){
 					$('#Wins').hide();
@@ -187,7 +248,7 @@
 						.animate({'margin-left': '5%'}, 2500, 'linear')
 						.animate({'margin-left': '100%'}, 300, function(){$('.ScorePanel').css('margin-left', '-100%');});
 					Sleep(2800).done(function(){
-						$.playSound("./data/wav/transition3.wav")
+						$.playSound("./data/wav/transition3.wav", ConfigFile.SoundVolume)
 						$('#Transition').show().animate({"margin-left": "0"}, 200, 'easeInSine',
 							function(){
 								$('#Scores').hide();
@@ -210,18 +271,18 @@
 	{
 		IsPlaying = true;
 
-		$.playSound("./data/wav/loses.wav")
+		$.playSound("./data/wav/loses.wav", ConfigFile.SoundVolume)
 		$('#Transition').show().animate({"margin-left": "0"}, 200, 'easeInSine',
 			function(){
 				$('#Loses').show();
 				$('#Transition').animate({"margin-left": "100%"}, 266, 'easeOutSine');
 				$('#EdgeLeft').animate({'left': '0'}, 500);
 				$('#EdgeRight').animate({'right': '0'}, 500);
-				DataSet();
+				SetScore();
 			}
 		);
 		Sleep(2500).done(function(){
-			$.playSound("./data/wav/transition2.wav")
+			$.playSound("./data/wav/transition2.wav", ConfigFile.SoundVolume)
 			$('#Transition').show().animate({"margin-left": "0"}, 200, 'easeInSine',
 				function(){
 					$('#Loses').hide();
@@ -232,7 +293,7 @@
 						.animate({'margin-left': '5%'}, 2500, 'linear')
 						.animate({'margin-left': '100%'}, 300, function(){$('.ScorePanel').css('margin-left', '-100%');});
 					Sleep(2800).done(function(){
-						$.playSound("./data/wav/transition3.wav")
+						$.playSound("./data/wav/transition3.wav", ConfigFile.SoundVolume)
 						$('#Transition').show().animate({"margin-left": "0"}, 200, 'easeInSine',
 							function(){
 								$('#Scores').hide();
@@ -255,18 +316,18 @@
 	{
 		IsPlaying = true;
 
-		$.playSound("./data/wav/draw.wav")
+		$.playSound("./data/wav/draw.wav", ConfigFile.SoundVolume)
 		$('#Transition').show().animate({"margin-left": "0"}, 200, 'easeInSine',
 			function(){
 				$('#Draw').show();
 				$('#Transition').animate({"margin-left": "100%"}, 266, 'easeOutSine');
 				$('#EdgeLeft').animate({'left': '0'}, 500);
 				$('#EdgeRight').animate({'right': '0'}, 500);
-				DataSet();
+				SetScore();
 			}
 		);
 		Sleep(2500).done(function(){
-			$.playSound("./data/wav/transition2.wav")
+			$.playSound("./data/wav/transition2.wav", ConfigFile.SoundVolume)
 			$('#Transition').show().animate({"margin-left": "0"}, 200, 'easeInSine',
 				function(){
 					$('#Draw').hide();
@@ -277,7 +338,7 @@
 						.animate({'margin-left': '5%'}, 2500, 'linear')
 						.animate({'margin-left': '100%'}, 300, function(){$('.ScorePanel').css('margin-left', '-100%');});
 					Sleep(2800).done(function(){
-						$.playSound("./data/wav/transition3.wav")
+						$.playSound("./data/wav/transition3.wav", ConfigFile.SoundVolume)
 						$('#Transition').show().animate({"margin-left": "0"}, 200, 'easeInSine',
 							function(){
 								$('#Scores').hide();
@@ -337,7 +398,7 @@
 	function UpdateScoreBoard()
 	{
 		$('#ScoreBoard')
-			.animate({'bottom': '-15vh'}, 300, function(){ DataSet(); })
+			.animate({'bottom': '-15vh'}, 300, function(){ SetScore(); })
 			.animate({'bottom': '4vh'}, 300);
 	}
 
