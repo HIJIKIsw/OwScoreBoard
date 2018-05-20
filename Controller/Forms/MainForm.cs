@@ -170,14 +170,6 @@ namespace OwScoreBoardController
 			}
 		}
 
-		private void StopUpdateCheckbox_CheckedChanged( object sender, EventArgs e )
-		{
-			if( !MenuItem_StopUpdate.Checked )
-			{
-				ResetTimer();
-			}
-		}
-
 		private void MenuItem_Version_Click( object sender, EventArgs e )
 		{
 			Form VersionInfoForm = new VersionInfoForm();
@@ -205,6 +197,14 @@ namespace OwScoreBoardController
 			Form SettingsForm = new SettingsForm();
 			SettingsForm.ShowInTaskbar = false;
 			SettingsForm.ShowDialog();
+		}
+
+		private void MenuItem_StopUpdate_Click( object sender, EventArgs e )
+		{
+			if( !MenuItem_StopUpdate.Checked )
+			{
+				ResetTimer();
+			}
 		}
 	}
 
