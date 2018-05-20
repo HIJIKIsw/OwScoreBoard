@@ -89,6 +89,12 @@ namespace OwWinsCounterController
 		{
 			ScoreManager.Score Score = new ScoreManager.Score( (int)WinsUpDown.Value, (int)LosesUpDown.Value, (int)DrawsUpDown.Value, (int)StartingRateUpDown.Value );
 			ScoreManager.Save( Score );
+
+			SaveTimer.Enabled = false;
+			WinButton.Enabled = true;
+			LoseButton.Enabled = true;
+			DrawButton.Enabled = true;
+			ResetButton.Enabled = true;
 		}
 
 		private void ResetTimer()
