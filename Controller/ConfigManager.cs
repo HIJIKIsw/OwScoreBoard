@@ -17,6 +17,9 @@ namespace OwScoreBoardController
 		// コンフィグファイルへの相対パス
 		private static string ConfigFilePath = "./config.json";
 
+		// ロゴ画像への相対パス (拡張子なし)
+		private static string LogoFileNameWithoutExtension = "./user/Logo";
+
 		/// <summary>
 		/// Config クラス
 		/// </summary>
@@ -50,6 +53,19 @@ namespace OwScoreBoardController
 		/// </summary>
 		public static void Save( Config Config )
 		{
+			// ロゴ画像を選択した場合はアプリケーションフォルダ内に複製
+			string Extension = Path.GetExtension( Config.LogoImageFilePath );
+			if( Config.LogoImageFilePath != LogoFileNameWithoutExtension + Extension )
+			{
+				if( !Directory.Exists( Path.GetDirectoryName( LogoFileNameWithoutExtension ) ) )
+				{
+					Directory.CreateDirectory( Path.GetDirectoryName( LogoFileNameWithoutExtension ) );
+				}
+				File.Copy( Config.LogoImageFilePath, LogoFileNameWithoutExtension + Extension, true );
+				Config.LogoImageFilePath = LogoFileNameWithoutExtension + Extension;
+			}
+
+			// Json ファイルに保存
 			string ConfigJson = JsonConvert.SerializeObject( Config, Formatting.Indented );
 			FileStream fs = new FileStream( ConfigFilePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite );
 			StreamWriter sw = new StreamWriter( fs );

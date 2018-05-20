@@ -13,9 +13,6 @@ namespace OwScoreBoardController
 {
 	public partial class SettingsForm : Form
 	{
-		// ロゴ画像への相対パス (拡張子なし)
-		private static string LogoFileNameWithoutExtension = "./user/Logo";
-
 		public SettingsForm()
 		{
 			InitializeComponent();
@@ -84,15 +81,7 @@ namespace OwScoreBoardController
 
 			if( ofd.ShowDialog() == DialogResult.OK )
 			{
-				// user ディレクトリが存在しなければ作成
-				if( !Directory.Exists( Path.GetDirectoryName( LogoFileNameWithoutExtension ) ) )
-				{
-					Directory.CreateDirectory( Path.GetDirectoryName( LogoFileNameWithoutExtension ) );
-				}
-
-				string Extension = Path.GetExtension( ofd.SafeFileName );
-				File.Copy( ofd.FileName, LogoFileNameWithoutExtension + Extension, true );
-				LogoPictureBox.ImageLocation = LogoFileNameWithoutExtension + Extension;
+				LogoPictureBox.ImageLocation = ofd.FileName;
 			}
 		}
 	}
