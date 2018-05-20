@@ -206,6 +206,62 @@ namespace OwScoreBoardController
 				ResetTimer();
 			}
 		}
+
+		private void StartingRateUpDown_KeyUp( object sender, KeyEventArgs e )
+		{
+			if( StartingRateUpDown.Text == string.Empty )
+			{
+				StartingRateUpDown.Value = 1;
+				StartingRateUpDown.Text = "1";
+			}
+
+			if( !MenuItem_StopUpdate.Checked )
+			{
+				ResetTimer();
+			}
+		}
+
+		private void WinsUpDown_KeyUp( object sender, KeyEventArgs e )
+		{
+			if( WinsUpDown.Text == string.Empty )
+			{
+				WinsUpDown.Value = 0;
+				WinsUpDown.Text = "0";
+			}
+
+			if( !MenuItem_StopUpdate.Checked )
+			{
+				ResetTimer();
+			}
+		}
+
+		private void LosesUpDown_KeyUp( object sender, KeyEventArgs e )
+		{
+			if( LosesUpDown.Text == string.Empty )
+			{
+				LosesUpDown.Value = 0;
+				LosesUpDown.Text = "0";
+			}
+
+			if( !MenuItem_StopUpdate.Checked )
+			{
+				ResetTimer();
+			}
+		}
+
+		private void DrawsUpDown_KeyUp( object sender, KeyEventArgs e )
+		{
+			if( DrawsUpDown.Text == string.Empty )
+			{
+				DrawsUpDown.Value = 0;
+				DrawsUpDown.Text = "0";
+			}
+
+			if( !MenuItem_StopUpdate.Checked )
+			{
+				ResetTimer();
+			}
+		}
 	}
 
 	class DataJson

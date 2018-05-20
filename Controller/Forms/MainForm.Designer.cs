@@ -108,6 +108,7 @@
 			this.DrawsUpDown.Size = new System.Drawing.Size(52, 23);
 			this.DrawsUpDown.TabIndex = 6;
 			this.DrawsUpDown.ValueChanged += new System.EventHandler(this.DrawsUpDown_ValueChanged);
+			this.DrawsUpDown.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DrawsUpDown_KeyUp);
 			// 
 			// LosesUpDown
 			// 
@@ -123,6 +124,7 @@
 			this.LosesUpDown.Size = new System.Drawing.Size(52, 23);
 			this.LosesUpDown.TabIndex = 5;
 			this.LosesUpDown.ValueChanged += new System.EventHandler(this.LosesUpDown_ValueChanged);
+			this.LosesUpDown.KeyUp += new System.Windows.Forms.KeyEventHandler(this.LosesUpDown_KeyUp);
 			// 
 			// LosesLabel
 			// 
@@ -148,6 +150,7 @@
 			this.WinsUpDown.Size = new System.Drawing.Size(52, 23);
 			this.WinsUpDown.TabIndex = 4;
 			this.WinsUpDown.ValueChanged += new System.EventHandler(this.WinsUpDown_ValueChanged);
+			this.WinsUpDown.KeyUp += new System.Windows.Forms.KeyEventHandler(this.WinsUpDown_KeyUp);
 			// 
 			// WinsLabel
 			// 
@@ -194,6 +197,7 @@
             0,
             0});
 			this.StartingRateUpDown.ValueChanged += new System.EventHandler(this.StartingRateUpDown_ValueChanged);
+			this.StartingRateUpDown.KeyUp += new System.Windows.Forms.KeyEventHandler(this.StartingRateUpDown_KeyUp);
 			// 
 			// ResetButton
 			// 
