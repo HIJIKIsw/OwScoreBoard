@@ -229,7 +229,7 @@
 			this.VolumeTrackbar.AutoSize = false;
 			this.VolumeTrackbar.Location = new System.Drawing.Point(16, 32);
 			this.VolumeTrackbar.Margin = new System.Windows.Forms.Padding(8);
-			this.VolumeTrackbar.Maximum = 200;
+			this.VolumeTrackbar.Maximum = 100;
 			this.VolumeTrackbar.Name = "VolumeTrackbar";
 			this.VolumeTrackbar.Size = new System.Drawing.Size(149, 24);
 			this.VolumeTrackbar.TabIndex = 0;
