@@ -56,7 +56,7 @@ namespace OwScoreBoardController
 		{
 			// ロゴ画像を選択した場合はアプリケーションフォルダ内に複製
 			string Extension = Path.GetExtension( Config.LogoImageFilePath );
-			if( Config.LogoImageFilePath != LogoFileNameWithoutExtension + Extension )
+			if( Config.LogoImageFilePath != LogoFileNameWithoutExtension + Extension && Config.LogoImageFilePath != null )
 			{
 				if( !Directory.Exists( Path.GetDirectoryName( LogoFileNameWithoutExtension ) ) )
 				{
