@@ -13,7 +13,7 @@ namespace OwScoreBoardController
 	/// </summary>
 	public static class ScoreManager
 	{
-		// Score ファイルへの総体パズ
+		// Score ファイルへの総体パス
 		private static string ScoreFilePath = "./score.json";
 
 		/// <summary>
@@ -36,6 +36,14 @@ namespace OwScoreBoardController
 				this.Loses = Loses;
 				this.Draws = Draws;
 				this.StartingRate = StartingRate;
+			}
+
+			/// <summary>
+			/// 初期設定 Score を返す
+			/// </summary>
+			public static Score Default()
+			{
+				return new Score( 0, 0, 0, 1 );
 			}
 		}
 
@@ -64,10 +72,10 @@ namespace OwScoreBoardController
 			// score.json がない場合はデフォルト設定で作成
 			if( !File.Exists( ScoreFilePath ) )
 			{
-				Score DefaultScore = new Score( 0, 0, 0, 1 );
+				Score DefaultScore = Score.Default();
 				string DefaultScoreJson = JsonConvert.SerializeObject( DefaultScore, Formatting.Indented );
 
-				FileStream fs = new FileStream( DefaultScoreJson, FileMode.CreateNew, FileAccess.Write, FileShare.ReadWrite );
+				FileStream fs = new FileStream( ScoreFilePath, FileMode.CreateNew, FileAccess.Write, FileShare.ReadWrite );
 				StreamWriter sw = new StreamWriter( fs );
 				sw.Write( DefaultScoreJson );
 				sw.Close();

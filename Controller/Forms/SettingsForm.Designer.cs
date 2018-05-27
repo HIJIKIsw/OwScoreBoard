@@ -29,10 +29,28 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.button1 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
+			this.OKButton = new System.Windows.Forms.Button();
+			this.CancelButton = new System.Windows.Forms.Button();
 			this.Tooltip = new System.Windows.Forms.ToolTip(this.components);
 			this.tabPage3 = new System.Windows.Forms.TabPage();
+			this.checkBox4 = new System.Windows.Forms.CheckBox();
+			this.checkBox5 = new System.Windows.Forms.CheckBox();
+			this.checkBox6 = new System.Windows.Forms.CheckBox();
+			this.comboBox2 = new System.Windows.Forms.ComboBox();
+			this.checkBox1 = new System.Windows.Forms.CheckBox();
+			this.checkBox2 = new System.Windows.Forms.CheckBox();
+			this.checkBox3 = new System.Windows.Forms.CheckBox();
+			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.WinHotkeyModCheckbox_Alt = new System.Windows.Forms.CheckBox();
+			this.WinHotkeyModCheckbox_Shift = new System.Windows.Forms.CheckBox();
+			this.WinHotkeyModCheckbox_Ctrl = new System.Windows.Forms.CheckBox();
+			this.WinHotkeyCombobox = new System.Windows.Forms.ComboBox();
+			this.DrawHotkeyClearButton = new System.Windows.Forms.Button();
+			this.LoseHotkeyClearButton = new System.Windows.Forms.Button();
+			this.WinHotkeyClearButton = new System.Windows.Forms.Button();
+			this.label13 = new System.Windows.Forms.Label();
+			this.label12 = new System.Windows.Forms.Label();
+			this.label11 = new System.Windows.Forms.Label();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.label8 = new System.Windows.Forms.Label();
@@ -40,7 +58,7 @@
 			this.label7 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.FontColorBox = new System.Windows.Forms.PictureBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.MainColorBox = new System.Windows.Forms.PictureBox();
 			this.NameTextBox = new System.Windows.Forms.TextBox();
@@ -53,24 +71,15 @@
 			this.label10 = new System.Windows.Forms.Label();
 			this.ScoreBoardPositionRadioPanel = new System.Windows.Forms.Panel();
 			this.label9 = new System.Windows.Forms.Label();
-			this.radioButton1 = new System.Windows.Forms.RadioButton();
-			this.radioButton2 = new System.Windows.Forms.RadioButton();
+			this.ScoreBoardPositionRadio_Top = new System.Windows.Forms.RadioButton();
+			this.ScoreBoardPositionRadio_Bottom = new System.Windows.Forms.RadioButton();
 			this.ScoreBoardSizeTrackbar = new System.Windows.Forms.TrackBar();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
-			this.label11 = new System.Windows.Forms.Label();
-			this.label12 = new System.Windows.Forms.Label();
-			this.label13 = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.textBox3 = new System.Windows.Forms.TextBox();
-			this.button3 = new System.Windows.Forms.Button();
-			this.button4 = new System.Windows.Forms.Button();
-			this.button5 = new System.Windows.Forms.Button();
 			this.tabPage3.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.VolumeTrackbar)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.FontColorBox)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.MainColorBox)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.SubColorBox)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
@@ -80,37 +89,46 @@
 			this.tabControl1.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// button1
+			// OKButton
 			// 
-			this.button1.Location = new System.Drawing.Point(265, 449);
-			this.button1.Margin = new System.Windows.Forms.Padding(8);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(80, 23);
-			this.button1.TabIndex = 1;
-			this.button1.Text = "OK";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.OKButton.Location = new System.Drawing.Point(265, 449);
+			this.OKButton.Margin = new System.Windows.Forms.Padding(8);
+			this.OKButton.Name = "OKButton";
+			this.OKButton.Size = new System.Drawing.Size(80, 23);
+			this.OKButton.TabIndex = 1;
+			this.OKButton.Text = "OK";
+			this.OKButton.UseVisualStyleBackColor = true;
+			this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
 			// 
-			// button2
+			// CancelButton
 			// 
-			this.button2.Location = new System.Drawing.Point(361, 449);
-			this.button2.Margin = new System.Windows.Forms.Padding(8);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(80, 23);
-			this.button2.TabIndex = 2;
-			this.button2.Text = "キャンセル";
-			this.button2.UseVisualStyleBackColor = true;
-			this.button2.Click += new System.EventHandler(this.button2_Click);
+			this.CancelButton.Location = new System.Drawing.Point(361, 449);
+			this.CancelButton.Margin = new System.Windows.Forms.Padding(8);
+			this.CancelButton.Name = "CancelButton";
+			this.CancelButton.Size = new System.Drawing.Size(80, 23);
+			this.CancelButton.TabIndex = 2;
+			this.CancelButton.Text = "キャンセル";
+			this.CancelButton.UseVisualStyleBackColor = true;
+			this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
 			// 
 			// tabPage3
 			// 
 			this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
-			this.tabPage3.Controls.Add(this.button5);
-			this.tabPage3.Controls.Add(this.button4);
-			this.tabPage3.Controls.Add(this.button3);
-			this.tabPage3.Controls.Add(this.textBox3);
-			this.tabPage3.Controls.Add(this.textBox2);
-			this.tabPage3.Controls.Add(this.textBox1);
+			this.tabPage3.Controls.Add(this.checkBox4);
+			this.tabPage3.Controls.Add(this.checkBox5);
+			this.tabPage3.Controls.Add(this.checkBox6);
+			this.tabPage3.Controls.Add(this.comboBox2);
+			this.tabPage3.Controls.Add(this.checkBox1);
+			this.tabPage3.Controls.Add(this.checkBox2);
+			this.tabPage3.Controls.Add(this.checkBox3);
+			this.tabPage3.Controls.Add(this.comboBox1);
+			this.tabPage3.Controls.Add(this.WinHotkeyModCheckbox_Alt);
+			this.tabPage3.Controls.Add(this.WinHotkeyModCheckbox_Shift);
+			this.tabPage3.Controls.Add(this.WinHotkeyModCheckbox_Ctrl);
+			this.tabPage3.Controls.Add(this.WinHotkeyCombobox);
+			this.tabPage3.Controls.Add(this.DrawHotkeyClearButton);
+			this.tabPage3.Controls.Add(this.LoseHotkeyClearButton);
+			this.tabPage3.Controls.Add(this.WinHotkeyClearButton);
 			this.tabPage3.Controls.Add(this.label13);
 			this.tabPage3.Controls.Add(this.label12);
 			this.tabPage3.Controls.Add(this.label11);
@@ -121,6 +139,360 @@
 			this.tabPage3.Size = new System.Drawing.Size(416, 388);
 			this.tabPage3.TabIndex = 2;
 			this.tabPage3.Text = "ホットキー設定";
+			// 
+			// checkBox4
+			// 
+			this.checkBox4.AutoSize = true;
+			this.checkBox4.Location = new System.Drawing.Point(182, 96);
+			this.checkBox4.Name = "checkBox4";
+			this.checkBox4.Size = new System.Drawing.Size(42, 19);
+			this.checkBox4.TabIndex = 20;
+			this.checkBox4.Text = "Alt";
+			this.checkBox4.UseVisualStyleBackColor = true;
+			// 
+			// checkBox5
+			// 
+			this.checkBox5.AutoSize = true;
+			this.checkBox5.Location = new System.Drawing.Point(123, 96);
+			this.checkBox5.Name = "checkBox5";
+			this.checkBox5.Size = new System.Drawing.Size(53, 19);
+			this.checkBox5.TabIndex = 19;
+			this.checkBox5.Text = "Shift";
+			this.checkBox5.UseVisualStyleBackColor = true;
+			// 
+			// checkBox6
+			// 
+			this.checkBox6.AutoSize = true;
+			this.checkBox6.Location = new System.Drawing.Point(70, 96);
+			this.checkBox6.Name = "checkBox6";
+			this.checkBox6.Size = new System.Drawing.Size(47, 19);
+			this.checkBox6.TabIndex = 18;
+			this.checkBox6.Text = "Ctrl";
+			this.checkBox6.UseVisualStyleBackColor = true;
+			// 
+			// comboBox2
+			// 
+			this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBox2.FormattingEnabled = true;
+			this.comboBox2.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "W",
+            "X",
+            "Y",
+            "Z",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "NumPad0",
+            "NumPad1",
+            "NumPad2",
+            "NumPad3",
+            "NumPad4",
+            "NumPad5",
+            "NumPad6",
+            "NumPad7",
+            "NumPad8",
+            "NumPad9",
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F5",
+            "F6",
+            "F7",
+            "F8",
+            "F9",
+            "F10",
+            "F11",
+            "F12"});
+			this.comboBox2.Location = new System.Drawing.Point(230, 94);
+			this.comboBox2.Name = "comboBox2";
+			this.comboBox2.Size = new System.Drawing.Size(95, 23);
+			this.comboBox2.TabIndex = 17;
+			// 
+			// checkBox1
+			// 
+			this.checkBox1.AutoSize = true;
+			this.checkBox1.Location = new System.Drawing.Point(182, 57);
+			this.checkBox1.Name = "checkBox1";
+			this.checkBox1.Size = new System.Drawing.Size(42, 19);
+			this.checkBox1.TabIndex = 16;
+			this.checkBox1.Text = "Alt";
+			this.checkBox1.UseVisualStyleBackColor = true;
+			// 
+			// checkBox2
+			// 
+			this.checkBox2.AutoSize = true;
+			this.checkBox2.Location = new System.Drawing.Point(123, 57);
+			this.checkBox2.Name = "checkBox2";
+			this.checkBox2.Size = new System.Drawing.Size(53, 19);
+			this.checkBox2.TabIndex = 15;
+			this.checkBox2.Text = "Shift";
+			this.checkBox2.UseVisualStyleBackColor = true;
+			// 
+			// checkBox3
+			// 
+			this.checkBox3.AutoSize = true;
+			this.checkBox3.Location = new System.Drawing.Point(70, 57);
+			this.checkBox3.Name = "checkBox3";
+			this.checkBox3.Size = new System.Drawing.Size(47, 19);
+			this.checkBox3.TabIndex = 14;
+			this.checkBox3.Text = "Ctrl";
+			this.checkBox3.UseVisualStyleBackColor = true;
+			// 
+			// comboBox1
+			// 
+			this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBox1.FormattingEnabled = true;
+			this.comboBox1.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "W",
+            "X",
+            "Y",
+            "Z",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "NumPad0",
+            "NumPad1",
+            "NumPad2",
+            "NumPad3",
+            "NumPad4",
+            "NumPad5",
+            "NumPad6",
+            "NumPad7",
+            "NumPad8",
+            "NumPad9",
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F5",
+            "F6",
+            "F7",
+            "F8",
+            "F9",
+            "F10",
+            "F11",
+            "F12"});
+			this.comboBox1.Location = new System.Drawing.Point(230, 55);
+			this.comboBox1.Name = "comboBox1";
+			this.comboBox1.Size = new System.Drawing.Size(95, 23);
+			this.comboBox1.TabIndex = 13;
+			// 
+			// WinHotkeyModCheckbox_Alt
+			// 
+			this.WinHotkeyModCheckbox_Alt.AutoSize = true;
+			this.WinHotkeyModCheckbox_Alt.Location = new System.Drawing.Point(182, 18);
+			this.WinHotkeyModCheckbox_Alt.Name = "WinHotkeyModCheckbox_Alt";
+			this.WinHotkeyModCheckbox_Alt.Size = new System.Drawing.Size(42, 19);
+			this.WinHotkeyModCheckbox_Alt.TabIndex = 12;
+			this.WinHotkeyModCheckbox_Alt.Text = "Alt";
+			this.WinHotkeyModCheckbox_Alt.UseVisualStyleBackColor = true;
+			// 
+			// WinHotkeyModCheckbox_Shift
+			// 
+			this.WinHotkeyModCheckbox_Shift.AutoSize = true;
+			this.WinHotkeyModCheckbox_Shift.Location = new System.Drawing.Point(123, 18);
+			this.WinHotkeyModCheckbox_Shift.Name = "WinHotkeyModCheckbox_Shift";
+			this.WinHotkeyModCheckbox_Shift.Size = new System.Drawing.Size(53, 19);
+			this.WinHotkeyModCheckbox_Shift.TabIndex = 11;
+			this.WinHotkeyModCheckbox_Shift.Text = "Shift";
+			this.WinHotkeyModCheckbox_Shift.UseVisualStyleBackColor = true;
+			// 
+			// WinHotkeyModCheckbox_Ctrl
+			// 
+			this.WinHotkeyModCheckbox_Ctrl.AutoSize = true;
+			this.WinHotkeyModCheckbox_Ctrl.Location = new System.Drawing.Point(70, 18);
+			this.WinHotkeyModCheckbox_Ctrl.Name = "WinHotkeyModCheckbox_Ctrl";
+			this.WinHotkeyModCheckbox_Ctrl.Size = new System.Drawing.Size(47, 19);
+			this.WinHotkeyModCheckbox_Ctrl.TabIndex = 10;
+			this.WinHotkeyModCheckbox_Ctrl.Text = "Ctrl";
+			this.WinHotkeyModCheckbox_Ctrl.UseVisualStyleBackColor = true;
+			// 
+			// WinHotkeyCombobox
+			// 
+			this.WinHotkeyCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.WinHotkeyCombobox.FormattingEnabled = true;
+			this.WinHotkeyCombobox.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "W",
+            "X",
+            "Y",
+            "Z",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "NumPad0",
+            "NumPad1",
+            "NumPad2",
+            "NumPad3",
+            "NumPad4",
+            "NumPad5",
+            "NumPad6",
+            "NumPad7",
+            "NumPad8",
+            "NumPad9",
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F5",
+            "F6",
+            "F7",
+            "F8",
+            "F9",
+            "F10",
+            "F11",
+            "F12"});
+			this.WinHotkeyCombobox.Location = new System.Drawing.Point(230, 16);
+			this.WinHotkeyCombobox.Name = "WinHotkeyCombobox";
+			this.WinHotkeyCombobox.Size = new System.Drawing.Size(95, 23);
+			this.WinHotkeyCombobox.TabIndex = 9;
+			// 
+			// DrawHotkeyClearButton
+			// 
+			this.DrawHotkeyClearButton.Location = new System.Drawing.Point(336, 94);
+			this.DrawHotkeyClearButton.Margin = new System.Windows.Forms.Padding(8);
+			this.DrawHotkeyClearButton.Name = "DrawHotkeyClearButton";
+			this.DrawHotkeyClearButton.Size = new System.Drawing.Size(62, 23);
+			this.DrawHotkeyClearButton.TabIndex = 8;
+			this.DrawHotkeyClearButton.Text = "クリア";
+			this.DrawHotkeyClearButton.UseVisualStyleBackColor = true;
+			// 
+			// LoseHotkeyClearButton
+			// 
+			this.LoseHotkeyClearButton.Location = new System.Drawing.Point(336, 55);
+			this.LoseHotkeyClearButton.Margin = new System.Windows.Forms.Padding(8);
+			this.LoseHotkeyClearButton.Name = "LoseHotkeyClearButton";
+			this.LoseHotkeyClearButton.Size = new System.Drawing.Size(64, 23);
+			this.LoseHotkeyClearButton.TabIndex = 7;
+			this.LoseHotkeyClearButton.Text = "クリア";
+			this.LoseHotkeyClearButton.UseVisualStyleBackColor = true;
+			// 
+			// WinHotkeyClearButton
+			// 
+			this.WinHotkeyClearButton.Location = new System.Drawing.Point(336, 16);
+			this.WinHotkeyClearButton.Margin = new System.Windows.Forms.Padding(8);
+			this.WinHotkeyClearButton.Name = "WinHotkeyClearButton";
+			this.WinHotkeyClearButton.Size = new System.Drawing.Size(64, 23);
+			this.WinHotkeyClearButton.TabIndex = 6;
+			this.WinHotkeyClearButton.Text = "クリア";
+			this.WinHotkeyClearButton.UseVisualStyleBackColor = true;
+			// 
+			// label13
+			// 
+			this.label13.AutoSize = true;
+			this.label13.Location = new System.Drawing.Point(16, 97);
+			this.label13.Margin = new System.Windows.Forms.Padding(8);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(43, 15);
+			this.label13.TabIndex = 2;
+			this.label13.Text = "Draw:";
+			// 
+			// label12
+			// 
+			this.label12.AutoSize = true;
+			this.label12.Location = new System.Drawing.Point(20, 58);
+			this.label12.Margin = new System.Windows.Forms.Padding(8);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(39, 15);
+			this.label12.TabIndex = 1;
+			this.label12.Text = "Lose:";
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(25, 19);
+			this.label11.Margin = new System.Windows.Forms.Padding(8);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(34, 15);
+			this.label11.TabIndex = 0;
+			this.label11.Text = "Win:";
 			// 
 			// tabPage1
 			// 
@@ -142,7 +514,7 @@
 			this.groupBox1.Controls.Add(this.label7);
 			this.groupBox1.Controls.Add(this.label6);
 			this.groupBox1.Controls.Add(this.label4);
-			this.groupBox1.Controls.Add(this.pictureBox1);
+			this.groupBox1.Controls.Add(this.FontColorBox);
 			this.groupBox1.Controls.Add(this.label3);
 			this.groupBox1.Controls.Add(this.MainColorBox);
 			this.groupBox1.Controls.Add(this.NameTextBox);
@@ -181,6 +553,7 @@
 			this.VolumeTrackbar.Size = new System.Drawing.Size(152, 24);
 			this.VolumeTrackbar.TabIndex = 0;
 			this.VolumeTrackbar.TickStyle = System.Windows.Forms.TickStyle.None;
+			this.VolumeTrackbar.Value = 100;
 			this.VolumeTrackbar.Scroll += new System.EventHandler(this.VolumeTrackbar_Scroll);
 			// 
 			// label7
@@ -213,16 +586,17 @@
 			this.label4.Text = "メインカラー:";
 			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// pictureBox1
+			// FontColorBox
 			// 
-			this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox1.Location = new System.Drawing.Point(300, 112);
-			this.pictureBox1.Margin = new System.Windows.Forms.Padding(8);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(67, 24);
-			this.pictureBox1.TabIndex = 4;
-			this.pictureBox1.TabStop = false;
+			this.FontColorBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.FontColorBox.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.FontColorBox.Location = new System.Drawing.Point(300, 112);
+			this.FontColorBox.Margin = new System.Windows.Forms.Padding(8);
+			this.FontColorBox.Name = "FontColorBox";
+			this.FontColorBox.Size = new System.Drawing.Size(67, 24);
+			this.FontColorBox.TabIndex = 4;
+			this.FontColorBox.TabStop = false;
+			this.FontColorBox.Click += new System.EventHandler(this.ColorSelect);
 			// 
 			// label3
 			// 
@@ -244,7 +618,7 @@
 			this.MainColorBox.Size = new System.Drawing.Size(67, 24);
 			this.MainColorBox.TabIndex = 0;
 			this.MainColorBox.TabStop = false;
-			this.MainColorBox.Click += new System.EventHandler(this.pictureBox2_Click);
+			this.MainColorBox.Click += new System.EventHandler(this.ColorSelect);
 			// 
 			// NameTextBox
 			// 
@@ -264,7 +638,7 @@
 			this.SubColorBox.Size = new System.Drawing.Size(67, 24);
 			this.SubColorBox.TabIndex = 3;
 			this.SubColorBox.TabStop = false;
-			this.SubColorBox.Click += new System.EventHandler(this.SubColorBox_Click);
+			this.SubColorBox.Click += new System.EventHandler(this.ColorSelect);
 			// 
 			// label2
 			// 
@@ -338,8 +712,8 @@
 			// ScoreBoardPositionRadioPanel
 			// 
 			this.ScoreBoardPositionRadioPanel.Controls.Add(this.label9);
-			this.ScoreBoardPositionRadioPanel.Controls.Add(this.radioButton1);
-			this.ScoreBoardPositionRadioPanel.Controls.Add(this.radioButton2);
+			this.ScoreBoardPositionRadioPanel.Controls.Add(this.ScoreBoardPositionRadio_Top);
+			this.ScoreBoardPositionRadioPanel.Controls.Add(this.ScoreBoardPositionRadio_Bottom);
 			this.ScoreBoardPositionRadioPanel.Location = new System.Drawing.Point(287, 27);
 			this.ScoreBoardPositionRadioPanel.Margin = new System.Windows.Forms.Padding(8);
 			this.ScoreBoardPositionRadioPanel.Name = "ScoreBoardPositionRadioPanel";
@@ -355,27 +729,27 @@
 			this.label9.TabIndex = 6;
 			this.label9.Text = "表示位置";
 			// 
-			// radioButton1
+			// ScoreBoardPositionRadio_Top
 			// 
-			this.radioButton1.AutoSize = true;
-			this.radioButton1.Location = new System.Drawing.Point(3, 18);
-			this.radioButton1.Name = "radioButton1";
-			this.radioButton1.Size = new System.Drawing.Size(37, 19);
-			this.radioButton1.TabIndex = 1;
-			this.radioButton1.TabStop = true;
-			this.radioButton1.Text = "上";
-			this.radioButton1.UseVisualStyleBackColor = true;
+			this.ScoreBoardPositionRadio_Top.AutoSize = true;
+			this.ScoreBoardPositionRadio_Top.Location = new System.Drawing.Point(3, 18);
+			this.ScoreBoardPositionRadio_Top.Name = "ScoreBoardPositionRadio_Top";
+			this.ScoreBoardPositionRadio_Top.Size = new System.Drawing.Size(37, 19);
+			this.ScoreBoardPositionRadio_Top.TabIndex = 1;
+			this.ScoreBoardPositionRadio_Top.TabStop = true;
+			this.ScoreBoardPositionRadio_Top.Text = "上";
+			this.ScoreBoardPositionRadio_Top.UseVisualStyleBackColor = true;
 			// 
-			// radioButton2
+			// ScoreBoardPositionRadio_Bottom
 			// 
-			this.radioButton2.AutoSize = true;
-			this.radioButton2.Location = new System.Drawing.Point(46, 18);
-			this.radioButton2.Name = "radioButton2";
-			this.radioButton2.Size = new System.Drawing.Size(37, 19);
-			this.radioButton2.TabIndex = 4;
-			this.radioButton2.TabStop = true;
-			this.radioButton2.Text = "下";
-			this.radioButton2.UseVisualStyleBackColor = true;
+			this.ScoreBoardPositionRadio_Bottom.AutoSize = true;
+			this.ScoreBoardPositionRadio_Bottom.Location = new System.Drawing.Point(46, 18);
+			this.ScoreBoardPositionRadio_Bottom.Name = "ScoreBoardPositionRadio_Bottom";
+			this.ScoreBoardPositionRadio_Bottom.Size = new System.Drawing.Size(37, 19);
+			this.ScoreBoardPositionRadio_Bottom.TabIndex = 4;
+			this.ScoreBoardPositionRadio_Bottom.TabStop = true;
+			this.ScoreBoardPositionRadio_Bottom.Text = "下";
+			this.ScoreBoardPositionRadio_Bottom.UseVisualStyleBackColor = true;
 			// 
 			// ScoreBoardSizeTrackbar
 			// 
@@ -383,11 +757,13 @@
 			this.ScoreBoardSizeTrackbar.BackColor = System.Drawing.SystemColors.Control;
 			this.ScoreBoardSizeTrackbar.Location = new System.Drawing.Point(14, 47);
 			this.ScoreBoardSizeTrackbar.Margin = new System.Windows.Forms.Padding(8);
-			this.ScoreBoardSizeTrackbar.Maximum = 100;
+			this.ScoreBoardSizeTrackbar.Maximum = 200;
 			this.ScoreBoardSizeTrackbar.Name = "ScoreBoardSizeTrackbar";
 			this.ScoreBoardSizeTrackbar.Size = new System.Drawing.Size(257, 24);
 			this.ScoreBoardSizeTrackbar.TabIndex = 0;
 			this.ScoreBoardSizeTrackbar.TickStyle = System.Windows.Forms.TickStyle.None;
+			this.ScoreBoardSizeTrackbar.Value = 100;
+			this.ScoreBoardSizeTrackbar.Scroll += new System.EventHandler(this.ScoreBoardSizeTrackbar_Scroll);
 			// 
 			// tabControl1
 			// 
@@ -400,98 +776,14 @@
 			this.tabControl1.Size = new System.Drawing.Size(424, 416);
 			this.tabControl1.TabIndex = 4;
 			// 
-			// label11
-			// 
-			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(25, 19);
-			this.label11.Margin = new System.Windows.Forms.Padding(8);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(29, 15);
-			this.label11.TabIndex = 0;
-			this.label11.Text = "Win";
-			// 
-			// label12
-			// 
-			this.label12.AutoSize = true;
-			this.label12.Location = new System.Drawing.Point(20, 58);
-			this.label12.Margin = new System.Windows.Forms.Padding(8);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(34, 15);
-			this.label12.TabIndex = 1;
-			this.label12.Text = "Lose";
-			// 
-			// label13
-			// 
-			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(16, 97);
-			this.label13.Margin = new System.Windows.Forms.Padding(8);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(38, 15);
-			this.label13.TabIndex = 2;
-			this.label13.Text = "Draw";
-			// 
-			// textBox1
-			// 
-			this.textBox1.Location = new System.Drawing.Point(70, 16);
-			this.textBox1.Margin = new System.Windows.Forms.Padding(8);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(160, 23);
-			this.textBox1.TabIndex = 3;
-			// 
-			// textBox2
-			// 
-			this.textBox2.Location = new System.Drawing.Point(70, 55);
-			this.textBox2.Margin = new System.Windows.Forms.Padding(8);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(160, 23);
-			this.textBox2.TabIndex = 4;
-			// 
-			// textBox3
-			// 
-			this.textBox3.Location = new System.Drawing.Point(70, 94);
-			this.textBox3.Margin = new System.Windows.Forms.Padding(8);
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(160, 23);
-			this.textBox3.TabIndex = 5;
-			// 
-			// button3
-			// 
-			this.button3.Location = new System.Drawing.Point(246, 16);
-			this.button3.Margin = new System.Windows.Forms.Padding(8);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(75, 23);
-			this.button3.TabIndex = 6;
-			this.button3.Text = "クリア";
-			this.button3.UseVisualStyleBackColor = true;
-			// 
-			// button4
-			// 
-			this.button4.Location = new System.Drawing.Point(244, 55);
-			this.button4.Margin = new System.Windows.Forms.Padding(8);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(75, 23);
-			this.button4.TabIndex = 7;
-			this.button4.Text = "クリア";
-			this.button4.UseVisualStyleBackColor = true;
-			// 
-			// button5
-			// 
-			this.button5.Location = new System.Drawing.Point(244, 94);
-			this.button5.Margin = new System.Windows.Forms.Padding(8);
-			this.button5.Name = "button5";
-			this.button5.Size = new System.Drawing.Size(75, 23);
-			this.button5.TabIndex = 8;
-			this.button5.Text = "クリア";
-			this.button5.UseVisualStyleBackColor = true;
-			// 
 			// SettingsForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(458, 485);
 			this.Controls.Add(this.tabControl1);
-			this.Controls.Add(this.button2);
-			this.Controls.Add(this.button1);
+			this.Controls.Add(this.CancelButton);
+			this.Controls.Add(this.OKButton);
 			this.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -504,7 +796,7 @@
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.VolumeTrackbar)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.FontColorBox)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.MainColorBox)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.SubColorBox)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).EndInit();
@@ -519,8 +811,8 @@
 		}
 
 		#endregion
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Button OKButton;
+		private System.Windows.Forms.Button CancelButton;
 		private System.Windows.Forms.ToolTip Tooltip;
 		private System.Windows.Forms.TabPage tabPage3;
 		private System.Windows.Forms.TabPage tabPage1;
@@ -530,7 +822,7 @@
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.PictureBox FontColorBox;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.PictureBox MainColorBox;
 		private System.Windows.Forms.TextBox NameTextBox;
@@ -543,18 +835,27 @@
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Panel ScoreBoardPositionRadioPanel;
 		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.RadioButton radioButton1;
-		private System.Windows.Forms.RadioButton radioButton2;
+		private System.Windows.Forms.RadioButton ScoreBoardPositionRadio_Top;
+		private System.Windows.Forms.RadioButton ScoreBoardPositionRadio_Bottom;
 		private System.Windows.Forms.TrackBar ScoreBoardSizeTrackbar;
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.Label label11;
-		private System.Windows.Forms.Button button5;
-		private System.Windows.Forms.Button button4;
-		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.TextBox textBox3;
-		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.Button DrawHotkeyClearButton;
+		private System.Windows.Forms.Button WinHotkeyClearButton;
 		private System.Windows.Forms.Label label13;
 		private System.Windows.Forms.Label label12;
+		private System.Windows.Forms.ComboBox WinHotkeyCombobox;
+		private System.Windows.Forms.CheckBox WinHotkeyModCheckbox_Alt;
+		private System.Windows.Forms.CheckBox WinHotkeyModCheckbox_Shift;
+		private System.Windows.Forms.CheckBox WinHotkeyModCheckbox_Ctrl;
+		private System.Windows.Forms.Button LoseHotkeyClearButton;
+		private System.Windows.Forms.CheckBox checkBox4;
+		private System.Windows.Forms.CheckBox checkBox5;
+		private System.Windows.Forms.CheckBox checkBox6;
+		private System.Windows.Forms.ComboBox comboBox2;
+		private System.Windows.Forms.CheckBox checkBox1;
+		private System.Windows.Forms.CheckBox checkBox2;
+		private System.Windows.Forms.CheckBox checkBox3;
+		private System.Windows.Forms.ComboBox comboBox1;
 	}
 }

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Newtonsoft.Json;
 
 namespace OwScoreBoardController
@@ -17,9 +18,6 @@ namespace OwScoreBoardController
 		// コンフィグファイルへの相対パス
 		private static string ConfigFilePath = "./config.json";
 
-		// ロゴ画像への相対パス (拡張子なし)
-		private static string LogoFileNameWithoutExtension = "./user/Logo";
-
 		/// <summary>
 		/// Config クラス
 		/// </summary>
@@ -27,25 +25,79 @@ namespace OwScoreBoardController
 		{
 			public string Name;
 			public string LogoImageFilePath;
-			public Color MainColor;
 			public string MainColorHtml;
-			public Color SubColor;
 			public string SubColorHtml;
+			public string FontColorHtml;
 			public int SoundVolume;
+			public int ScoreBoardSize;
+			public string ScoreBoardPosition;
+			public HotkeyData WinHotkey;
+			public HotkeyData LoseHotkey;
+			public HotkeyData DrawHotkey;
 			public string TimeStamp;
 
 			/// <summary>
 			/// コンストラクタ
 			/// </summary>
-			public Config( string Name, string LogoImageFilePath, Color MainColor, Color SubColor, int SoundVolume )
+			public Config() { }
+			public Config( string Name, string LogoImageFilePath, Color MainColor, Color SubColor, Color FontColor, int SoundVolume, int ScoreBoardSize, string ScoreBoardPosition, HotkeyData WinHotkey, HotkeyData LoseHotkey, HotkeyData DrawHotkey )
 			{
 				this.Name = Name;
 				this.LogoImageFilePath = LogoImageFilePath;
-				this.MainColor = MainColor;
 				this.MainColorHtml = ColorTranslator.ToHtml( MainColor );
-				this.SubColor = SubColor;
 				this.SubColorHtml = ColorTranslator.ToHtml( SubColor );
+				this.FontColorHtml = ColorTranslator.ToHtml( FontColor );
 				this.SoundVolume = SoundVolume;
+				this.ScoreBoardSize = ScoreBoardSize;
+				this.ScoreBoardPosition = ScoreBoardPosition;
+				this.WinHotkey = WinHotkey;
+				this.LoseHotkey = LoseHotkey;
+				this.DrawHotkey = DrawHotkey;
+			}
+
+			/// <summary>
+			/// 初期設定 Config を返す
+			/// </summary>
+			/// <returns></returns>
+			public static Config Default()
+			{
+				return new Config
+				(
+					"You",
+					null,
+					ColorTranslator.FromHtml( "#032340" ),
+					ColorTranslator.FromHtml( "#DB7C00" ),
+					ColorTranslator.FromHtml( "#ffffff" ),
+					100,
+					100,
+					"Bottom",
+					new HotkeyData(),
+					new HotkeyData(),
+					new HotkeyData()
+				);
+			}
+		}
+
+		/// <summary>
+		/// HotkeyData クラス
+		/// </summary>
+		public class HotkeyData
+		{
+			public Keys KeyCode;
+			public MOD_KEY ModKey;
+
+			/// <summary>
+			/// コンストラクタ
+			/// </summary>
+			public HotkeyData()
+			{
+				this.KeyCode = Keys.None;
+				this.ModKey = MOD_KEY.NONE;
+			}
+			public HotkeyData( Keys KeyCode, MOD_KEY ModKey )
+			{
+				this.KeyCode = KeyCode;
+				this.ModKey = ModKey;
 			}
 		}
 
@@ -54,18 +106,6 @@ namespace OwScoreBoardController
 		/// </summary>
 		public static void Save( Config Config )
 		{
-			// ロゴ画像を選択した場合はアプリケーションフォルダ内に複製
-			string Extension = Path.GetExtension( Config.LogoImageFilePath );
-			if( Config.LogoImageFilePath != LogoFileNameWithoutExtension + Extension && Config.LogoImageFilePath != null )
-			{
-				if( !Directory.Exists( Path.GetDirectoryName( LogoFileNameWithoutExtension ) ) )
-				{
-					Directory.CreateDirectory( Path.GetDirectoryName( LogoFileNameWithoutExtension ) );
-				}
-				File.Copy( Config.LogoImageFilePath, LogoFileNameWithoutExtension + Extension, true );
-				Config.LogoImageFilePath = LogoFileNameWithoutExtension + Extension;
-			}
-
 			// Json ファイルに保存
 			Config.TimeStamp = System.DateTime.Now.ToString();
 			string ConfigJson = JsonConvert.SerializeObject( Config, Formatting.Indented );
@@ -86,22 +126,10 @@ namespace OwScoreBoardController
 			// config.json がない場合はデフォルト設定で作成
 			if( !File.Exists( ConfigFilePath ) )
 			{
-				Config DefaultConfig = new Config
-				(
-					string.Empty,
-					string.Empty,
-					ColorTranslator.FromHtml( "#032340" ),
-					ColorTranslator.FromHtml( "#DB7C00" ),
-					100
-				);
+				Config DefaultConfig = Config.Default();
 				string DefaultConfigJson = JsonConvert.SerializeObject( DefaultConfig, Formatting.Indented );
 
-				FileStream fs = new FileStream( DefaultConfigJson, FileMode.CreateNew, FileAccess.Write, FileShare.ReadWrite );
-				StreamWriter sw = new StreamWriter( fs );
-				sw.Write( DefaultConfigJson );
-				sw.Close();
-				fs.Close();
-
+				Save( DefaultConfig );
 				ret = DefaultConfig;
 			}
 			// config.json がある場合は読み込む
