@@ -35,7 +35,7 @@ namespace OwScoreBoardController
 			FontColorBox.BackColor = ColorTranslator.FromHtml( Config.FontColorHtml );
 			VolumeTrackbar.Value = Config.SoundVolume;
 			ScoreBoardSizeTrackbar.Value = Config.ScoreBoardSize;
-			if( Config.ScoreBoardPosition == "Top" )
+			if( Config.ScoreBoardPosition == "top" )
 			{
 				ScoreBoardPositionRadio_Top.Checked = true;
 			}
@@ -118,7 +118,7 @@ namespace OwScoreBoardController
 			}
 
 			// スコアボードの表示位置を文字列化
-			string ScoreBoardPosition = ScoreBoardPositionRadio_Top.Checked ? "Top" : "Bottom";
+			string ScoreBoardPosition = ScoreBoardPositionRadio_Top.Checked ? "top" : "bottom";
 
 			// ロゴ画像を選択した場合はアプリケーションフォルダ内に複製
 			string Extension = Path.GetExtension( LogoPictureBox.ImageLocation );
