@@ -91,6 +91,7 @@ namespace OwScoreBoardController
 	/// <summary>
 	/// HotKeyクラスの初期化時に指定する修飾キー
 	/// </summary>
+	[Flags]
 	public enum MOD_KEY : int
 	{
 		NONE = 0x0000,

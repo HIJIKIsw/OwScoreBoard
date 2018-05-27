@@ -33,14 +33,14 @@
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.Tooltip = new System.Windows.Forms.ToolTip(this.components);
 			this.tabPage3 = new System.Windows.Forms.TabPage();
-			this.checkBox4 = new System.Windows.Forms.CheckBox();
-			this.checkBox5 = new System.Windows.Forms.CheckBox();
-			this.checkBox6 = new System.Windows.Forms.CheckBox();
-			this.comboBox2 = new System.Windows.Forms.ComboBox();
-			this.checkBox1 = new System.Windows.Forms.CheckBox();
-			this.checkBox2 = new System.Windows.Forms.CheckBox();
-			this.checkBox3 = new System.Windows.Forms.CheckBox();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.DrawHotkeyModCheckbox_Alt = new System.Windows.Forms.CheckBox();
+			this.DrawHotkeyModCheckbox_Shift = new System.Windows.Forms.CheckBox();
+			this.DrawHotkeyModCheckbox_Ctrl = new System.Windows.Forms.CheckBox();
+			this.DrawHotkeyCombobox = new System.Windows.Forms.ComboBox();
+			this.LoseHotkeyModCheckbox_Alt = new System.Windows.Forms.CheckBox();
+			this.LoseHotkeyModCheckbox_Shift = new System.Windows.Forms.CheckBox();
+			this.LoseHotkeyModCheckbox_Ctrl = new System.Windows.Forms.CheckBox();
+			this.LoseHotkeyCombobox = new System.Windows.Forms.ComboBox();
 			this.WinHotkeyModCheckbox_Alt = new System.Windows.Forms.CheckBox();
 			this.WinHotkeyModCheckbox_Shift = new System.Windows.Forms.CheckBox();
 			this.WinHotkeyModCheckbox_Ctrl = new System.Windows.Forms.CheckBox();
@@ -114,14 +114,14 @@
 			// tabPage3
 			// 
 			this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
-			this.tabPage3.Controls.Add(this.checkBox4);
-			this.tabPage3.Controls.Add(this.checkBox5);
-			this.tabPage3.Controls.Add(this.checkBox6);
-			this.tabPage3.Controls.Add(this.comboBox2);
-			this.tabPage3.Controls.Add(this.checkBox1);
-			this.tabPage3.Controls.Add(this.checkBox2);
-			this.tabPage3.Controls.Add(this.checkBox3);
-			this.tabPage3.Controls.Add(this.comboBox1);
+			this.tabPage3.Controls.Add(this.DrawHotkeyModCheckbox_Alt);
+			this.tabPage3.Controls.Add(this.DrawHotkeyModCheckbox_Shift);
+			this.tabPage3.Controls.Add(this.DrawHotkeyModCheckbox_Ctrl);
+			this.tabPage3.Controls.Add(this.DrawHotkeyCombobox);
+			this.tabPage3.Controls.Add(this.LoseHotkeyModCheckbox_Alt);
+			this.tabPage3.Controls.Add(this.LoseHotkeyModCheckbox_Shift);
+			this.tabPage3.Controls.Add(this.LoseHotkeyModCheckbox_Ctrl);
+			this.tabPage3.Controls.Add(this.LoseHotkeyCombobox);
 			this.tabPage3.Controls.Add(this.WinHotkeyModCheckbox_Alt);
 			this.tabPage3.Controls.Add(this.WinHotkeyModCheckbox_Shift);
 			this.tabPage3.Controls.Add(this.WinHotkeyModCheckbox_Ctrl);
@@ -140,41 +140,41 @@
 			this.tabPage3.TabIndex = 2;
 			this.tabPage3.Text = "ホットキー設定";
 			// 
-			// checkBox4
+			// DrawHotkeyModCheckbox_Alt
 			// 
-			this.checkBox4.AutoSize = true;
-			this.checkBox4.Location = new System.Drawing.Point(182, 96);
-			this.checkBox4.Name = "checkBox4";
-			this.checkBox4.Size = new System.Drawing.Size(42, 19);
-			this.checkBox4.TabIndex = 20;
-			this.checkBox4.Text = "Alt";
-			this.checkBox4.UseVisualStyleBackColor = true;
+			this.DrawHotkeyModCheckbox_Alt.AutoSize = true;
+			this.DrawHotkeyModCheckbox_Alt.Location = new System.Drawing.Point(182, 96);
+			this.DrawHotkeyModCheckbox_Alt.Name = "DrawHotkeyModCheckbox_Alt";
+			this.DrawHotkeyModCheckbox_Alt.Size = new System.Drawing.Size(42, 19);
+			this.DrawHotkeyModCheckbox_Alt.TabIndex = 20;
+			this.DrawHotkeyModCheckbox_Alt.Text = "Alt";
+			this.DrawHotkeyModCheckbox_Alt.UseVisualStyleBackColor = true;
 			// 
-			// checkBox5
+			// DrawHotkeyModCheckbox_Shift
 			// 
-			this.checkBox5.AutoSize = true;
-			this.checkBox5.Location = new System.Drawing.Point(123, 96);
-			this.checkBox5.Name = "checkBox5";
-			this.checkBox5.Size = new System.Drawing.Size(53, 19);
-			this.checkBox5.TabIndex = 19;
-			this.checkBox5.Text = "Shift";
-			this.checkBox5.UseVisualStyleBackColor = true;
+			this.DrawHotkeyModCheckbox_Shift.AutoSize = true;
+			this.DrawHotkeyModCheckbox_Shift.Location = new System.Drawing.Point(123, 96);
+			this.DrawHotkeyModCheckbox_Shift.Name = "DrawHotkeyModCheckbox_Shift";
+			this.DrawHotkeyModCheckbox_Shift.Size = new System.Drawing.Size(53, 19);
+			this.DrawHotkeyModCheckbox_Shift.TabIndex = 19;
+			this.DrawHotkeyModCheckbox_Shift.Text = "Shift";
+			this.DrawHotkeyModCheckbox_Shift.UseVisualStyleBackColor = true;
 			// 
-			// checkBox6
+			// DrawHotkeyModCheckbox_Ctrl
 			// 
-			this.checkBox6.AutoSize = true;
-			this.checkBox6.Location = new System.Drawing.Point(70, 96);
-			this.checkBox6.Name = "checkBox6";
-			this.checkBox6.Size = new System.Drawing.Size(47, 19);
-			this.checkBox6.TabIndex = 18;
-			this.checkBox6.Text = "Ctrl";
-			this.checkBox6.UseVisualStyleBackColor = true;
+			this.DrawHotkeyModCheckbox_Ctrl.AutoSize = true;
+			this.DrawHotkeyModCheckbox_Ctrl.Location = new System.Drawing.Point(70, 96);
+			this.DrawHotkeyModCheckbox_Ctrl.Name = "DrawHotkeyModCheckbox_Ctrl";
+			this.DrawHotkeyModCheckbox_Ctrl.Size = new System.Drawing.Size(47, 19);
+			this.DrawHotkeyModCheckbox_Ctrl.TabIndex = 18;
+			this.DrawHotkeyModCheckbox_Ctrl.Text = "Ctrl";
+			this.DrawHotkeyModCheckbox_Ctrl.UseVisualStyleBackColor = true;
 			// 
-			// comboBox2
+			// DrawHotkeyCombobox
 			// 
-			this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBox2.FormattingEnabled = true;
-			this.comboBox2.Items.AddRange(new object[] {
+			this.DrawHotkeyCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.DrawHotkeyCombobox.FormattingEnabled = true;
+			this.DrawHotkeyCombobox.Items.AddRange(new object[] {
             "A",
             "B",
             "C",
@@ -233,46 +233,46 @@
             "F10",
             "F11",
             "F12"});
-			this.comboBox2.Location = new System.Drawing.Point(230, 94);
-			this.comboBox2.Name = "comboBox2";
-			this.comboBox2.Size = new System.Drawing.Size(95, 23);
-			this.comboBox2.TabIndex = 17;
+			this.DrawHotkeyCombobox.Location = new System.Drawing.Point(230, 94);
+			this.DrawHotkeyCombobox.Name = "DrawHotkeyCombobox";
+			this.DrawHotkeyCombobox.Size = new System.Drawing.Size(95, 23);
+			this.DrawHotkeyCombobox.TabIndex = 17;
 			// 
-			// checkBox1
+			// LoseHotkeyModCheckbox_Alt
 			// 
-			this.checkBox1.AutoSize = true;
-			this.checkBox1.Location = new System.Drawing.Point(182, 57);
-			this.checkBox1.Name = "checkBox1";
-			this.checkBox1.Size = new System.Drawing.Size(42, 19);
-			this.checkBox1.TabIndex = 16;
-			this.checkBox1.Text = "Alt";
-			this.checkBox1.UseVisualStyleBackColor = true;
+			this.LoseHotkeyModCheckbox_Alt.AutoSize = true;
+			this.LoseHotkeyModCheckbox_Alt.Location = new System.Drawing.Point(182, 57);
+			this.LoseHotkeyModCheckbox_Alt.Name = "LoseHotkeyModCheckbox_Alt";
+			this.LoseHotkeyModCheckbox_Alt.Size = new System.Drawing.Size(42, 19);
+			this.LoseHotkeyModCheckbox_Alt.TabIndex = 16;
+			this.LoseHotkeyModCheckbox_Alt.Text = "Alt";
+			this.LoseHotkeyModCheckbox_Alt.UseVisualStyleBackColor = true;
 			// 
-			// checkBox2
+			// LoseHotkeyModCheckbox_Shift
 			// 
-			this.checkBox2.AutoSize = true;
-			this.checkBox2.Location = new System.Drawing.Point(123, 57);
-			this.checkBox2.Name = "checkBox2";
-			this.checkBox2.Size = new System.Drawing.Size(53, 19);
-			this.checkBox2.TabIndex = 15;
-			this.checkBox2.Text = "Shift";
-			this.checkBox2.UseVisualStyleBackColor = true;
+			this.LoseHotkeyModCheckbox_Shift.AutoSize = true;
+			this.LoseHotkeyModCheckbox_Shift.Location = new System.Drawing.Point(123, 57);
+			this.LoseHotkeyModCheckbox_Shift.Name = "LoseHotkeyModCheckbox_Shift";
+			this.LoseHotkeyModCheckbox_Shift.Size = new System.Drawing.Size(53, 19);
+			this.LoseHotkeyModCheckbox_Shift.TabIndex = 15;
+			this.LoseHotkeyModCheckbox_Shift.Text = "Shift";
+			this.LoseHotkeyModCheckbox_Shift.UseVisualStyleBackColor = true;
 			// 
-			// checkBox3
+			// LoseHotkeyModCheckbox_Ctrl
 			// 
-			this.checkBox3.AutoSize = true;
-			this.checkBox3.Location = new System.Drawing.Point(70, 57);
-			this.checkBox3.Name = "checkBox3";
-			this.checkBox3.Size = new System.Drawing.Size(47, 19);
-			this.checkBox3.TabIndex = 14;
-			this.checkBox3.Text = "Ctrl";
-			this.checkBox3.UseVisualStyleBackColor = true;
+			this.LoseHotkeyModCheckbox_Ctrl.AutoSize = true;
+			this.LoseHotkeyModCheckbox_Ctrl.Location = new System.Drawing.Point(70, 57);
+			this.LoseHotkeyModCheckbox_Ctrl.Name = "LoseHotkeyModCheckbox_Ctrl";
+			this.LoseHotkeyModCheckbox_Ctrl.Size = new System.Drawing.Size(47, 19);
+			this.LoseHotkeyModCheckbox_Ctrl.TabIndex = 14;
+			this.LoseHotkeyModCheckbox_Ctrl.Text = "Ctrl";
+			this.LoseHotkeyModCheckbox_Ctrl.UseVisualStyleBackColor = true;
 			// 
-			// comboBox1
+			// LoseHotkeyCombobox
 			// 
-			this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Items.AddRange(new object[] {
+			this.LoseHotkeyCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.LoseHotkeyCombobox.FormattingEnabled = true;
+			this.LoseHotkeyCombobox.Items.AddRange(new object[] {
             "A",
             "B",
             "C",
@@ -331,10 +331,10 @@
             "F10",
             "F11",
             "F12"});
-			this.comboBox1.Location = new System.Drawing.Point(230, 55);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(95, 23);
-			this.comboBox1.TabIndex = 13;
+			this.LoseHotkeyCombobox.Location = new System.Drawing.Point(230, 55);
+			this.LoseHotkeyCombobox.Name = "LoseHotkeyCombobox";
+			this.LoseHotkeyCombobox.Size = new System.Drawing.Size(95, 23);
+			this.LoseHotkeyCombobox.TabIndex = 13;
 			// 
 			// WinHotkeyModCheckbox_Alt
 			// 
@@ -443,6 +443,7 @@
 			this.DrawHotkeyClearButton.TabIndex = 8;
 			this.DrawHotkeyClearButton.Text = "クリア";
 			this.DrawHotkeyClearButton.UseVisualStyleBackColor = true;
+			this.DrawHotkeyClearButton.Click += new System.EventHandler(this.DrawHotkeyClearButton_Click);
 			// 
 			// LoseHotkeyClearButton
 			// 
@@ -453,6 +454,7 @@
 			this.LoseHotkeyClearButton.TabIndex = 7;
 			this.LoseHotkeyClearButton.Text = "クリア";
 			this.LoseHotkeyClearButton.UseVisualStyleBackColor = true;
+			this.LoseHotkeyClearButton.Click += new System.EventHandler(this.LoseHotkeyClearButton_Click);
 			// 
 			// WinHotkeyClearButton
 			// 
@@ -463,6 +465,7 @@
 			this.WinHotkeyClearButton.TabIndex = 6;
 			this.WinHotkeyClearButton.Text = "クリア";
 			this.WinHotkeyClearButton.UseVisualStyleBackColor = true;
+			this.WinHotkeyClearButton.Click += new System.EventHandler(this.WinHotkeyClearButton_Click);
 			// 
 			// label13
 			// 
@@ -849,13 +852,13 @@
 		private System.Windows.Forms.CheckBox WinHotkeyModCheckbox_Shift;
 		private System.Windows.Forms.CheckBox WinHotkeyModCheckbox_Ctrl;
 		private System.Windows.Forms.Button LoseHotkeyClearButton;
-		private System.Windows.Forms.CheckBox checkBox4;
-		private System.Windows.Forms.CheckBox checkBox5;
-		private System.Windows.Forms.CheckBox checkBox6;
-		private System.Windows.Forms.ComboBox comboBox2;
-		private System.Windows.Forms.CheckBox checkBox1;
-		private System.Windows.Forms.CheckBox checkBox2;
-		private System.Windows.Forms.CheckBox checkBox3;
-		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.CheckBox DrawHotkeyModCheckbox_Alt;
+		private System.Windows.Forms.CheckBox DrawHotkeyModCheckbox_Shift;
+		private System.Windows.Forms.CheckBox DrawHotkeyModCheckbox_Ctrl;
+		private System.Windows.Forms.ComboBox DrawHotkeyCombobox;
+		private System.Windows.Forms.CheckBox LoseHotkeyModCheckbox_Alt;
+		private System.Windows.Forms.CheckBox LoseHotkeyModCheckbox_Shift;
+		private System.Windows.Forms.CheckBox LoseHotkeyModCheckbox_Ctrl;
+		private System.Windows.Forms.ComboBox LoseHotkeyCombobox;
 	}
 }

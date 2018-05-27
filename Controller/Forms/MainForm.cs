@@ -14,6 +14,10 @@ namespace OwScoreBoardController
 {
 	public partial class MainForm : Form
 	{
+		HotKey WinHotkey;
+		HotKey LoseHotkey;
+		HotKey DrawHotkey;
+
 		public MainForm()
 		{
 			InitializeComponent();
@@ -30,6 +34,9 @@ namespace OwScoreBoardController
 			LosesUpDown.Value = Score.Loses;
 			DrawsUpDown.Value = Score.Draws;
 			StartingRateUpDown.Value = Score.StartingRate;
+
+			// ホットキーをセット
+			SetHotkeyFromConfig();
 		}
 
 		private void LosesUpDown_ValueChanged( object sender, EventArgs e )
@@ -197,6 +204,7 @@ namespace OwScoreBoardController
 			Form SettingsForm = new SettingsForm();
 			SettingsForm.ShowInTaskbar = false;
 			SettingsForm.ShowDialog();
+			SetHotkeyFromConfig();
 		}
 
 		private void MenuItem_StopUpdate_Click( object sender, EventArgs e )
@@ -260,6 +268,41 @@ namespace OwScoreBoardController
 			if( !MenuItem_StopUpdate.Checked )
 			{
 				ResetTimer();
+			}
+		}
+
+		private void MainForm_FormClosing( object sender, FormClosingEventArgs e )
+		{
+			if( WinHotkey != null ) WinHotkey.Dispose();
+			if( LoseHotkey != null ) LoseHotkey.Dispose();
+			if( DrawHotkey != null ) DrawHotkey.Dispose();
+		}
+
+
+		/// <summary>
+		/// Config を読み込んでホットキーをセット
+		/// </summary>
+		private void SetHotkeyFromConfig()
+		{
+			WinHotkey = new HotKey( MOD_KEY.NONE, Keys.None );
+			LoseHotkey = new HotKey( MOD_KEY.NONE, Keys.None );
+			DrawHotkey = new HotKey( MOD_KEY.NONE, Keys.None );
+
+			ConfigManager.Config Config = ConfigManager.Load();
+			if( Config.WinHotkey.KeyCode != Keys.None && Config.WinHotkey != null )
+			{
+				WinHotkey = new HotKey( Config.WinHotkey.ModKey, Config.WinHotkey.KeyCode );
+				WinHotkey.HotKeyPush += new EventHandler( WinButton_Click );
+			}
+			if( Config.LoseHotkey.KeyCode != Keys.None && Config.LoseHotkey != null )
+			{
+				LoseHotkey = new HotKey( Config.LoseHotkey.ModKey, Config.LoseHotkey.KeyCode );
+				LoseHotkey.HotKeyPush += new EventHandler( LoseButton_Click );
+			}
+			if( Config.DrawHotkey.KeyCode != Keys.None && Config.DrawHotkey != null )
+			{
+				DrawHotkey = new HotKey( Config.DrawHotkey.ModKey, Config.DrawHotkey.KeyCode );
+				DrawHotkey.HotKeyPush += new EventHandler( DrawButton_Click );
 			}
 		}
 	}

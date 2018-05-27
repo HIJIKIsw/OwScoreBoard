@@ -30,7 +30,7 @@ namespace OwScoreBoardController
 			ConfigManager.Config Config = ConfigManager.Load();
 			NameTextBox.Text = Config.Name;
 			LogoPictureBox.ImageLocation = Config.LogoImageFilePath;
-			MainColorBox.BackColor = ColorTranslator.FromHtml( Config.MainColorHtml);
+			MainColorBox.BackColor = ColorTranslator.FromHtml( Config.MainColorHtml );
 			SubColorBox.BackColor = ColorTranslator.FromHtml( Config.SubColorHtml );
 			FontColorBox.BackColor = ColorTranslator.FromHtml( Config.FontColorHtml );
 			VolumeTrackbar.Value = Config.SoundVolume;
@@ -44,6 +44,20 @@ namespace OwScoreBoardController
 				ScoreBoardPositionRadio_Bottom.Checked = true;
 
 			}
+
+			KeysConverter kc = new KeysConverter();
+			if( Config.WinHotkey.KeyCode != Keys.None ) WinHotkeyCombobox.Text = kc.ConvertToString( Config.WinHotkey.KeyCode );
+			if( Config.WinHotkey.ModKey.HasFlag( MOD_KEY.CONTROL ) ) WinHotkeyModCheckbox_Ctrl.Checked = true;
+			if( Config.WinHotkey.ModKey.HasFlag( MOD_KEY.ALT ) ) WinHotkeyModCheckbox_Alt.Checked = true;
+			if( Config.WinHotkey.ModKey.HasFlag( MOD_KEY.SHIFT ) ) WinHotkeyModCheckbox_Shift.Checked = true;
+			if( Config.LoseHotkey.KeyCode != Keys.None ) LoseHotkeyCombobox.Text = kc.ConvertToString( Config.LoseHotkey.KeyCode );
+			if( Config.LoseHotkey.ModKey.HasFlag( MOD_KEY.CONTROL ) ) LoseHotkeyModCheckbox_Ctrl.Checked = true;
+			if( Config.LoseHotkey.ModKey.HasFlag( MOD_KEY.ALT ) ) LoseHotkeyModCheckbox_Alt.Checked = true;
+			if( Config.LoseHotkey.ModKey.HasFlag( MOD_KEY.SHIFT ) ) LoseHotkeyModCheckbox_Shift.Checked = true;
+			if( Config.DrawHotkey.KeyCode != Keys.None ) DrawHotkeyCombobox.Text = kc.ConvertToString( Config.DrawHotkey.KeyCode );
+			if( Config.DrawHotkey.ModKey.HasFlag( MOD_KEY.CONTROL ) ) DrawHotkeyModCheckbox_Ctrl.Checked = true;
+			if( Config.DrawHotkey.ModKey.HasFlag( MOD_KEY.ALT ) ) DrawHotkeyModCheckbox_Alt.Checked = true;
+			if( Config.DrawHotkey.ModKey.HasFlag( MOD_KEY.SHIFT ) ) DrawHotkeyModCheckbox_Shift.Checked = true;
 		}
 
 		private void LogoPictureBox_Click( object sender, EventArgs e )
@@ -80,8 +94,12 @@ namespace OwScoreBoardController
 			Tooltip.SetToolTip( ScoreBoardSizeTrackbar, ScoreBoardSizeTrackbar.Value.ToString() + "%" );
 		}
 
+		/// <summary>
+		/// OK ボタンをクリックした
+		/// </summary>
 		private void OKButton_Click( object sender, EventArgs e )
 		{
+			// スコアボードの表示位置を文字列化
 			string ScoreBoardPosition = ScoreBoardPositionRadio_Top.Checked ? "Top" : "Bottom";
 
 			// ロゴ画像を選択した場合はアプリケーションフォルダ内に複製
@@ -96,6 +114,26 @@ namespace OwScoreBoardController
 				LogoPictureBox.ImageLocation = LogoFileNameWithoutExtension + Extension;
 			}
 
+			// ホットキーのデータを作成
+			KeysConverter kc = new KeysConverter();
+			ConfigManager.HotkeyData WinHotkey = new ConfigManager.HotkeyData();
+			if( !string.IsNullOrEmpty( WinHotkeyCombobox.Text ) ) WinHotkey.KeyCode = (Keys)kc.ConvertFromString( WinHotkeyCombobox.Text );
+			if( WinHotkeyModCheckbox_Ctrl.Checked ) WinHotkey.ModKey |= MOD_KEY.CONTROL;
+			if( WinHotkeyModCheckbox_Alt.Checked ) WinHotkey.ModKey |= MOD_KEY.ALT;
+			if( WinHotkeyModCheckbox_Shift.Checked ) WinHotkey.ModKey |= MOD_KEY.SHIFT;
+
+			ConfigManager.HotkeyData LoseHotkey = new ConfigManager.HotkeyData();
+			if( !string.IsNullOrEmpty( LoseHotkeyCombobox.Text ) ) LoseHotkey.KeyCode = (Keys)kc.ConvertFromString( LoseHotkeyCombobox.Text );
+			if( LoseHotkeyModCheckbox_Ctrl.Checked ) LoseHotkey.ModKey |= MOD_KEY.CONTROL;
+			if( LoseHotkeyModCheckbox_Alt.Checked ) LoseHotkey.ModKey |= MOD_KEY.ALT;
+			if( LoseHotkeyModCheckbox_Shift.Checked ) LoseHotkey.ModKey |= MOD_KEY.SHIFT;
+
+			ConfigManager.HotkeyData DrawHotkey = new ConfigManager.HotkeyData();
+			if( !string.IsNullOrEmpty( DrawHotkeyCombobox.Text ) ) DrawHotkey.KeyCode = (Keys)kc.ConvertFromString( DrawHotkeyCombobox.Text );
+			if( DrawHotkeyModCheckbox_Ctrl.Checked ) DrawHotkey.ModKey |= MOD_KEY.CONTROL;
+			if( DrawHotkeyModCheckbox_Alt.Checked ) DrawHotkey.ModKey |= MOD_KEY.ALT;
+			if( DrawHotkeyModCheckbox_Shift.Checked ) DrawHotkey.ModKey |= MOD_KEY.SHIFT;
+
 			// Config を作成
 			ConfigManager.Config Config = new ConfigManager.Config
 			(
@@ -107,9 +145,9 @@ namespace OwScoreBoardController
 				VolumeTrackbar.Value,
 				ScoreBoardSizeTrackbar.Value,
 				ScoreBoardPosition,
-				new ConfigManager.HotkeyData(),
-				new ConfigManager.HotkeyData(),
-				new ConfigManager.HotkeyData()
+				WinHotkey,
+				LoseHotkey,
+				DrawHotkey
 			);
 
 			// 保存
@@ -123,6 +161,30 @@ namespace OwScoreBoardController
 		{
 			// フォームを閉じる
 			this.Close();
+		}
+
+		private void WinHotkeyClearButton_Click( object sender, EventArgs e )
+		{
+			WinHotkeyCombobox.SelectedIndex = -1;
+			WinHotkeyModCheckbox_Ctrl.Checked = false;
+			WinHotkeyModCheckbox_Alt.Checked = false;
+			WinHotkeyModCheckbox_Shift.Checked = false;
+		}
+
+		private void LoseHotkeyClearButton_Click( object sender, EventArgs e )
+		{
+			LoseHotkeyCombobox.SelectedIndex = -1;
+			LoseHotkeyModCheckbox_Ctrl.Checked = false;
+			LoseHotkeyModCheckbox_Alt.Checked = false;
+			LoseHotkeyModCheckbox_Shift.Checked = false;
+		}
+
+		private void DrawHotkeyClearButton_Click( object sender, EventArgs e )
+		{
+			DrawHotkeyCombobox.SelectedIndex = -1;
+			DrawHotkeyModCheckbox_Ctrl.Checked = false;
+			DrawHotkeyModCheckbox_Alt.Checked = false;
+			DrawHotkeyModCheckbox_Shift.Checked = false;
 		}
 	}
 }

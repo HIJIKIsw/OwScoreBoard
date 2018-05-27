@@ -377,6 +377,7 @@
 			this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.Name = "MainForm";
 			this.Text = "OwScoreBoard";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 			this.Load += new System.EventHandler(this.OnLoad);
 			this.ScoreGroupBox.ResumeLayout(false);
 			this.ScoreGroupBox.PerformLayout();
