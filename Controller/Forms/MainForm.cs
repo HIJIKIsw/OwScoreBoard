@@ -112,43 +112,52 @@ namespace OwScoreBoardController
 
 		private void WinButton_Click( object sender, EventArgs e )
 		{
-			WinsUpDown.Value++;
-
-			if( !MenuItem_StopUpdate.Checked )
+			if( WinButton.Enabled )
 			{
-				WinButton.Enabled = false;
-				LoseButton.Enabled = false;
-				DrawButton.Enabled = false;
-				ResetButton.Enabled = false;
-				ResetTimer();
+				WinsUpDown.Value++;
+
+				if( !MenuItem_StopUpdate.Checked )
+				{
+					WinButton.Enabled = false;
+					LoseButton.Enabled = false;
+					DrawButton.Enabled = false;
+					ResetButton.Enabled = false;
+					ResetTimer();
+				}
 			}
 		}
 
 		private void LoseButton_Click( object sender, EventArgs e )
 		{
-			LosesUpDown.Value++;
-
-			if( !MenuItem_StopUpdate.Checked )
+			if( LoseButton.Enabled )
 			{
-				WinButton.Enabled = false;
-				LoseButton.Enabled = false;
-				DrawButton.Enabled = false;
-				ResetButton.Enabled = false;
-				ResetTimer();
+				LosesUpDown.Value++;
+
+				if( !MenuItem_StopUpdate.Checked )
+				{
+					WinButton.Enabled = false;
+					LoseButton.Enabled = false;
+					DrawButton.Enabled = false;
+					ResetButton.Enabled = false;
+					ResetTimer();
+				}
 			}
 		}
 
 		private void DrawButton_Click( object sender, EventArgs e )
 		{
-			DrawsUpDown.Value++;
-
-			if( !MenuItem_StopUpdate.Checked )
+			if( DrawButton.Enabled )
 			{
-				WinButton.Enabled = false;
-				LoseButton.Enabled = false;
-				DrawButton.Enabled = false;
-				ResetButton.Enabled = false;
-				ResetTimer();
+				DrawsUpDown.Value++;
+
+				if( !MenuItem_StopUpdate.Checked )
+				{
+					WinButton.Enabled = false;
+					LoseButton.Enabled = false;
+					DrawButton.Enabled = false;
+					ResetButton.Enabled = false;
+					ResetTimer();
+				}
 			}
 		}
 
@@ -201,6 +210,11 @@ namespace OwScoreBoardController
 
 		private void MenuItem_Settings_Click( object sender, EventArgs e )
 		{
+			// ホットキーを無効化
+			if( WinHotkey != null ) WinHotkey.Dispose();
+			if( LoseHotkey != null ) LoseHotkey.Dispose();
+			if( DrawHotkey != null ) DrawHotkey.Dispose();
+
 			Form SettingsForm = new SettingsForm();
 			SettingsForm.ShowInTaskbar = false;
 			SettingsForm.ShowDialog();
@@ -278,16 +292,11 @@ namespace OwScoreBoardController
 			if( DrawHotkey != null ) DrawHotkey.Dispose();
 		}
 
-
 		/// <summary>
 		/// Config を読み込んでホットキーをセット
 		/// </summary>
 		private void SetHotkeyFromConfig()
 		{
-			WinHotkey = new HotKey( MOD_KEY.NONE, Keys.None );
-			LoseHotkey = new HotKey( MOD_KEY.NONE, Keys.None );
-			DrawHotkey = new HotKey( MOD_KEY.NONE, Keys.None );
-
 			ConfigManager.Config Config = ConfigManager.Load();
 			if( Config.WinHotkey.KeyCode != Keys.None && Config.WinHotkey != null )
 			{
