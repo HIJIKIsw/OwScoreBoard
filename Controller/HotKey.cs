@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Windows.Forms;
+
 
 namespace OwScoreBoardController
 {
-	using System;
-	using System.Runtime.InteropServices;
-	using System.Threading;
-	using System.Windows.Forms;
-
 	/// <summary>
 	/// グローバルホットキーを登録するクラス。
 	/// 使用後は必ずDisposeすること。
