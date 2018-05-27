@@ -71,9 +71,9 @@ namespace OwScoreBoardController
 					100,
 					100,
 					"Bottom",
-					new HotkeyData(),
-					new HotkeyData(),
-					new HotkeyData()
+					new HotkeyData( Keys.F10, MOD_KEY.CONTROL ),
+					new HotkeyData( Keys.F11, MOD_KEY.CONTROL ),
+					new HotkeyData( Keys.F12, MOD_KEY.CONTROL )
 				);
 			}
 		}
