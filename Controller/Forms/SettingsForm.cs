@@ -99,6 +99,24 @@ namespace OwScoreBoardController
 		/// </summary>
 		private void OKButton_Click( object sender, EventArgs e )
 		{
+			// ショートカットキーの正常確認
+			if( !ValidateHotkeys() )
+			{
+				DialogResult result = MessageBox.Show
+				(
+					"F12 キーは単体で設定しても動作しないことがあります。\r\nCtrl, Shift, Alt のいずれかと併せてご使用ください。\n\n警告を無視してこのまま続行しますか？",
+					"警告",
+					MessageBoxButtons.YesNo,
+					MessageBoxIcon.Warning,
+					MessageBoxDefaultButton.Button2
+				);
+
+				if( result == DialogResult.No )
+				{
+					return;
+				}
+			}
+
 			// スコアボードの表示位置を文字列化
 			string ScoreBoardPosition = ScoreBoardPositionRadio_Top.Checked ? "Top" : "Bottom";
 
@@ -185,6 +203,23 @@ namespace OwScoreBoardController
 			DrawHotkeyModCheckbox_Ctrl.Checked = false;
 			DrawHotkeyModCheckbox_Alt.Checked = false;
 			DrawHotkeyModCheckbox_Shift.Checked = false;
+		}
+
+
+		/// <summary>
+		/// ホットキーの設定が有効なものであるかを確認
+		/// </summary>
+		/// <returns>正しく設定されていれば true, それ以外は false を返す。</returns>
+		private bool ValidateHotkeys()
+		{
+			bool ret = true;
+			if( WinHotkeyCombobox.Text == "F12" && !WinHotkeyModCheckbox_Alt.Checked && !WinHotkeyModCheckbox_Ctrl.Checked && !WinHotkeyModCheckbox_Shift.Checked ||
+				LoseHotkeyCombobox.Text == "F12" && !LoseHotkeyModCheckbox_Alt.Checked && !LoseHotkeyModCheckbox_Ctrl.Checked && !LoseHotkeyModCheckbox_Shift.Checked ||
+				DrawHotkeyCombobox.Text == "F12" && !DrawHotkeyModCheckbox_Alt.Checked && !DrawHotkeyModCheckbox_Ctrl.Checked && !DrawHotkeyModCheckbox_Shift.Checked )
+			{
+				ret = false;
+			}
+			return ret;
 		}
 	}
 }
