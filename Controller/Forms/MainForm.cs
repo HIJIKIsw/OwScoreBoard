@@ -214,6 +214,9 @@ namespace OwScoreBoardController
 			if( WinHotkey != null ) WinHotkey.Dispose();
 			if( LoseHotkey != null ) LoseHotkey.Dispose();
 			if( DrawHotkey != null ) DrawHotkey.Dispose();
+			WinHotkey = new HotKey( MOD_KEY.NONE, Keys.None );
+			LoseHotkey = new HotKey( MOD_KEY.NONE, Keys.None );
+			DrawHotkey = new HotKey( MOD_KEY.NONE, Keys.None );
 
 			Form SettingsForm = new SettingsForm();
 			SettingsForm.ShowInTaskbar = false;
