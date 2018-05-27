@@ -70,7 +70,7 @@ namespace OwScoreBoardController
 					ColorTranslator.FromHtml( "#ffffff" ),
 					100,
 					100,
-					"Bottom",
+					"bottom",
 					new HotkeyData( Keys.F10, MOD_KEY.CONTROL ),
 					new HotkeyData( Keys.F11, MOD_KEY.CONTROL ),
 					new HotkeyData( Keys.F12, MOD_KEY.CONTROL )
