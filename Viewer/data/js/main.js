@@ -138,6 +138,17 @@
 
 		// サブカラーを反映
 		$('#Transition, #EdgeLeft, #EdgeRight').css('background', ConfigFile.SubColorHtml);
+
+		// フォントカラーを反映
+		$('#Wins, #Loses, #Draw').css('color', ConfigFile.FontColorHtml);
+
+		// スコアボードサイズと位置を反映
+		var Size = ConfigFile.ScoreBoardSize/100.0;
+		var Margin = 4*Size;//vh
+		$('#ScoreBoard').css('transform', 'scale('+Size+')')
+		$('#ScoreBoard').css('bottom', '');
+		$('#ScoreBoard').css('top', '');
+		$('#ScoreBoard').css(ConfigFile.ScoreBoardPosition, Margin+'vh');
 	}
 
 	//--------------------------------------------------------------------------	
@@ -398,8 +409,8 @@
 	function UpdateScoreBoard()
 	{
 		$('#ScoreBoard')
-			.animate({'bottom': '-15vh'}, 300, function(){ SetScore(); })
-			.animate({'bottom': '4vh'}, 300);
+			.animate({'opacity': '0'}, 300, function(){ SetScore(); })
+			.animate({'opacity': '1'}, 300);
 	}
 
 	//--------------------------------------------------------------------------

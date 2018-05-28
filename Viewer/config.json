@@ -1,10 +1,23 @@
 {
   "Name": "You",
-  "LogoImageFilePath": "./user/Logo.png",
-  "MainColor": "3, 35, 64",
+  "LogoImageFilePath": null,
   "MainColorHtml": "#032340",
-  "SubColor": "219, 124, 0",
   "SubColorHtml": "#DB7C00",
+  "FontColorHtml": "#FFFFFF",
   "SoundVolume": 100,
+  "ScoreBoardSize": 100,
+  "ScoreBoardPosition": "bottom",
+  "WinHotkey": {
+    "KeyCode": 0,
+    "ModKey": 0
+  },
+  "LoseHotkey": {
+    "KeyCode": 0,
+    "ModKey": 0
+  },
+  "DrawHotkey": {
+    "KeyCode": 0,
+    "ModKey": 0
+  },
   "TimeStamp": "2000/01/01 00:00:00"
 }
