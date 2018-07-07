@@ -34,13 +34,14 @@ namespace OwScoreBoardController
 			public HotkeyData WinHotkey;
 			public HotkeyData LoseHotkey;
 			public HotkeyData DrawHotkey;
+			public bool EnableProduction;
 			public string TimeStamp;
 
 			/// <summary>
 			/// コンストラクタ
 			/// </summary>
 			public Config() { }
-			public Config( string Name, string LogoImageFilePath, Color MainColor, Color SubColor, Color FontColor, int SoundVolume, int ScoreBoardSize, string ScoreBoardPosition, HotkeyData WinHotkey, HotkeyData LoseHotkey, HotkeyData DrawHotkey )
+			public Config( string Name, string LogoImageFilePath, Color MainColor, Color SubColor, Color FontColor, int SoundVolume, int ScoreBoardSize, string ScoreBoardPosition, HotkeyData WinHotkey, HotkeyData LoseHotkey, HotkeyData DrawHotkey, bool EnableProduction )
 			{
 				this.Name = Name;
 				this.LogoImageFilePath = LogoImageFilePath;
@@ -53,6 +54,7 @@ namespace OwScoreBoardController
 				this.WinHotkey = WinHotkey;
 				this.LoseHotkey = LoseHotkey;
 				this.DrawHotkey = DrawHotkey;
+				this.EnableProduction = EnableProduction;
 			}
 
 			/// <summary>
@@ -73,7 +75,8 @@ namespace OwScoreBoardController
 					"bottom",
 					new HotkeyData( Keys.None, MOD_KEY.NONE ),
 					new HotkeyData( Keys.None, MOD_KEY.NONE ),
-					new HotkeyData( Keys.None, MOD_KEY.NONE )
+					new HotkeyData( Keys.None, MOD_KEY.NONE ),
+					true
 				);
 			}
 		}
@@ -124,7 +127,7 @@ namespace OwScoreBoardController
 			Config ret;
 
 			// config.json がない場合はデフォルト設定で作成
-			if( !File.Exists( ConfigFilePath ) )
+			if (!File.Exists( ConfigFilePath ))
 			{
 				Config DefaultConfig = Config.Default();
 				string DefaultConfigJson = JsonConvert.SerializeObject( DefaultConfig, Formatting.Indented );

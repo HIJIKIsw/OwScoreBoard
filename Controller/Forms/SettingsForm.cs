@@ -44,6 +44,8 @@ namespace OwScoreBoardController
 				ScoreBoardPositionRadio_Bottom.Checked = true;
 
 			}
+			EnableProductionCheckbox.Checked = Config.EnableProduction;
+			SetEnabledRegardingProductionControls( EnableProductionCheckbox.Checked );
 
 			KeysConverter kc = new KeysConverter();
 			if( Config.WinHotkey.KeyCode != Keys.None ) WinHotkeyCombobox.Text = kc.ConvertToString( Config.WinHotkey.KeyCode );
@@ -165,7 +167,8 @@ namespace OwScoreBoardController
 				ScoreBoardPosition,
 				WinHotkey,
 				LoseHotkey,
-				DrawHotkey
+				DrawHotkey,
+				EnableProductionCheckbox.Checked
 			);
 
 			// 保存
@@ -205,6 +208,10 @@ namespace OwScoreBoardController
 			DrawHotkeyModCheckbox_Shift.Checked = false;
 		}
 
+		private void EnableProductionCheckbox_CheckedChanged( object sender, EventArgs e )
+		{
+			SetEnabledRegardingProductionControls( EnableProductionCheckbox.Checked );
+		}
 
 		/// <summary>
 		/// ホットキーの設定が有効なものであるかを確認
@@ -220,6 +227,18 @@ namespace OwScoreBoardController
 				ret = false;
 			}
 			return ret;
+		}
+
+		/// <summary>
+		/// 勝敗演出設定に関するコントロールの有効無効を切り替え
+		/// </summary>
+		private void SetEnabledRegardingProductionControls( bool Enabled )
+		{
+			Control[] Controls = { NameTextBox, LogoPictureBox, MainColorBox, SubColorBox, FontColorBox, VolumeTrackbar };
+			foreach( var Control in Controls )
+			{
+				Control.Enabled = Enabled;
+			}
 		}
 	}
 }

@@ -75,6 +75,7 @@
 			this.ScoreBoardPositionRadio_Bottom = new System.Windows.Forms.RadioButton();
 			this.ScoreBoardSizeTrackbar = new System.Windows.Forms.TrackBar();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.EnableProductionCheckbox = new System.Windows.Forms.CheckBox();
 			this.tabPage3.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.groupBox1.SuspendLayout();
@@ -91,7 +92,7 @@
 			// 
 			// OKButton
 			// 
-			this.OKButton.Location = new System.Drawing.Point(265, 449);
+			this.OKButton.Location = new System.Drawing.Point(265, 481);
 			this.OKButton.Margin = new System.Windows.Forms.Padding(8);
 			this.OKButton.Name = "OKButton";
 			this.OKButton.Size = new System.Drawing.Size(80, 23);
@@ -102,7 +103,7 @@
 			// 
 			// CancelButton
 			// 
-			this.CancelButton.Location = new System.Drawing.Point(361, 449);
+			this.CancelButton.Location = new System.Drawing.Point(361, 481);
 			this.CancelButton.Margin = new System.Windows.Forms.Padding(8);
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.Size = new System.Drawing.Size(80, 23);
@@ -136,7 +137,7 @@
 			this.tabPage3.Margin = new System.Windows.Forms.Padding(8);
 			this.tabPage3.Name = "tabPage3";
 			this.tabPage3.Padding = new System.Windows.Forms.Padding(8);
-			this.tabPage3.Size = new System.Drawing.Size(416, 388);
+			this.tabPage3.Size = new System.Drawing.Size(416, 420);
 			this.tabPage3.TabIndex = 2;
 			this.tabPage3.Text = "ホットキー設定";
 			// 
@@ -506,12 +507,13 @@
 			this.tabPage1.Margin = new System.Windows.Forms.Padding(8);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(8);
-			this.tabPage1.Size = new System.Drawing.Size(416, 388);
+			this.tabPage1.Size = new System.Drawing.Size(416, 420);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "基本設定";
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.EnableProductionCheckbox);
 			this.groupBox1.Controls.Add(this.label8);
 			this.groupBox1.Controls.Add(this.VolumeTrackbar);
 			this.groupBox1.Controls.Add(this.label7);
@@ -531,7 +533,7 @@
 			this.groupBox1.Margin = new System.Windows.Forms.Padding(8);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Padding = new System.Windows.Forms.Padding(8);
-			this.groupBox1.Size = new System.Drawing.Size(384, 256);
+			this.groupBox1.Size = new System.Drawing.Size(384, 288);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "勝敗演出";
@@ -539,7 +541,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(207, 167);
+			this.label8.Location = new System.Drawing.Point(207, 199);
 			this.label8.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(31, 15);
@@ -549,7 +551,7 @@
 			// VolumeTrackbar
 			// 
 			this.VolumeTrackbar.AutoSize = false;
-			this.VolumeTrackbar.Location = new System.Drawing.Point(215, 190);
+			this.VolumeTrackbar.Location = new System.Drawing.Point(215, 222);
 			this.VolumeTrackbar.Margin = new System.Windows.Forms.Padding(8);
 			this.VolumeTrackbar.Maximum = 100;
 			this.VolumeTrackbar.Name = "VolumeTrackbar";
@@ -561,7 +563,7 @@
 			// 
 			// label7
 			// 
-			this.label7.Location = new System.Drawing.Point(212, 112);
+			this.label7.Location = new System.Drawing.Point(212, 144);
 			this.label7.Margin = new System.Windows.Forms.Padding(8);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(72, 24);
@@ -573,7 +575,7 @@
 			// 
 			this.label6.AutoSize = true;
 			this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.label6.Location = new System.Drawing.Point(73, 222);
+			this.label6.Location = new System.Drawing.Point(74, 254);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(122, 15);
 			this.label6.TabIndex = 6;
@@ -581,7 +583,7 @@
 			// 
 			// label4
 			// 
-			this.label4.Location = new System.Drawing.Point(219, 32);
+			this.label4.Location = new System.Drawing.Point(219, 64);
 			this.label4.Margin = new System.Windows.Forms.Padding(8);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(65, 24);
@@ -593,7 +595,7 @@
 			// 
 			this.FontColorBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.FontColorBox.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.FontColorBox.Location = new System.Drawing.Point(300, 112);
+			this.FontColorBox.Location = new System.Drawing.Point(300, 144);
 			this.FontColorBox.Margin = new System.Windows.Forms.Padding(8);
 			this.FontColorBox.Name = "FontColorBox";
 			this.FontColorBox.Size = new System.Drawing.Size(67, 24);
@@ -605,7 +607,7 @@
 			// 
 			this.label3.AutoSize = true;
 			this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.label3.Location = new System.Drawing.Point(83, 63);
+			this.label3.Location = new System.Drawing.Point(83, 95);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(112, 15);
 			this.label3.TabIndex = 5;
@@ -615,7 +617,7 @@
 			// 
 			this.MainColorBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.MainColorBox.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.MainColorBox.Location = new System.Drawing.Point(300, 32);
+			this.MainColorBox.Location = new System.Drawing.Point(300, 64);
 			this.MainColorBox.Margin = new System.Windows.Forms.Padding(8);
 			this.MainColorBox.Name = "MainColorBox";
 			this.MainColorBox.Size = new System.Drawing.Size(67, 24);
@@ -625,7 +627,7 @@
 			// 
 			// NameTextBox
 			// 
-			this.NameTextBox.Location = new System.Drawing.Point(68, 32);
+			this.NameTextBox.Location = new System.Drawing.Point(68, 64);
 			this.NameTextBox.Margin = new System.Windows.Forms.Padding(8);
 			this.NameTextBox.Name = "NameTextBox";
 			this.NameTextBox.Size = new System.Drawing.Size(128, 23);
@@ -635,7 +637,7 @@
 			// 
 			this.SubColorBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.SubColorBox.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.SubColorBox.Location = new System.Drawing.Point(300, 72);
+			this.SubColorBox.Location = new System.Drawing.Point(300, 104);
 			this.SubColorBox.Margin = new System.Windows.Forms.Padding(8);
 			this.SubColorBox.Name = "SubColorBox";
 			this.SubColorBox.Size = new System.Drawing.Size(67, 24);
@@ -647,7 +649,7 @@
 			// 
 			this.label2.AutoSize = true;
 			this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.label2.Location = new System.Drawing.Point(16, 35);
+			this.label2.Location = new System.Drawing.Point(16, 67);
 			this.label2.Margin = new System.Windows.Forms.Padding(8);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(36, 15);
@@ -656,7 +658,7 @@
 			// 
 			// label5
 			// 
-			this.label5.Location = new System.Drawing.Point(226, 72);
+			this.label5.Location = new System.Drawing.Point(226, 104);
 			this.label5.Margin = new System.Windows.Forms.Padding(8);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(58, 24);
@@ -668,7 +670,8 @@
 			// 
 			this.LogoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LogoPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.LogoPictureBox.Location = new System.Drawing.Point(68, 86);
+			this.LogoPictureBox.Enabled = false;
+			this.LogoPictureBox.Location = new System.Drawing.Point(68, 118);
 			this.LogoPictureBox.Margin = new System.Windows.Forms.Padding(8);
 			this.LogoPictureBox.Name = "LogoPictureBox";
 			this.LogoPictureBox.Size = new System.Drawing.Size(128, 128);
@@ -681,7 +684,7 @@
 			// 
 			this.label1.AutoSize = true;
 			this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.label1.Location = new System.Drawing.Point(22, 86);
+			this.label1.Location = new System.Drawing.Point(22, 118);
 			this.label1.Margin = new System.Windows.Forms.Padding(8);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(30, 15);
@@ -693,7 +696,7 @@
 			this.groupBox4.Controls.Add(this.label10);
 			this.groupBox4.Controls.Add(this.ScoreBoardPositionRadioPanel);
 			this.groupBox4.Controls.Add(this.ScoreBoardSizeTrackbar);
-			this.groupBox4.Location = new System.Drawing.Point(16, 288);
+			this.groupBox4.Location = new System.Drawing.Point(16, 320);
 			this.groupBox4.Margin = new System.Windows.Forms.Padding(8);
 			this.groupBox4.Name = "groupBox4";
 			this.groupBox4.Padding = new System.Windows.Forms.Padding(8);
@@ -776,14 +779,28 @@
 			this.tabControl1.Margin = new System.Windows.Forms.Padding(8);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(424, 416);
+			this.tabControl1.Size = new System.Drawing.Size(424, 448);
 			this.tabControl1.TabIndex = 4;
+			// 
+			// EnableProductionCheckbox
+			// 
+			this.EnableProductionCheckbox.AutoSize = true;
+			this.EnableProductionCheckbox.Checked = true;
+			this.EnableProductionCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.EnableProductionCheckbox.Location = new System.Drawing.Point(16, 32);
+			this.EnableProductionCheckbox.Margin = new System.Windows.Forms.Padding(8);
+			this.EnableProductionCheckbox.Name = "EnableProductionCheckbox";
+			this.EnableProductionCheckbox.Size = new System.Drawing.Size(135, 19);
+			this.EnableProductionCheckbox.TabIndex = 5;
+			this.EnableProductionCheckbox.Text = "勝敗演出を有効にする";
+			this.EnableProductionCheckbox.UseVisualStyleBackColor = true;
+			this.EnableProductionCheckbox.CheckedChanged += new System.EventHandler(this.EnableProductionCheckbox_CheckedChanged);
 			// 
 			// SettingsForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(458, 485);
+			this.ClientSize = new System.Drawing.Size(458, 521);
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.CancelButton);
 			this.Controls.Add(this.OKButton);
@@ -860,5 +877,6 @@
 		private System.Windows.Forms.CheckBox LoseHotkeyModCheckbox_Shift;
 		private System.Windows.Forms.CheckBox LoseHotkeyModCheckbox_Ctrl;
 		private System.Windows.Forms.ComboBox LoseHotkeyCombobox;
-	}
+        private System.Windows.Forms.CheckBox EnableProductionCheckbox;
+    }
 }
