@@ -159,7 +159,6 @@
 		console.log("ScoreScrutiny");
 
 		var UpdateType = undefined;
-		var IsRateUpdated = false;
 
 		if( ScoreFile.Wins != OldScoreFile.Wins )
 		{
@@ -194,7 +193,14 @@
 				UpdateType = "General";
 			}
 		}
-		if( ScoreFile.StartingRate != OldScoreFile.StartingRate ){ IsRateUpdated = true; }
+		if( ScoreFile.StartingRate != OldScoreFile.StartingRate )
+		{
+			UpdateType = "General";
+		}
+		if( !ConfigFile.EnableProduction && UpdateType != undefined )
+		{
+			UpdateType = "General";
+		}
 
 		switch (UpdateType) {
 			case "Win":
@@ -209,11 +215,6 @@
 			case "General":
 				UpdateScoreBoard();
 				break;
-		}
-
-		if( IsRateUpdated )
-		{
-			UpdateScoreBoard();
 		}
 	}
 
