@@ -66,7 +66,7 @@ namespace OwScoreBoardController
 				return new Config
 				(
 					"You",
-					null,
+					"./user/Logo.png",
 					ColorTranslator.FromHtml( "#032340" ),
 					ColorTranslator.FromHtml( "#DB7C00" ),
 					ColorTranslator.FromHtml( "#ffffff" ),
