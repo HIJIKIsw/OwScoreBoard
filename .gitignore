@@ -215,3 +215,5 @@ project.lock.json
 #####
 *.dll
 *.exe
+config.json
+score.json
