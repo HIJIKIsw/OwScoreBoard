@@ -4,7 +4,8 @@ Overwatch をライブ配信する際、Overwatch League のようなスコア�
 ────  
 This is a Utility Application for Overwatch Streaming.  
 It's will add cool Score Board and win-loss screen effects to your Overwatch Streaming.  
-It's like to Overwatch League.
+It's like to Overwatch League.  
+It's Available in English.
 
 # Example for use
 
