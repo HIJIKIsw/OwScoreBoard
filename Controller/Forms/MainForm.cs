@@ -219,7 +219,28 @@ namespace OwScoreBoardController
 
 		private void MenuItem_Manual_Click( object sender, EventArgs e )
 		{
-			System.Diagnostics.Process.Start( "https://github.com/HIJIKIsw/OwScoreBoard/blob/master/Help.md" );
+			string Language;
+
+			// 設定に応じたヘルプドキュメントを開く
+			if (Properties.Settings.Default.Language == "Automatic")
+			{
+				// OS の言語を取得
+				Language = System.Globalization.CultureInfo.CurrentCulture.Name;
+			}
+			else
+			{
+				Language = Properties.Settings.Default.Language;
+			}
+
+			if (Language == "ja-JP")
+			{
+				System.Diagnostics.Process.Start("https://github.com/HIJIKIsw/OwScoreBoard/blob/master/Help_ja.md");
+			}
+			else
+			{
+				System.Diagnostics.Process.Start("https://github.com/HIJIKIsw/OwScoreBoard/blob/master/Help_en.md");
+			}
+
 		}
 
 		private void MenuItem_AlwayOnTop_Click( object sender, EventArgs e )

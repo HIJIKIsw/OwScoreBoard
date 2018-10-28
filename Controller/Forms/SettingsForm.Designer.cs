@@ -550,10 +550,10 @@
 			// 
 			// VolumeLabel
 			// 
-			this.VolumeLabel.Location = new System.Drawing.Point(208, 190);
+			this.VolumeLabel.Location = new System.Drawing.Point(216, 190);
 			this.VolumeLabel.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
 			this.VolumeLabel.Name = "VolumeLabel";
-			this.VolumeLabel.Size = new System.Drawing.Size(160, 24);
+			this.VolumeLabel.Size = new System.Drawing.Size(152, 24);
 			this.VolumeLabel.TabIndex = 7;
 			this.VolumeLabel.Text = "音量";
 			this.VolumeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -573,7 +573,7 @@
 			// 
 			// FontColorLabel
 			// 
-			this.FontColorLabel.Location = new System.Drawing.Point(204, 144);
+			this.FontColorLabel.Location = new System.Drawing.Point(212, 144);
 			this.FontColorLabel.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
 			this.FontColorLabel.Name = "FontColorLabel";
 			this.FontColorLabel.Size = new System.Drawing.Size(108, 24);
@@ -583,7 +583,7 @@
 			// 
 			// MainColorLabel
 			// 
-			this.MainColorLabel.Location = new System.Drawing.Point(204, 64);
+			this.MainColorLabel.Location = new System.Drawing.Point(212, 64);
 			this.MainColorLabel.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
 			this.MainColorLabel.Name = "MainColorLabel";
 			this.MainColorLabel.Size = new System.Drawing.Size(108, 24);
@@ -595,10 +595,10 @@
 			// 
 			this.FontColorBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.FontColorBox.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.FontColorBox.Location = new System.Drawing.Point(320, 144);
+			this.FontColorBox.Location = new System.Drawing.Point(328, 144);
 			this.FontColorBox.Margin = new System.Windows.Forms.Padding(4, 8, 8, 8);
 			this.FontColorBox.Name = "FontColorBox";
-			this.FontColorBox.Size = new System.Drawing.Size(48, 24);
+			this.FontColorBox.Size = new System.Drawing.Size(40, 24);
 			this.FontColorBox.TabIndex = 4;
 			this.FontColorBox.TabStop = false;
 			this.FontColorBox.Click += new System.EventHandler(this.ColorSelect);
@@ -607,17 +607,17 @@
 			// 
 			this.MainColorBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.MainColorBox.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.MainColorBox.Location = new System.Drawing.Point(320, 64);
+			this.MainColorBox.Location = new System.Drawing.Point(328, 64);
 			this.MainColorBox.Margin = new System.Windows.Forms.Padding(4, 8, 8, 8);
 			this.MainColorBox.Name = "MainColorBox";
-			this.MainColorBox.Size = new System.Drawing.Size(48, 24);
+			this.MainColorBox.Size = new System.Drawing.Size(40, 24);
 			this.MainColorBox.TabIndex = 0;
 			this.MainColorBox.TabStop = false;
 			this.MainColorBox.Click += new System.EventHandler(this.ColorSelect);
 			// 
 			// NameTextBox
 			// 
-			this.NameTextBox.Location = new System.Drawing.Point(68, 64);
+			this.NameTextBox.Location = new System.Drawing.Point(76, 64);
 			this.NameTextBox.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
 			this.NameTextBox.Name = "NameTextBox";
 			this.NameTextBox.Size = new System.Drawing.Size(128, 23);
@@ -627,10 +627,10 @@
 			// 
 			this.SubColorBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.SubColorBox.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.SubColorBox.Location = new System.Drawing.Point(320, 104);
+			this.SubColorBox.Location = new System.Drawing.Point(328, 104);
 			this.SubColorBox.Margin = new System.Windows.Forms.Padding(4, 8, 8, 8);
 			this.SubColorBox.Name = "SubColorBox";
-			this.SubColorBox.Size = new System.Drawing.Size(48, 24);
+			this.SubColorBox.Size = new System.Drawing.Size(40, 24);
 			this.SubColorBox.TabIndex = 3;
 			this.SubColorBox.TabStop = false;
 			this.SubColorBox.Click += new System.EventHandler(this.ColorSelect);
@@ -641,14 +641,14 @@
 			this.NameLabel.Location = new System.Drawing.Point(12, 63);
 			this.NameLabel.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
 			this.NameLabel.Name = "NameLabel";
-			this.NameLabel.Size = new System.Drawing.Size(48, 24);
+			this.NameLabel.Size = new System.Drawing.Size(56, 24);
 			this.NameLabel.TabIndex = 3;
 			this.NameLabel.Text = "名前:";
 			this.NameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// SubColorLabel
 			// 
-			this.SubColorLabel.Location = new System.Drawing.Point(204, 104);
+			this.SubColorLabel.Location = new System.Drawing.Point(212, 104);
 			this.SubColorLabel.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
 			this.SubColorLabel.Name = "SubColorLabel";
 			this.SubColorLabel.Size = new System.Drawing.Size(108, 24);
@@ -661,7 +661,7 @@
 			this.LogoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LogoPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.LogoPictureBox.Enabled = false;
-			this.LogoPictureBox.Location = new System.Drawing.Point(68, 103);
+			this.LogoPictureBox.Location = new System.Drawing.Point(76, 103);
 			this.LogoPictureBox.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
 			this.LogoPictureBox.Name = "LogoPictureBox";
 			this.LogoPictureBox.Size = new System.Drawing.Size(128, 128);
@@ -676,7 +676,7 @@
 			this.LogoLabel.Location = new System.Drawing.Point(12, 104);
 			this.LogoLabel.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
 			this.LogoLabel.Name = "LogoLabel";
-			this.LogoLabel.Size = new System.Drawing.Size(48, 24);
+			this.LogoLabel.Size = new System.Drawing.Size(56, 24);
 			this.LogoLabel.TabIndex = 0;
 			this.LogoLabel.Text = "ロゴ:";
 			this.LogoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
