@@ -60,12 +60,15 @@ namespace OwScoreBoardController
 			if( Config.DrawHotkey.ModKey.HasFlag( MOD_KEY.CONTROL ) ) DrawHotkeyModCheckbox_Ctrl.Checked = true;
 			if( Config.DrawHotkey.ModKey.HasFlag( MOD_KEY.ALT ) ) DrawHotkeyModCheckbox_Alt.Checked = true;
 			if( Config.DrawHotkey.ModKey.HasFlag( MOD_KEY.SHIFT ) ) DrawHotkeyModCheckbox_Shift.Checked = true;
+
+			// 言語をセット
+			SetLanguage();
 		}
 
 		private void LogoPictureBox_Click( object sender, EventArgs e )
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Filter = "画像ファイル|*.bmp;*.png;*.jpg;*.jpeg;*.gif";
+			ofd.Filter = "Image File|*.bmp;*.png;*.jpg;*.jpeg;*.gif";
 
 			if( ofd.ShowDialog() == DialogResult.OK )
 			{
@@ -104,10 +107,27 @@ namespace OwScoreBoardController
 			// ショートカットキーの正常確認
 			if( !ValidateHotkeys() )
 			{
+				LanguageManager.Language Language;
+
+				// 設定に応じた言語オブジェクトを取得
+				if (Properties.Settings.Default.Language == "Automatic")
+				{
+					// OS の言語を取得
+					string OSLanguage = System.Globalization.CultureInfo.CurrentCulture.Name;
+					Language = LanguageManager.Get(OSLanguage);
+				}
+				else
+				{
+					Language = LanguageManager.Get(Properties.Settings.Default.Language);
+				}
+
+				string WarningMesage = Language.InvalidHotkeyWarningMessage;
+				string WarningTitle = Language.InvalidHotkeyWarningTitle;
+
 				DialogResult result = MessageBox.Show
 				(
-					"F12 キーは単体で設定しても動作しないことがあります。\r\nCtrl, Shift, Alt のいずれかと併せてご使用ください。\n\n警告を無視してこのまま続行しますか？",
-					"警告",
+					WarningMesage,
+					WarningTitle,
 					MessageBoxButtons.YesNo,
 					MessageBoxIcon.Warning,
 					MessageBoxDefaultButton.Button2
@@ -239,6 +259,49 @@ namespace OwScoreBoardController
 			{
 				Control.Enabled = Enabled;
 			}
+		}
+
+		/// <summary>
+		/// 言語をセット
+		/// </summary>
+		private void SetLanguage()
+		{
+			LanguageManager.Language Language;
+
+			// 設定に応じた言語オブジェクトを取得
+			if (Properties.Settings.Default.Language == "Automatic")
+			{
+				// OS の言語を取得
+				string OSLanguage = System.Globalization.CultureInfo.CurrentCulture.Name;
+				Language = LanguageManager.Get(OSLanguage);
+			}
+			else
+			{
+				Language = LanguageManager.Get(Properties.Settings.Default.Language);
+			}
+
+			// 各文言をセット
+			this.Text = Language.settingsForm.WindowTitle;
+			SettingsTabControl.TabPages[0].Text = Language.settingsForm.TabPage_General;
+			ProductionGroup.Text = Language.settingsForm.ProductionGroup;
+			EnableProductionCheckbox.Text = Language.settingsForm.EnableProductionCheckbox;
+			NameLabel.Text = Language.settingsForm.NameLabel;
+			LogoLabel.Text = Language.settingsForm.LogoLabel;
+			MainColorLabel.Text = Language.settingsForm.MainColorLabel;
+			SubColorLabel.Text = Language.settingsForm.SubColorLabel;
+			FontColorLabel.Text = Language.settingsForm.FontColorLabel;
+			VolumeLabel.Text = Language.settingsForm.VolumeLabel;
+			ScoreBoardGroup.Text = Language.settingsForm.ScoreBoardGroup;
+			ScoreBoardSizeLabel.Text = Language.settingsForm.ScoreBoardSizeLabel;
+			ScoreBoardPositionLabel.Text = Language.settingsForm.ScoreBoardPositionLabel;
+			ScoreBoardPositionRadio_Top.Text = Language.settingsForm.ScoreBoardPositionRadio_Top;
+			ScoreBoardPositionRadio_Bottom.Text = Language.settingsForm.ScoreBoardPositionRadio_Bottom;
+			OKButton.Text = Language.settingsForm.OKButton;
+			CancelButton.Text = Language.settingsForm.CancelButton;
+			SettingsTabControl.TabPages[1].Text = Language.settingsForm.TabPage_Hotkey;
+			WinHotkeyClearButton.Text = Language.settingsForm.HotkeyClearButton;
+			LoseHotkeyClearButton.Text = Language.settingsForm.HotkeyClearButton;
+			DrawHotkeyClearButton.Text = Language.settingsForm.HotkeyClearButton;
 		}
 	}
 }

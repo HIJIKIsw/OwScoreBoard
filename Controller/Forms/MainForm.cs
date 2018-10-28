@@ -25,8 +25,36 @@ namespace OwScoreBoardController
 
 		private void OnLoad( object sender, EventArgs e )
 		{
+			// 前回のウィンドウ位置を復元
+			Point WindowPosition = Properties.Settings.Default.WindowPosition;
+			Point UnsetValue = new Point(-1234, -5678);
+			if( WindowPosition != UnsetValue )
+			{
+				DesktopLocation = WindowPosition;
+			}
+
+			// 常に最前面に表示状態を復元
+			this.TopMost = Properties.Settings.Default.AlwaysOnTop;
+			MenuItem_AlwayOnTop.Checked = this.TopMost;
+
 			// 最大化ボタンを無効化
 			this.MaximizeBox = false;
+
+			// 言語設定を復元
+			switch(Properties.Settings.Default.Language)
+			{
+				case "ja-JP":
+					MenuItem_Language_Japanese_Click(null, null);
+					break;
+				case "en-US":
+					MenuItem_Language_English_Click(null, null);
+					break;
+				case "Automatic":
+				default:
+					MenuItem_Language_Automatic_Click(null, null);
+					break;
+			}
+			SetLanguage();
 
 			// Score を読み込んで値をセット
 			ScoreManager.Score Score = ScoreManager.Load();
@@ -201,6 +229,7 @@ namespace OwScoreBoardController
 		private void MenuItem_AlwayOnTop_Click( object sender, EventArgs e )
 		{
 			this.TopMost = MenuItem_AlwayOnTop.Checked;
+			Properties.Settings.Default.AlwaysOnTop = MenuItem_AlwayOnTop.Checked;
 		}
 
 		private void MenuItem_Exit_Click( object sender, EventArgs e )
@@ -290,9 +319,16 @@ namespace OwScoreBoardController
 
 		private void MainForm_FormClosing( object sender, FormClosingEventArgs e )
 		{
+			// ホットキーのフックを解除
 			if( WinHotkey != null ) WinHotkey.Dispose();
 			if( LoseHotkey != null ) LoseHotkey.Dispose();
 			if( DrawHotkey != null ) DrawHotkey.Dispose();
+
+			// ウィンドウの位置を記憶
+			Properties.Settings.Default.WindowPosition = DesktopLocation;
+
+			// 設定を保存する
+			Properties.Settings.Default.Save();
 		}
 
 		/// <summary>
@@ -301,21 +337,84 @@ namespace OwScoreBoardController
 		private void SetHotkeyFromConfig()
 		{
 			ConfigManager.Config Config = ConfigManager.Load();
-			if( Config.WinHotkey.KeyCode != Keys.None && Config.WinHotkey != null )
+			if (Config.WinHotkey.KeyCode != Keys.None && Config.WinHotkey != null)
 			{
-				WinHotkey = new HotKey( Config.WinHotkey.ModKey, Config.WinHotkey.KeyCode );
-				WinHotkey.HotKeyPush += new EventHandler( WinButton_Click );
+				WinHotkey = new HotKey(Config.WinHotkey.ModKey, Config.WinHotkey.KeyCode);
+				WinHotkey.HotKeyPush += new EventHandler(WinButton_Click);
 			}
-			if( Config.LoseHotkey.KeyCode != Keys.None && Config.LoseHotkey != null )
+			if (Config.LoseHotkey.KeyCode != Keys.None && Config.LoseHotkey != null)
 			{
-				LoseHotkey = new HotKey( Config.LoseHotkey.ModKey, Config.LoseHotkey.KeyCode );
-				LoseHotkey.HotKeyPush += new EventHandler( LoseButton_Click );
+				LoseHotkey = new HotKey(Config.LoseHotkey.ModKey, Config.LoseHotkey.KeyCode);
+				LoseHotkey.HotKeyPush += new EventHandler(LoseButton_Click);
 			}
-			if( Config.DrawHotkey.KeyCode != Keys.None && Config.DrawHotkey != null )
+			if (Config.DrawHotkey.KeyCode != Keys.None && Config.DrawHotkey != null)
 			{
-				DrawHotkey = new HotKey( Config.DrawHotkey.ModKey, Config.DrawHotkey.KeyCode );
-				DrawHotkey.HotKeyPush += new EventHandler( DrawButton_Click );
+				DrawHotkey = new HotKey(Config.DrawHotkey.ModKey, Config.DrawHotkey.KeyCode);
+				DrawHotkey.HotKeyPush += new EventHandler(DrawButton_Click);
 			}
+		}
+
+		/// <summary>
+		/// 言語をセット
+		/// </summary>
+		private void SetLanguage()
+		{
+			LanguageManager.Language Language;
+
+			// 設定に応じた言語オブジェクトを取得
+			if( Properties.Settings.Default.Language == "Automatic" )
+			{
+				// OS の言語を取得
+				string OSLanguage = System.Globalization.CultureInfo.CurrentCulture.Name;
+				Language = LanguageManager.Get(OSLanguage);
+			}
+			else
+			{
+				Language = LanguageManager.Get(Properties.Settings.Default.Language);
+			}
+
+			// 各文言をセット
+			FileMenu.Text = Language.mainForm.FileMenu;
+			MenuItem_Exit.Text = Language.mainForm.MenuItem_Exit;
+			OptionMenu.Text = Language.mainForm.OptionMenu;
+			MenuItem_AlwayOnTop.Text = Language.mainForm.MenuItem_AlwayOnTop;
+			MenuItem_StopUpdate.Text = Language.mainForm.MenuItem_StopUpdate;
+			MenuItem_Language.Text = Language.mainForm.MenuItem_Language;
+			MenuItem_Language_Automatic.Text = Language.mainForm.MenuItem_Language_Automatic;
+			MenuItem_Settings.Text = Language.mainForm.MenuItem_Settings;
+			HelpMenu.Text = Language.mainForm.HelpMenu;
+			MenuItem_Manual.Text = Language.mainForm.MenuItem_Manual;
+			MenuItem_Version.Text = Language.mainForm.MenuItem_Version;
+		}
+
+		private void MenuItem_Language_Automatic_Click(object sender, EventArgs e)
+		{
+			MenuItem_Language_Automatic.Checked = true;
+			MenuItem_Language_Japanese.Checked = false;
+			MenuItem_Language_English.Checked = false;
+
+			Properties.Settings.Default.Language = "Automatic";
+			SetLanguage();
+		}
+
+		private void MenuItem_Language_Japanese_Click(object sender, EventArgs e)
+		{
+			MenuItem_Language_Automatic.Checked = false;
+			MenuItem_Language_Japanese.Checked = true;
+			MenuItem_Language_English.Checked = false;
+
+			Properties.Settings.Default.Language = "ja-JP";
+			SetLanguage();
+		}
+
+		private void MenuItem_Language_English_Click(object sender, EventArgs e)
+		{
+			MenuItem_Language_Automatic.Checked = false;
+			MenuItem_Language_Japanese.Checked = false;
+			MenuItem_Language_English.Checked = true;
+
+			Properties.Settings.Default.Language = "en-US";
+			SetLanguage();
 		}
 	}
 }

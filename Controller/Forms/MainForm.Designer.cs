@@ -52,6 +52,12 @@
 			this.MenuItem_AlwayOnTop = new System.Windows.Forms.ToolStripMenuItem();
 			this.MenuItem_StopUpdate = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.MenuItem_Language = new System.Windows.Forms.ToolStripMenuItem();
+			this.MenuItem_Language_Automatic = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+			this.MenuItem_Language_Japanese = new System.Windows.Forms.ToolStripMenuItem();
+			this.MenuItem_Language_English = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.MenuItem_Settings = new System.Windows.Forms.ToolStripMenuItem();
 			this.HelpMenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.MenuItem_Manual = new System.Windows.Forms.ToolStripMenuItem();
@@ -132,9 +138,9 @@
 			this.LosesLabel.Location = new System.Drawing.Point(16, 73);
 			this.LosesLabel.Margin = new System.Windows.Forms.Padding(8);
 			this.LosesLabel.Name = "LosesLabel";
-			this.LosesLabel.Size = new System.Drawing.Size(40, 15);
+			this.LosesLabel.Size = new System.Drawing.Size(46, 15);
 			this.LosesLabel.TabIndex = 0;
-			this.LosesLabel.Text = "Loses";
+			this.LosesLabel.Text = "Losses";
 			// 
 			// WinsUpDown
 			// 
@@ -298,6 +304,8 @@
             this.MenuItem_AlwayOnTop,
             this.MenuItem_StopUpdate,
             this.toolStripSeparator1,
+            this.MenuItem_Language,
+            this.toolStripSeparator3,
             this.MenuItem_Settings});
 			this.OptionMenu.Name = "OptionMenu";
 			this.OptionMenu.Size = new System.Drawing.Size(99, 22);
@@ -307,7 +315,7 @@
 			// 
 			this.MenuItem_AlwayOnTop.CheckOnClick = true;
 			this.MenuItem_AlwayOnTop.Name = "MenuItem_AlwayOnTop";
-			this.MenuItem_AlwayOnTop.Size = new System.Drawing.Size(172, 22);
+			this.MenuItem_AlwayOnTop.Size = new System.Drawing.Size(180, 22);
 			this.MenuItem_AlwayOnTop.Text = "常に最前面に表示";
 			this.MenuItem_AlwayOnTop.Click += new System.EventHandler(this.MenuItem_AlwayOnTop_Click);
 			// 
@@ -315,19 +323,63 @@
 			// 
 			this.MenuItem_StopUpdate.CheckOnClick = true;
 			this.MenuItem_StopUpdate.Name = "MenuItem_StopUpdate";
-			this.MenuItem_StopUpdate.Size = new System.Drawing.Size(172, 22);
+			this.MenuItem_StopUpdate.Size = new System.Drawing.Size(180, 22);
 			this.MenuItem_StopUpdate.Text = "反映を一時停止";
 			this.MenuItem_StopUpdate.Click += new System.EventHandler(this.MenuItem_StopUpdate_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+			// 
+			// MenuItem_Language
+			// 
+			this.MenuItem_Language.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItem_Language_Automatic,
+            this.toolStripSeparator4,
+            this.MenuItem_Language_Japanese,
+            this.MenuItem_Language_English});
+			this.MenuItem_Language.Name = "MenuItem_Language";
+			this.MenuItem_Language.Size = new System.Drawing.Size(180, 22);
+			this.MenuItem_Language.Text = "Language(&L)";
+			// 
+			// MenuItem_Language_Automatic
+			// 
+			this.MenuItem_Language_Automatic.Checked = true;
+			this.MenuItem_Language_Automatic.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.MenuItem_Language_Automatic.Name = "MenuItem_Language_Automatic";
+			this.MenuItem_Language_Automatic.Size = new System.Drawing.Size(180, 22);
+			this.MenuItem_Language_Automatic.Text = "自動";
+			this.MenuItem_Language_Automatic.Click += new System.EventHandler(this.MenuItem_Language_Automatic_Click);
+			// 
+			// toolStripSeparator4
+			// 
+			this.toolStripSeparator4.Name = "toolStripSeparator4";
+			this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
+			// 
+			// MenuItem_Language_Japanese
+			// 
+			this.MenuItem_Language_Japanese.Name = "MenuItem_Language_Japanese";
+			this.MenuItem_Language_Japanese.Size = new System.Drawing.Size(180, 22);
+			this.MenuItem_Language_Japanese.Text = "日本語";
+			this.MenuItem_Language_Japanese.Click += new System.EventHandler(this.MenuItem_Language_Japanese_Click);
+			// 
+			// MenuItem_Language_English
+			// 
+			this.MenuItem_Language_English.Name = "MenuItem_Language_English";
+			this.MenuItem_Language_English.Size = new System.Drawing.Size(180, 22);
+			this.MenuItem_Language_English.Text = "English";
+			this.MenuItem_Language_English.Click += new System.EventHandler(this.MenuItem_Language_English_Click);
+			// 
+			// toolStripSeparator3
+			// 
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
 			// 
 			// MenuItem_Settings
 			// 
 			this.MenuItem_Settings.Name = "MenuItem_Settings";
-			this.MenuItem_Settings.Size = new System.Drawing.Size(172, 22);
+			this.MenuItem_Settings.Size = new System.Drawing.Size(180, 22);
 			this.MenuItem_Settings.Text = "設定(&C)...";
 			this.MenuItem_Settings.Click += new System.EventHandler(this.MenuItem_Settings_Click);
 			// 
@@ -423,6 +475,12 @@
 		private System.Windows.Forms.ToolStripMenuItem MenuItem_Manual;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripMenuItem MenuItem_AlwayOnTop;
+		private System.Windows.Forms.ToolStripMenuItem MenuItem_Language;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+		private System.Windows.Forms.ToolStripMenuItem MenuItem_Language_Automatic;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+		private System.Windows.Forms.ToolStripMenuItem MenuItem_Language_Japanese;
+		private System.Windows.Forms.ToolStripMenuItem MenuItem_Language_English;
 	}
 }
 
