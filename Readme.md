@@ -8,4 +8,4 @@ It's like to Overwatch League.
 
 # Example for use
 
-![Mixer Comment Viewer](./Readme/Example.gif)
+![OwScoreBoard](./Readme/Example.gif)
