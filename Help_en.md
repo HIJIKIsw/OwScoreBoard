@@ -29,13 +29,13 @@ Before using OwScoreBoard, it must be configured with your choice of OBS (Open B
 
 1. Create a new Browser source in OBS by clicking on the + button under the Sources box and then select **Browser**.
 
-![OBS Image](./Help/OBS_Image1_en.png)
+	![OBS Image](./Help/OBS_Image1_en.png)
 
-![OBS Image](./Help/OBS_Image2_en.png)
+	![OBS Image](./Help/OBS_Image2_en.png)
 
 2. From the next dialog, select **Create new** and name it OwScoreBoard and click **OK**.
 
-![OBS Image](./Help/OBS_Image3_en.png)
+	![OBS Image](./Help/OBS_Image3_en.png)
 
 3. Enter the following values for the source Properties and then click **OK**:
 
