@@ -85,7 +85,14 @@
 		Elements.Draws1.text(ScoreFile.Draws);
 		Elements.Draws2.text(ScoreFile.Draws);
 
-		SetStartingRate(ScoreFile.StartingRate);
+		if( ScoreFile.IsInPlacement )
+		{
+			SetStartingRate(-1);
+		}
+		else
+		{
+			SetStartingRate(ScoreFile.StartingRate);
+		}
 	}
 
 	//--------------------------------------------------------------------------
@@ -194,6 +201,10 @@
 			}
 		}
 		if( ScoreFile.StartingRate != OldScoreFile.StartingRate )
+		{
+			UpdateType = "General";
+		}
+		if( ScoreFile.IsInPlacement != OldScoreFile.IsInPlacement )
 		{
 			UpdateType = "General";
 		}
@@ -374,7 +385,11 @@
 		$('#ScoreBoard > .StartingRate > .Rate > .sr').text(sr);
 		$('#ScoreBoard > .StartingRate > .Rate > .Division').hide();
 		
-		if( sr <= 1499 )
+		if( sr == -1 )
+		{
+			$('#ScoreBoard > .StartingRate > .Rate > .sr').text("In Placement");
+		}
+		else if( sr <= 1499 )
 		{
 			$('#ScoreBoard > .StartingRate > .Rate > .Division.Bronze').show();
 		}

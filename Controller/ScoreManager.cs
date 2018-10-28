@@ -25,16 +25,18 @@ namespace OwScoreBoardController
 			public int Loses;
 			public int Draws;
 			public int StartingRate;
+			public bool IsInPlacement;
 			public string TimeStamp;
 
 			/// <summary>
 			/// コンストラクタ
 			/// </summary>
-			public Score( int Wins, int Loses, int Draws, int StartingRate )
+			public Score( int Wins, int Loses, int Draws, int StartingRate, bool IsInPlacement )
 			{
 				this.Wins = Wins;
 				this.Loses = Loses;
 				this.Draws = Draws;
+				this.IsInPlacement = IsInPlacement;
 				this.StartingRate = StartingRate;
 			}
 
@@ -43,7 +45,7 @@ namespace OwScoreBoardController
 			/// </summary>
 			public static Score Default()
 			{
-				return new Score( 0, 0, 0, 1 );
+				return new Score( 0, 0, 0, 1, false );
 			}
 		}
 

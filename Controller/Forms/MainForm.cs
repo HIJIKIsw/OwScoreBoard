@@ -33,10 +33,6 @@ namespace OwScoreBoardController
 				DesktopLocation = WindowPosition;
 			}
 
-			// 常に最前面に表示状態を復元
-			this.TopMost = Properties.Settings.Default.AlwaysOnTop;
-			MenuItem_AlwayOnTop.Checked = this.TopMost;
-
 			// 最大化ボタンを無効化
 			this.MaximizeBox = false;
 
@@ -122,7 +118,7 @@ namespace OwScoreBoardController
 
 		private void SaveTimer_Tick( object sender, EventArgs e )
 		{
-			ScoreManager.Score Score = new ScoreManager.Score( (int)WinsUpDown.Value, (int)LosesUpDown.Value, (int)DrawsUpDown.Value, (int)StartingRateUpDown.Value );
+			ScoreManager.Score Score = new ScoreManager.Score( (int)WinsUpDown.Value, (int)LosesUpDown.Value, (int)DrawsUpDown.Value, (int)StartingRateUpDown.Value, InPlacementCheckbox.Checked );
 			ScoreManager.Save( Score );
 
 			SaveTimer.Enabled = false;
@@ -415,6 +411,27 @@ namespace OwScoreBoardController
 
 			Properties.Settings.Default.Language = "en-US";
 			SetLanguage();
+		}
+
+		private void InPlacementCheckbox_CheckedChanged(object sender, EventArgs e)
+		{
+			if (!MenuItem_StopUpdate.Checked)
+			{
+				ResetTimer();
+			}
+			else
+			{
+				SaveTimer.Enabled = false;
+			}
+
+			StartingRateUpDown.Enabled = !InPlacementCheckbox.Checked;
+		}
+
+		private void MainForm_Shown(object sender, EventArgs e)
+		{
+			// 常に最前面に表示状態を復元
+			this.TopMost = Properties.Settings.Default.AlwaysOnTop;
+			MenuItem_AlwayOnTop.Checked = this.TopMost;
 		}
 	}
 }
