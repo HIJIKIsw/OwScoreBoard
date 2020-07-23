@@ -1,101 +1,226 @@
 /*------------------------------------------------------------------------------
 * Web Fonts
 *-----------------------------------------------------------------------------*/
-@font-face { font-family: "Overwatch"; src: url(../font/koverwatch.ttf) format("truetype"); }
-
-@font-face { font-family: "iOverwatch"; src: url(../font/bignoodletoo.ttf) format("truetype"); }
-
+@font-face {
+  font-family: "Overwatch";
+  src: url(../font/koverwatch.ttf) format("truetype");
+}
+@font-face {
+  font-family: "iOverwatch";
+  src: url(../font/bignoodletoo.ttf) format("truetype");
+}
 /*------------------------------------------------------------------------------
 * Common
 *-----------------------------------------------------------------------------*/
-html, body { border: 0; margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; font-family: "Overwatch"; }
+html,
+body {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Overwatch";
+}
 
 /*------------------------------------------------------------------------------
 * Board
 *-----------------------------------------------------------------------------*/
-.Board { position: absolute; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 100%; overflow: hidden; }
-
-.Board > .Logo { height: 30vh; max-width: 100%; }
-
-.Board > .Logo > img { height: 100%; }
-
-.Board > .Name { font-size: 8vh; }
-
-.Board > .Result { font-size: 20vh; transform: scaleX(1.5); }
+.Board {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.Board > .Logo {
+  height: 30vh;
+  max-width: 100%;
+}
+.Board > .Logo > img {
+  height: 100%;
+}
+.Board > .Name {
+  font-size: 8vh;
+}
+.Board > .Result {
+  font-size: 20vh;
+  transform: scaleX(1.5);
+}
 
 /*------------------------------------------------------------------------------
 * Transition
 *-----------------------------------------------------------------------------*/
-#Transition { background: #DB7C00; z-index: 1000; margin-left: -100%; }
+#Transition {
+  background: #DB7C00;
+  z-index: 1000;
+  margin-left: -100%;
+}
 
 /*------------------------------------------------------------------------------
 * Wins, Loses, Draw
 *-----------------------------------------------------------------------------*/
-#Wins, #Loses, #Draw { background: #032340; color: white; }
+#Wins,
+#Loses,
+#Draw {
+  background: #032340;
+  color: white;
+}
 
 /*------------------------------------------------------------------------------
 * Scores
 *-----------------------------------------------------------------------------*/
-#Scores { background-image: url("../svg/owlogo.svg"); background-repeat: no-repeat; background-position: 50% 50%; background-size: auto 80vh; background-color: #000; white-space: nowrap; color: #333; }
-
-#Scores > .ScorePanel { position: absolute; display: flex; flex-direction: column; justify-items: center; align-items: center; padding: 4vh; background: white; z-index: 100; margin-left: -100%; }
-
-#Scores > .ScorePanel > .Caption { font-size: 10vh; }
-
-#Scores > .ScorePanel > .Score { font-size: 30vh; }
-
-#Scores > .ScorePanel > .Score > .Win { color: #8fbc8f; }
-
-#Scores > .ScorePanel > .Score > .Lose { color: #f08080; }
-
-#Scores > .ScorePanel > .Score > .Draw { color: #9daac8; }
+#Scores {
+  background-image: url("../svg/owlogo.svg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: auto 80vh;
+  background-color: #000;
+  white-space: nowrap;
+  color: #333;
+}
+#Scores > .ScorePanel {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  padding: 4vh;
+  background: white;
+  z-index: 100;
+  margin-left: -100%;
+}
+#Scores > .ScorePanel > .Caption {
+  font-size: 10vh;
+}
+#Scores > .ScorePanel > .Score {
+  font-size: 30vh;
+}
+#Scores > .ScorePanel > .Score > .Win {
+  color: #8fbc8f;
+}
+#Scores > .ScorePanel > .Score > .Lose {
+  color: #f08080;
+}
+#Scores > .ScorePanel > .Score > .Draw {
+  color: #9daac8;
+}
 
 /*------------------------------------------------------------------------------
 * Edges
 *-----------------------------------------------------------------------------*/
-#EdgeLeft, #EdgeRight { position: absolute; background: #DB7C00; width: 2vw; height: 100%; z-index: 100; }
+#EdgeLeft,
+#EdgeRight {
+  position: absolute;
+  background: #DB7C00;
+  width: 2vw;
+  height: 100%;
+  z-index: 100;
+}
 
-#EdgeLeft { left: -2vw; }
+#EdgeLeft {
+  left: -2vw;
+}
 
-#EdgeRight { right: -2vw; }
+#EdgeRight {
+  right: -2vw;
+}
 
 /*------------------------------------------------------------------------------
 * ScoreBoard
 *-----------------------------------------------------------------------------*/
-#ScoreBoard { display: flex; position: absolute; width: 100vw; color: #333; justify-content: center; align-items: center; }
-
-#ScoreBoard > .TodaysScore { display: flex; }
-
-#ScoreBoard > .TodaysScore > .Caption { display: flex; flex-direction: column; background: white; padding: 0.5vh 1vw; }
-
-#ScoreBoard > .TodaysScore > .Caption > .Small { font-size: 3vh; }
-
-#ScoreBoard > .TodaysScore > .Caption > .Big { font-size: 5vh; }
-
-#ScoreBoard > .TodaysScore > .Score { display: flex; background: #eee; padding: 0.5vh 0.5vw; font-size: 8vh; }
-
-#ScoreBoard > .TodaysScore > .Score > .Win, #ScoreBoard > .TodaysScore > .Score > .Lose, #ScoreBoard > .TodaysScore > .Score > .Draw { display: flex; width: 8vh; justify-content: center; }
-
-#ScoreBoard > .TodaysScore > .Score > .Win { color: #8fbc8f; }
-
-#ScoreBoard > .TodaysScore > .Score > .Lose { color: #f08080; }
-
-#ScoreBoard > .TodaysScore > .Score > .Draw { color: #9daac8; }
-
-#ScoreBoard .Spacer { flex-basis: 3vw; }
-
-#ScoreBoard .StartingRate { display: flex; }
-
-#ScoreBoard .StartingRate > .Caption { display: flex; flex-direction: column; background: white; padding: 0.5vh 1vw; }
-
-#ScoreBoard .StartingRate > .Caption > .Small { font-size: 3vh; }
-
-#ScoreBoard .StartingRate > .Caption > .Big { font-size: 5vh; }
-
-#ScoreBoard .StartingRate > .Rate { background: #eee; padding: 0.5vh 1.5vw 0.5vh 1vw; font-size: 8vh; }
-
-#ScoreBoard .StartingRate > .Rate .Division { vertical-align: bottom; height: 8vh; }
-
-#ScoreBoard .StartingRate > .Rate .Division:not(.Bronze) { display: none; }
-
-/*# sourceMappingURL=main.css.map */
+#ScoreBoard {
+  display: flex;
+  position: absolute;
+  width: 100vw;
+  color: #333;
+  justify-content: center;
+  align-items: center;
+}
+#ScoreBoard > .TodaysScore {
+  display: flex;
+}
+#ScoreBoard > .TodaysScore > .Caption {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding: 0.5vh 1vw;
+}
+#ScoreBoard > .TodaysScore > .Caption > .Small {
+  font-size: 3vh;
+}
+#ScoreBoard > .TodaysScore > .Caption > .Big {
+  font-size: 5vh;
+}
+#ScoreBoard > .TodaysScore > .Score {
+  display: flex;
+  background: #eee;
+  padding: 0.5vh 0.5vw;
+  font-size: 8vh;
+}
+#ScoreBoard > .TodaysScore > .Score > .Win,
+#ScoreBoard > .TodaysScore > .Score > .Lose,
+#ScoreBoard > .TodaysScore > .Score > .Draw {
+  display: flex;
+  width: 8vh;
+  justify-content: center;
+}
+#ScoreBoard > .TodaysScore > .Score > .Win {
+  color: #8fbc8f;
+}
+#ScoreBoard > .TodaysScore > .Score > .Lose {
+  color: #f08080;
+}
+#ScoreBoard > .TodaysScore > .Score > .Draw {
+  color: #9daac8;
+}
+#ScoreBoard .Spacer {
+  flex-basis: 3vw;
+}
+#ScoreBoard .StartingRate {
+  display: flex;
+}
+#ScoreBoard .StartingRate > .Caption {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding: 0.5vh 1vw;
+}
+#ScoreBoard .StartingRate > .Caption > .Small {
+  font-size: 3vh;
+}
+#ScoreBoard .StartingRate > .Caption > .Big {
+  font-size: 5vh;
+}
+#ScoreBoard .StartingRate > .RateContainer {
+  background: #eee;
+}
+#ScoreBoard .StartingRate > .RateContainer > .Role {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.5vh 1.5vw 0.5vh 1vw;
+  font-size: 8vh;
+}
+#ScoreBoard .StartingRate > .RateContainer > .Role:not(.Tank) {
+  opacity: 0;
+}
+#ScoreBoard .StartingRate > .RateContainer > .Role > .RoleIcon img {
+  height: 6vh;
+}
+#ScoreBoard .StartingRate > .RateContainer > .Role > .SkillRate {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+}
+#ScoreBoard .StartingRate > .RateContainer > .Role > .SkillRate > .Division {
+  vertical-align: bottom;
+  height: 8vh;
+}
+#ScoreBoard .StartingRate > .RateContainer > .Role > .SkillRate > .Division:not(.Bronze) {
+  display: none;
+}

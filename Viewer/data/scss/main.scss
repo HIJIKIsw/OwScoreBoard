@@ -208,7 +208,7 @@ body
 
 			>.Win,
 			>.Lose,
-			>.Draw,
+			>.Draw
 			{
 				display: flex;
 				width: 8vh;
@@ -265,21 +265,50 @@ body
 	
 		}
 	
-		>.Rate
+		>.RateContainer
 		{
 			background: #eee;
-			padding: 0.5vh 1.5vw 0.5vh 1vw;
-			font-size: 8vh;
 
-			.Division,
+			>.Role
 			{
-				vertical-align: bottom;
-				height: 8vh;
+				position: absolute;
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
 
-				&:not(.Bronze)
+				padding: 0.5vh 1.5vw 0.5vh 1vw;
+				font-size: 8vh;
+	
+				&:not(.Tank)
 				{
-					display: none;
+					opacity: 0;
 				}
+
+				>.RoleIcon
+				{
+					img
+					{
+						height: 6vh;
+					}
+				}
+	
+				>.SkillRate
+				{
+					display: flex;
+					flex-grow: 1;
+					justify-content: center;
+	
+					>.Division
+					{
+						vertical-align: bottom;
+						height: 8vh;
+		
+						&:not(.Bronze)
+						{
+							display: none;
+						}
+					}
+				}	
 			}
 		}
 
