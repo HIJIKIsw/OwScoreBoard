@@ -641,7 +641,7 @@ namespace OwScoreBoardController
 			DamageStartingRateEnabledCheckBox.Enabled = !IsOpenQueueMode;
 			SupportStartingRateEnabledCheckBox.Enabled = !IsOpenQueueMode;
 
-			TankStartingRateUpDown.Enabled = (!TankInPlacementCheckbox.Checked || (TankStartingRateEnabledCheckBox.Checked && !TankInPlacementCheckbox.Checked));
+			TankStartingRateUpDown.Enabled = (IsOpenQueueMode && !TankInPlacementCheckbox.Checked || (TankStartingRateEnabledCheckBox.Checked && !TankInPlacementCheckbox.Checked));
 			DamageStartingRateUpDown.Enabled = (!IsOpenQueueMode && DamageStartingRateEnabledCheckBox.Checked && !DamageInPlacementCheckbox.Checked);
 			SupportStartingRateUpDown.Enabled = (!IsOpenQueueMode && SupportStartingRateEnabledCheckBox.Checked && !SupportInPlacementCheckbox.Checked);
 
