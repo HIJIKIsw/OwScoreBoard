@@ -57,7 +57,16 @@ namespace OwScoreBoardController
 			WinsUpDown.Value = Score.Wins;
 			LosesUpDown.Value = Score.Loses;
 			DrawsUpDown.Value = Score.Draws;
-			StartingRateUpDown.Value = Score.StartingRate;
+			TankStartingRateEnabledCheckBox.Checked = Score.IsTankStartingRateEnabled;
+			DamageStartingRateEnabledCheckBox.Checked = Score.IsDamageStartingRateEnabled;
+			SupportStartingRateEnabledCheckBox.Checked = Score.IsSupportStartingRateEnabled;
+			TankStartingRateUpDown.Value = Score.TankStartingRate;
+			DamageStartingRateUpDown.Value = Score.DamageStartingRate;
+			SupportStartingRateUpDown.Value = Score.SupportStartingRate;
+			TankInPlacementCheckbox.Checked = Score.IsTankInPlacement;
+			DamageInPlacementCheckbox.Checked = Score.IsDamageInPlacement;
+			SupportInPlacementCheckbox.Checked = Score.IsSupportInPlacement;
+			SetQueMode(Score.IsOpenQueueMode);
 
 			// ホットキーをセット
 			SetHotkeyFromConfig();
@@ -92,9 +101,33 @@ namespace OwScoreBoardController
 			}
 		}
 
-		private void StartingRateUpDown_ValueChanged( object sender, EventArgs e )
+		private void TankStartingRateUpDown_ValueChanged( object sender, EventArgs e )
 		{
 			if( !MenuItem_StopUpdate.Checked )
+			{
+				ResetTimer();
+			}
+			else
+			{
+				SaveTimer.Enabled = false;
+			}
+		}
+
+		private void DamageStartingRateUpDown_ValueChanged(object sender, EventArgs e)
+		{
+			if (!MenuItem_StopUpdate.Checked)
+			{
+				ResetTimer();
+			}
+			else
+			{
+				SaveTimer.Enabled = false;
+			}
+		}
+
+		private void SupportStartingRateUpDown_ValueChanged(object sender, EventArgs e)
+		{
+			if (!MenuItem_StopUpdate.Checked)
 			{
 				ResetTimer();
 			}
@@ -118,14 +151,25 @@ namespace OwScoreBoardController
 
 		private void SaveTimer_Tick( object sender, EventArgs e )
 		{
-			ScoreManager.Score Score = new ScoreManager.Score( (int)WinsUpDown.Value, (int)LosesUpDown.Value, (int)DrawsUpDown.Value, (int)StartingRateUpDown.Value, InPlacementCheckbox.Checked );
-			ScoreManager.Save( Score );
+			SaveScore();
 
 			SaveTimer.Enabled = false;
 			WinButton.Enabled = true;
 			LoseButton.Enabled = true;
 			DrawButton.Enabled = true;
-			ResetButton.Enabled = true;
+		}
+
+		private void SaveScore()
+		{
+			ScoreManager.Score Score = new ScoreManager.Score
+			(
+				(int)WinsUpDown.Value, (int)LosesUpDown.Value, (int)DrawsUpDown.Value,
+				TankStartingRateEnabledCheckBox.Checked, DamageStartingRateEnabledCheckBox.Checked, SupportStartingRateEnabledCheckBox.Checked,
+				(int)TankStartingRateUpDown.Value, (int)DamageStartingRateUpDown.Value, (int)SupportStartingRateUpDown.Value,
+				TankInPlacementCheckbox.Checked, DamageInPlacementCheckbox.Checked, SupportInPlacementCheckbox.Checked,
+				MenuItem_SwitchMode_OpenQueue.Checked
+			);
+			ScoreManager.Save(Score);
 		}
 
 		private void ResetTimer()
@@ -145,7 +189,6 @@ namespace OwScoreBoardController
 					WinButton.Enabled = false;
 					LoseButton.Enabled = false;
 					DrawButton.Enabled = false;
-					ResetButton.Enabled = false;
 					ResetTimer();
 				}
 			}
@@ -162,7 +205,6 @@ namespace OwScoreBoardController
 					WinButton.Enabled = false;
 					LoseButton.Enabled = false;
 					DrawButton.Enabled = false;
-					ResetButton.Enabled = false;
 					ResetTimer();
 				}
 			}
@@ -179,16 +221,33 @@ namespace OwScoreBoardController
 					WinButton.Enabled = false;
 					LoseButton.Enabled = false;
 					DrawButton.Enabled = false;
-					ResetButton.Enabled = false;
 					ResetTimer();
 				}
 			}
 		}
 
-		private void ResetButton_Click( object sender, EventArgs e )
+		private void MenuItem_ClearScore_Click( object sender, EventArgs e )
 		{
-			DialogResult Result = MessageBox.Show( "スコアをリセットしてよろしいですか？",
-				"スコアのリセット",
+			LanguageManager.Language Language;
+
+			// 設定に応じた言語オブジェクトを取得
+			if (Properties.Settings.Default.Language == "Automatic")
+			{
+				// OS の言語を取得
+				string OSLanguage = System.Globalization.CultureInfo.CurrentCulture.Name;
+				Language = LanguageManager.Get(OSLanguage);
+			}
+			else
+			{
+				Language = LanguageManager.Get(Properties.Settings.Default.Language);
+			}
+
+			string ConfirmMessage = Language.ScoreClearConfirmMessage;
+			string ConfirmTitle = Language.ScoreClearConfirmTitle;
+
+
+			DialogResult Result = MessageBox.Show( ConfirmMessage,
+				ConfirmTitle,
 				MessageBoxButtons.OKCancel,
 				MessageBoxIcon.Information,
 				MessageBoxDefaultButton.Button2 );
@@ -204,7 +263,6 @@ namespace OwScoreBoardController
 					WinButton.Enabled = false;
 					LoseButton.Enabled = false;
 					DrawButton.Enabled = false;
-					ResetButton.Enabled = false;
 					ResetTimer();
 				}
 			}
@@ -278,15 +336,43 @@ namespace OwScoreBoardController
 			}
 		}
 
-		private void StartingRateUpDown_KeyUp( object sender, KeyEventArgs e )
+		private void TankStartingRateUpDown_KeyUp( object sender, KeyEventArgs e )
 		{
-			if( StartingRateUpDown.Text == string.Empty )
+			if( TankStartingRateUpDown.Text == string.Empty )
 			{
-				StartingRateUpDown.Value = 1;
-				StartingRateUpDown.Text = "1";
+				TankStartingRateUpDown.Value = 1;
+				TankStartingRateUpDown.Text = "1";
 			}
 
 			if( !MenuItem_StopUpdate.Checked )
+			{
+				ResetTimer();
+			}
+		}
+
+		private void DamageStartingRateUpDown_KeyUp(object sender, KeyEventArgs e)
+		{
+			if (DamageStartingRateUpDown.Text == string.Empty)
+			{
+				DamageStartingRateUpDown.Value = 1;
+				DamageStartingRateUpDown.Text = "1";
+			}
+
+			if (!MenuItem_StopUpdate.Checked)
+			{
+				ResetTimer();
+			}
+		}
+
+		private void SupportStartingRateUpDown_KeyUp(object sender, KeyEventArgs e)
+		{
+			if (SupportStartingRateUpDown.Text == string.Empty)
+			{
+				SupportStartingRateUpDown.Value = 1;
+				SupportStartingRateUpDown.Text = "1";
+			}
+
+			if (!MenuItem_StopUpdate.Checked)
 			{
 				ResetTimer();
 			}
@@ -345,6 +431,7 @@ namespace OwScoreBoardController
 			Properties.Settings.Default.WindowPosition = DesktopLocation;
 
 			// 設定を保存する
+			SaveScore();
 			Properties.Settings.Default.Save();
 		}
 
@@ -396,6 +483,10 @@ namespace OwScoreBoardController
 			OptionMenu.Text = Language.mainForm.OptionMenu;
 			MenuItem_AlwayOnTop.Text = Language.mainForm.MenuItem_AlwayOnTop;
 			MenuItem_StopUpdate.Text = Language.mainForm.MenuItem_StopUpdate;
+			MenuItem_ClearScore.Text = Language.mainForm.MenuItem_ClearScore;
+			MenuItem_SwitchMode.Text = Language.mainForm.MenuItem_SwitchMode;
+			MenuItem_SwitchMode_RoleQueue.Text = Language.mainForm.MenuItem_SwitchMode_RoleQueue;
+			MenuItem_SwitchMode_OpenQueue.Text = Language.mainForm.MenuItem_SwitchMode_OpenQueue;
 			MenuItem_Language.Text = Language.mainForm.MenuItem_Language;
 			MenuItem_Language_Automatic.Text = Language.mainForm.MenuItem_Language_Automatic;
 			MenuItem_Settings.Text = Language.mainForm.MenuItem_Settings;
@@ -445,7 +536,35 @@ namespace OwScoreBoardController
 				SaveTimer.Enabled = false;
 			}
 
-			StartingRateUpDown.Enabled = !InPlacementCheckbox.Checked;
+			TankStartingRateUpDown.Enabled = !TankInPlacementCheckbox.Checked;
+		}
+
+		private void DamageInPlacementCheckbox_CheckedChanged(object sender, EventArgs e)
+		{
+			if (!MenuItem_StopUpdate.Checked)
+			{
+				ResetTimer();
+			}
+			else
+			{
+				SaveTimer.Enabled = false;
+			}
+
+			DamageStartingRateUpDown.Enabled = !DamageInPlacementCheckbox.Checked;
+		}
+
+		private void SupportInPlacementCheckbox_CheckedChanged(object sender, EventArgs e)
+		{
+			if (!MenuItem_StopUpdate.Checked)
+			{
+				ResetTimer();
+			}
+			else
+			{
+				SaveTimer.Enabled = false;
+			}
+
+			SupportStartingRateUpDown.Enabled = !SupportInPlacementCheckbox.Checked;
 		}
 
 		private void MainForm_Shown(object sender, EventArgs e)
@@ -453,6 +572,91 @@ namespace OwScoreBoardController
 			// 常に最前面に表示状態を復元
 			this.TopMost = Properties.Settings.Default.AlwaysOnTop;
 			MenuItem_AlwayOnTop.Checked = this.TopMost;
+		}
+
+		private void StartingRateTankCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			bool enabled = TankStartingRateEnabledCheckBox.Checked;
+			TankStartingRateUpDown.Enabled = enabled && !TankInPlacementCheckbox.Checked;
+			TankInPlacementCheckbox.Enabled = enabled;
+
+			if (!MenuItem_StopUpdate.Checked)
+			{
+				ResetTimer();
+			}
+			else
+			{
+				SaveTimer.Enabled = false;
+			}
+		}
+
+		private void StartingRateDamageCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			bool enabled = DamageStartingRateEnabledCheckBox.Checked;
+			DamageStartingRateUpDown.Enabled = enabled && !DamageInPlacementCheckbox.Checked;
+			DamageInPlacementCheckbox.Enabled = enabled;
+
+			if (!MenuItem_StopUpdate.Checked)
+			{
+				ResetTimer();
+			}
+			else
+			{
+				SaveTimer.Enabled = false;
+			}
+		}
+
+		private void StartingRateSupportCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			bool enabled = SupportStartingRateEnabledCheckBox.Checked;
+			SupportStartingRateUpDown.Enabled = enabled && !SupportInPlacementCheckbox.Checked;
+			SupportInPlacementCheckbox.Enabled = enabled;
+
+			if (!MenuItem_StopUpdate.Checked)
+			{
+				ResetTimer();
+			}
+			else
+			{
+				SaveTimer.Enabled = false;
+			}
+		}
+
+		private void MenuItem_SwitchOpenQueueMode_Click(object sender, EventArgs e)
+		{
+			SetQueMode(true);
+		}
+
+		private void MenuItem_SwitchRoleQueueMode_Click(object sender, EventArgs e)
+		{
+			SetQueMode(false);
+		}
+
+		private void SetQueMode(bool IsOpenQueueMode)
+		{
+			MenuItem_SwitchMode_OpenQueue.Checked = IsOpenQueueMode;
+			MenuItem_SwitchMode_RoleQueue.Checked = !IsOpenQueueMode;
+
+			TankStartingRateEnabledCheckBox.Enabled = !IsOpenQueueMode;
+			DamageStartingRateEnabledCheckBox.Enabled = !IsOpenQueueMode;
+			SupportStartingRateEnabledCheckBox.Enabled = !IsOpenQueueMode;
+
+			TankStartingRateUpDown.Enabled = (!TankInPlacementCheckbox.Checked || (TankStartingRateEnabledCheckBox.Checked && !TankInPlacementCheckbox.Checked));
+			DamageStartingRateUpDown.Enabled = (!IsOpenQueueMode && DamageStartingRateEnabledCheckBox.Checked && !DamageInPlacementCheckbox.Checked);
+			SupportStartingRateUpDown.Enabled = (!IsOpenQueueMode && SupportStartingRateEnabledCheckBox.Checked && !SupportInPlacementCheckbox.Checked);
+
+			TankInPlacementCheckbox.Enabled = (IsOpenQueueMode || TankStartingRateEnabledCheckBox.Checked);
+			DamageInPlacementCheckbox.Enabled = (!IsOpenQueueMode && DamageStartingRateEnabledCheckBox.Checked);
+			SupportInPlacementCheckbox.Enabled = (!IsOpenQueueMode && SupportStartingRateEnabledCheckBox.Checked);
+
+			if (!MenuItem_StopUpdate.Checked)
+			{
+				ResetTimer();
+			}
+			else
+			{
+				SaveTimer.Enabled = false;
+			}
 		}
 	}
 }

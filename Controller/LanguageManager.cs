@@ -34,6 +34,10 @@ namespace OwScoreBoardController
 				public string OptionMenu;
 				public string MenuItem_AlwayOnTop;                                  // 常に最前面に表示
 				public string MenuItem_StopUpdate;                                  // 反映を一時停止
+				public string MenuItem_ClearScore;                                  // スコアをクリア
+				public string MenuItem_SwitchMode;                                  // モードを切り替え
+				public string MenuItem_SwitchMode_RoleQueue;                        // モードを切り替え -> ロールキュー
+				public string MenuItem_SwitchMode_OpenQueue;                        // モードを切り替え - オープンキュー
 				public string MenuItem_Language;                                    // 言語
 				public string MenuItem_Language_Automatic;                          // 言語 -> 自動
 				public string MenuItem_Settings;                                    // 設定
@@ -98,6 +102,11 @@ namespace OwScoreBoardController
 			// F12 キーを単一でホットキーに設定した場合に表示される警告
 			public string InvalidHotkeyWarningTitle;
 			public string InvalidHotkeyWarningMessage;
+
+			// スコアクリアの確認メッセージ
+			public string ScoreClearConfirmMessage;
+			public string ScoreClearConfirmTitle;
+
 		}
 
 		/// <summary>
@@ -134,6 +143,10 @@ namespace OwScoreBoardController
 			Japanese.mainForm.OptionMenu = "オプション(&O)";
 			Japanese.mainForm.MenuItem_AlwayOnTop = "常に最前面に表示";
 			Japanese.mainForm.MenuItem_StopUpdate = "反映を一時停止";
+			Japanese.mainForm.MenuItem_ClearScore = "スコアをクリア";
+			Japanese.mainForm.MenuItem_SwitchMode = "モードを切り替え";
+			Japanese.mainForm.MenuItem_SwitchMode_RoleQueue = "ロールキュー";
+			Japanese.mainForm.MenuItem_SwitchMode_OpenQueue = "オープンキュー";
 			Japanese.mainForm.MenuItem_Language = "Language(&L)";
 			Japanese.mainForm.MenuItem_Language_Automatic = "自動";
 			Japanese.mainForm.MenuItem_Settings = "設定(&C)...";
@@ -169,6 +182,10 @@ namespace OwScoreBoardController
 			Japanese.InvalidHotkeyWarningMessage = "F12 キーは単体で設定しても動作しないことがあります。\r\nCtrl, Shift, Alt のいずれかと併せてご使用ください。\r\n\r\n警告を無視してこのまま続行しますか？";
 			Japanese.InvalidHotkeyWarningTitle = "警告";
 
+			// スコアクリアの確認メッセージ
+			Japanese.ScoreClearConfirmMessage = "スコアをクリアしてよろしいですか？";
+			Japanese.ScoreClearConfirmTitle = "スコアのクリア";
+
 			return Japanese;
 		}
 
@@ -185,6 +202,10 @@ namespace OwScoreBoardController
 			English.mainForm.OptionMenu = "Options(&O)";
 			English.mainForm.MenuItem_AlwayOnTop = "Always On Top";
 			English.mainForm.MenuItem_StopUpdate = "Suspend Updates";
+			English.mainForm.MenuItem_ClearScore = "Clear Score";
+			English.mainForm.MenuItem_SwitchMode = "Switch Mode";
+			English.mainForm.MenuItem_SwitchMode_RoleQueue = "Role Queue";
+			English.mainForm.MenuItem_SwitchMode_OpenQueue = "Open Queue";
 			English.mainForm.MenuItem_Language = "Language(&L)";
 			English.mainForm.MenuItem_Language_Automatic = "Automatic";
 			English.mainForm.MenuItem_Settings = "Settings(&C)...";
@@ -220,6 +241,9 @@ namespace OwScoreBoardController
 			English.InvalidHotkeyWarningMessage = "The F12 key may not operate even if it is set as a single hotkey.\r\nPlease use it together with Ctrl, Shift, Alt.\r\n\r\nIgnore the warning and continue this way?";
 			English.InvalidHotkeyWarningTitle = "Caution";
 
+			// スコアクリアの確認メッセージ
+			English.ScoreClearConfirmMessage = "Are you sure you want to clear the score?";
+			English.ScoreClearConfirmTitle = "Clear Score";
 
 			return English;
 		}

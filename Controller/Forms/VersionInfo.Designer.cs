@@ -69,7 +69,7 @@
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(82, 15);
 			this.label1.TabIndex = 2;
-			this.label1.Text = "Version 1.4.0";
+			this.label1.Text = "Version 1.5.0";
 			// 
 			// label2
 			// 
@@ -79,7 +79,7 @@
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(104, 15);
 			this.label2.TabIndex = 3;
-			this.label2.Text = "©2018 HIJIKIsw";
+			this.label2.Text = "©2020 HIJIKIsw";
 			// 
 			// label3
 			// 

@@ -38,9 +38,15 @@
 			this.WinsUpDown = new System.Windows.Forms.NumericUpDown();
 			this.WinsLabel = new System.Windows.Forms.Label();
 			this.StartingRateGroupBox = new System.Windows.Forms.GroupBox();
-			this.InPlacementCheckbox = new System.Windows.Forms.CheckBox();
-			this.StartingRateUpDown = new System.Windows.Forms.NumericUpDown();
-			this.ResetButton = new System.Windows.Forms.Button();
+			this.SupportInPlacementCheckbox = new System.Windows.Forms.CheckBox();
+			this.DamageInPlacementCheckbox = new System.Windows.Forms.CheckBox();
+			this.SupportStartingRateEnabledCheckBox = new System.Windows.Forms.CheckBox();
+			this.DamageStartingRateEnabledCheckBox = new System.Windows.Forms.CheckBox();
+			this.SupportStartingRateUpDown = new System.Windows.Forms.NumericUpDown();
+			this.TankStartingRateEnabledCheckBox = new System.Windows.Forms.CheckBox();
+			this.DamageStartingRateUpDown = new System.Windows.Forms.NumericUpDown();
+			this.TankInPlacementCheckbox = new System.Windows.Forms.CheckBox();
+			this.TankStartingRateUpDown = new System.Windows.Forms.NumericUpDown();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.DrawButton = new System.Windows.Forms.Button();
 			this.LoseButton = new System.Windows.Forms.Button();
@@ -52,6 +58,10 @@
 			this.OptionMenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.MenuItem_AlwayOnTop = new System.Windows.Forms.ToolStripMenuItem();
 			this.MenuItem_StopUpdate = new System.Windows.Forms.ToolStripMenuItem();
+			this.MenuItem_ClearScore = new System.Windows.Forms.ToolStripMenuItem();
+			this.MenuItem_SwitchMode = new System.Windows.Forms.ToolStripMenuItem();
+			this.MenuItem_SwitchMode_RoleQueue = new System.Windows.Forms.ToolStripMenuItem();
+			this.MenuItem_SwitchMode_OpenQueue = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.MenuItem_Language = new System.Windows.Forms.ToolStripMenuItem();
 			this.MenuItem_Language_Automatic = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,7 +79,9 @@
 			((System.ComponentModel.ISupportInitialize)(this.LosesUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.WinsUpDown)).BeginInit();
 			this.StartingRateGroupBox.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.StartingRateUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.SupportStartingRateUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.DamageStartingRateUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.TankStartingRateUpDown)).BeginInit();
 			this.groupBox1.SuspendLayout();
 			this.MenuBar.SuspendLayout();
 			this.SuspendLayout();
@@ -171,67 +183,173 @@
 			// 
 			// StartingRateGroupBox
 			// 
-			this.StartingRateGroupBox.Controls.Add(this.InPlacementCheckbox);
-			this.StartingRateGroupBox.Controls.Add(this.StartingRateUpDown);
+			this.StartingRateGroupBox.Controls.Add(this.SupportInPlacementCheckbox);
+			this.StartingRateGroupBox.Controls.Add(this.DamageInPlacementCheckbox);
+			this.StartingRateGroupBox.Controls.Add(this.SupportStartingRateEnabledCheckBox);
+			this.StartingRateGroupBox.Controls.Add(this.DamageStartingRateEnabledCheckBox);
+			this.StartingRateGroupBox.Controls.Add(this.SupportStartingRateUpDown);
+			this.StartingRateGroupBox.Controls.Add(this.TankStartingRateEnabledCheckBox);
+			this.StartingRateGroupBox.Controls.Add(this.DamageStartingRateUpDown);
+			this.StartingRateGroupBox.Controls.Add(this.TankInPlacementCheckbox);
+			this.StartingRateGroupBox.Controls.Add(this.TankStartingRateUpDown);
 			this.StartingRateGroupBox.Location = new System.Drawing.Point(17, 202);
 			this.StartingRateGroupBox.Margin = new System.Windows.Forms.Padding(8);
 			this.StartingRateGroupBox.Name = "StartingRateGroupBox";
 			this.StartingRateGroupBox.Padding = new System.Windows.Forms.Padding(8);
-			this.StartingRateGroupBox.Size = new System.Drawing.Size(144, 96);
+			this.StartingRateGroupBox.Size = new System.Drawing.Size(334, 149);
 			this.StartingRateGroupBox.TabIndex = 1;
 			this.StartingRateGroupBox.TabStop = false;
 			this.StartingRateGroupBox.Text = "Starting Rate";
 			// 
-			// InPlacementCheckbox
+			// SupportInPlacementCheckbox
 			// 
-			this.InPlacementCheckbox.AutoSize = true;
-			this.InPlacementCheckbox.Location = new System.Drawing.Point(11, 66);
-			this.InPlacementCheckbox.Name = "InPlacementCheckbox";
-			this.InPlacementCheckbox.Size = new System.Drawing.Size(103, 19);
-			this.InPlacementCheckbox.TabIndex = 1;
-			this.InPlacementCheckbox.Text = "In Placement";
-			this.InPlacementCheckbox.UseVisualStyleBackColor = true;
-			this.InPlacementCheckbox.CheckedChanged += new System.EventHandler(this.InPlacementCheckbox_CheckedChanged);
+			this.SupportInPlacementCheckbox.AutoSize = true;
+			this.SupportInPlacementCheckbox.Location = new System.Drawing.Point(220, 111);
+			this.SupportInPlacementCheckbox.Name = "SupportInPlacementCheckbox";
+			this.SupportInPlacementCheckbox.Size = new System.Drawing.Size(103, 19);
+			this.SupportInPlacementCheckbox.TabIndex = 12;
+			this.SupportInPlacementCheckbox.Text = "In Placement";
+			this.SupportInPlacementCheckbox.UseVisualStyleBackColor = true;
+			this.SupportInPlacementCheckbox.CheckedChanged += new System.EventHandler(this.SupportInPlacementCheckbox_CheckedChanged);
 			// 
-			// StartingRateUpDown
+			// DamageInPlacementCheckbox
 			// 
-			this.StartingRateUpDown.Location = new System.Drawing.Point(11, 32);
-			this.StartingRateUpDown.Margin = new System.Windows.Forms.Padding(8);
-			this.StartingRateUpDown.Maximum = new decimal(new int[] {
+			this.DamageInPlacementCheckbox.AutoSize = true;
+			this.DamageInPlacementCheckbox.Location = new System.Drawing.Point(220, 72);
+			this.DamageInPlacementCheckbox.Name = "DamageInPlacementCheckbox";
+			this.DamageInPlacementCheckbox.Size = new System.Drawing.Size(103, 19);
+			this.DamageInPlacementCheckbox.TabIndex = 11;
+			this.DamageInPlacementCheckbox.Text = "In Placement";
+			this.DamageInPlacementCheckbox.UseVisualStyleBackColor = true;
+			this.DamageInPlacementCheckbox.CheckedChanged += new System.EventHandler(this.DamageInPlacementCheckbox_CheckedChanged);
+			// 
+			// SupportStartingRateEnabledCheckBox
+			// 
+			this.SupportStartingRateEnabledCheckBox.AutoSize = true;
+			this.SupportStartingRateEnabledCheckBox.Checked = true;
+			this.SupportStartingRateEnabledCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.SupportStartingRateEnabledCheckBox.Location = new System.Drawing.Point(11, 111);
+			this.SupportStartingRateEnabledCheckBox.Name = "SupportStartingRateEnabledCheckBox";
+			this.SupportStartingRateEnabledCheckBox.Size = new System.Drawing.Size(72, 19);
+			this.SupportStartingRateEnabledCheckBox.TabIndex = 10;
+			this.SupportStartingRateEnabledCheckBox.Text = "Support";
+			this.SupportStartingRateEnabledCheckBox.UseVisualStyleBackColor = true;
+			this.SupportStartingRateEnabledCheckBox.CheckedChanged += new System.EventHandler(this.StartingRateSupportCheckBox_CheckedChanged);
+			// 
+			// DamageStartingRateEnabledCheckBox
+			// 
+			this.DamageStartingRateEnabledCheckBox.AutoSize = true;
+			this.DamageStartingRateEnabledCheckBox.Checked = true;
+			this.DamageStartingRateEnabledCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.DamageStartingRateEnabledCheckBox.Location = new System.Drawing.Point(11, 72);
+			this.DamageStartingRateEnabledCheckBox.Name = "DamageStartingRateEnabledCheckBox";
+			this.DamageStartingRateEnabledCheckBox.Size = new System.Drawing.Size(75, 19);
+			this.DamageStartingRateEnabledCheckBox.TabIndex = 9;
+			this.DamageStartingRateEnabledCheckBox.Text = "Damage";
+			this.DamageStartingRateEnabledCheckBox.UseVisualStyleBackColor = true;
+			this.DamageStartingRateEnabledCheckBox.CheckedChanged += new System.EventHandler(this.StartingRateDamageCheckBox_CheckedChanged);
+			// 
+			// SupportStartingRateUpDown
+			// 
+			this.SupportStartingRateUpDown.Location = new System.Drawing.Point(97, 110);
+			this.SupportStartingRateUpDown.Margin = new System.Windows.Forms.Padding(8);
+			this.SupportStartingRateUpDown.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-			this.StartingRateUpDown.Minimum = new decimal(new int[] {
+			this.SupportStartingRateUpDown.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-			this.StartingRateUpDown.Name = "StartingRateUpDown";
-			this.StartingRateUpDown.Size = new System.Drawing.Size(112, 23);
-			this.StartingRateUpDown.TabIndex = 0;
-			this.StartingRateUpDown.Value = new decimal(new int[] {
+			this.SupportStartingRateUpDown.Name = "SupportStartingRateUpDown";
+			this.SupportStartingRateUpDown.Size = new System.Drawing.Size(112, 23);
+			this.SupportStartingRateUpDown.TabIndex = 8;
+			this.SupportStartingRateUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-			this.StartingRateUpDown.ValueChanged += new System.EventHandler(this.StartingRateUpDown_ValueChanged);
-			this.StartingRateUpDown.KeyUp += new System.Windows.Forms.KeyEventHandler(this.StartingRateUpDown_KeyUp);
+			this.SupportStartingRateUpDown.ValueChanged += new System.EventHandler(this.SupportStartingRateUpDown_ValueChanged);
+			this.SupportStartingRateUpDown.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SupportStartingRateUpDown_KeyUp);
 			// 
-			// ResetButton
+			// TankStartingRateEnabledCheckBox
 			// 
-			this.ResetButton.Location = new System.Drawing.Point(16, 149);
-			this.ResetButton.Margin = new System.Windows.Forms.Padding(8);
-			this.ResetButton.Name = "ResetButton";
-			this.ResetButton.Size = new System.Drawing.Size(96, 23);
-			this.ResetButton.TabIndex = 8;
-			this.ResetButton.Text = "Reset";
-			this.ResetButton.UseVisualStyleBackColor = true;
-			this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
+			this.TankStartingRateEnabledCheckBox.AutoSize = true;
+			this.TankStartingRateEnabledCheckBox.Checked = true;
+			this.TankStartingRateEnabledCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.TankStartingRateEnabledCheckBox.Location = new System.Drawing.Point(11, 33);
+			this.TankStartingRateEnabledCheckBox.Name = "TankStartingRateEnabledCheckBox";
+			this.TankStartingRateEnabledCheckBox.Size = new System.Drawing.Size(54, 19);
+			this.TankStartingRateEnabledCheckBox.TabIndex = 7;
+			this.TankStartingRateEnabledCheckBox.Text = "Tank";
+			this.TankStartingRateEnabledCheckBox.UseVisualStyleBackColor = true;
+			this.TankStartingRateEnabledCheckBox.CheckedChanged += new System.EventHandler(this.StartingRateTankCheckBox_CheckedChanged);
+			// 
+			// DamageStartingRateUpDown
+			// 
+			this.DamageStartingRateUpDown.Location = new System.Drawing.Point(97, 71);
+			this.DamageStartingRateUpDown.Margin = new System.Windows.Forms.Padding(8);
+			this.DamageStartingRateUpDown.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+			this.DamageStartingRateUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.DamageStartingRateUpDown.Name = "DamageStartingRateUpDown";
+			this.DamageStartingRateUpDown.Size = new System.Drawing.Size(112, 23);
+			this.DamageStartingRateUpDown.TabIndex = 5;
+			this.DamageStartingRateUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.DamageStartingRateUpDown.ValueChanged += new System.EventHandler(this.DamageStartingRateUpDown_ValueChanged);
+			this.DamageStartingRateUpDown.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DamageStartingRateUpDown_KeyUp);
+			// 
+			// TankInPlacementCheckbox
+			// 
+			this.TankInPlacementCheckbox.AutoSize = true;
+			this.TankInPlacementCheckbox.Location = new System.Drawing.Point(220, 33);
+			this.TankInPlacementCheckbox.Name = "TankInPlacementCheckbox";
+			this.TankInPlacementCheckbox.Size = new System.Drawing.Size(103, 19);
+			this.TankInPlacementCheckbox.TabIndex = 1;
+			this.TankInPlacementCheckbox.Text = "In Placement";
+			this.TankInPlacementCheckbox.UseVisualStyleBackColor = true;
+			this.TankInPlacementCheckbox.CheckedChanged += new System.EventHandler(this.InPlacementCheckbox_CheckedChanged);
+			// 
+			// TankStartingRateUpDown
+			// 
+			this.TankStartingRateUpDown.Location = new System.Drawing.Point(97, 32);
+			this.TankStartingRateUpDown.Margin = new System.Windows.Forms.Padding(8);
+			this.TankStartingRateUpDown.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+			this.TankStartingRateUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.TankStartingRateUpDown.Name = "TankStartingRateUpDown";
+			this.TankStartingRateUpDown.Size = new System.Drawing.Size(112, 23);
+			this.TankStartingRateUpDown.TabIndex = 0;
+			this.TankStartingRateUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.TankStartingRateUpDown.ValueChanged += new System.EventHandler(this.TankStartingRateUpDown_ValueChanged);
+			this.TankStartingRateUpDown.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TankStartingRateUpDown_KeyUp);
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Controls.Add(this.ResetButton);
 			this.groupBox1.Controls.Add(this.DrawButton);
 			this.groupBox1.Controls.Add(this.LoseButton);
 			this.groupBox1.Controls.Add(this.WinButton);
@@ -240,7 +358,7 @@
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Padding = new System.Windows.Forms.Padding(8, 8, 8, 83);
 			this.groupBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.groupBox1.Size = new System.Drawing.Size(128, 192);
+			this.groupBox1.Size = new System.Drawing.Size(174, 152);
 			this.groupBox1.TabIndex = 2;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Quick Actions";
@@ -250,7 +368,7 @@
 			this.DrawButton.Location = new System.Drawing.Point(16, 110);
 			this.DrawButton.Margin = new System.Windows.Forms.Padding(8);
 			this.DrawButton.Name = "DrawButton";
-			this.DrawButton.Size = new System.Drawing.Size(96, 23);
+			this.DrawButton.Size = new System.Drawing.Size(142, 23);
 			this.DrawButton.TabIndex = 2;
 			this.DrawButton.Text = "Draw";
 			this.DrawButton.UseVisualStyleBackColor = true;
@@ -261,7 +379,7 @@
 			this.LoseButton.Location = new System.Drawing.Point(16, 71);
 			this.LoseButton.Margin = new System.Windows.Forms.Padding(8);
 			this.LoseButton.Name = "LoseButton";
-			this.LoseButton.Size = new System.Drawing.Size(96, 23);
+			this.LoseButton.Size = new System.Drawing.Size(142, 23);
 			this.LoseButton.TabIndex = 1;
 			this.LoseButton.Text = "Lose";
 			this.LoseButton.UseVisualStyleBackColor = true;
@@ -272,7 +390,7 @@
 			this.WinButton.Location = new System.Drawing.Point(16, 32);
 			this.WinButton.Margin = new System.Windows.Forms.Padding(8);
 			this.WinButton.Name = "WinButton";
-			this.WinButton.Size = new System.Drawing.Size(96, 23);
+			this.WinButton.Size = new System.Drawing.Size(142, 23);
 			this.WinButton.TabIndex = 0;
 			this.WinButton.Text = "Win";
 			this.WinButton.UseVisualStyleBackColor = true;
@@ -292,7 +410,7 @@
 			this.MenuBar.Location = new System.Drawing.Point(0, 0);
 			this.MenuBar.Name = "MenuBar";
 			this.MenuBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.MenuBar.Size = new System.Drawing.Size(322, 26);
+			this.MenuBar.Size = new System.Drawing.Size(368, 24);
 			this.MenuBar.TabIndex = 4;
 			this.MenuBar.Text = "MenuBar";
 			// 
@@ -301,13 +419,13 @@
 			this.FileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItem_Exit});
 			this.FileMenu.Name = "FileMenu";
-			this.FileMenu.Size = new System.Drawing.Size(85, 22);
+			this.FileMenu.Size = new System.Drawing.Size(67, 20);
 			this.FileMenu.Text = "ファイル(&F)";
 			// 
 			// MenuItem_Exit
 			// 
 			this.MenuItem_Exit.Name = "MenuItem_Exit";
-			this.MenuItem_Exit.Size = new System.Drawing.Size(118, 22);
+			this.MenuItem_Exit.Size = new System.Drawing.Size(113, 22);
 			this.MenuItem_Exit.Text = "終了(&X)";
 			this.MenuItem_Exit.Click += new System.EventHandler(this.MenuItem_Exit_Click);
 			// 
@@ -316,19 +434,21 @@
 			this.OptionMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItem_AlwayOnTop,
             this.MenuItem_StopUpdate,
+            this.MenuItem_ClearScore,
+            this.MenuItem_SwitchMode,
             this.toolStripSeparator1,
             this.MenuItem_Language,
             this.toolStripSeparator3,
             this.MenuItem_Settings});
 			this.OptionMenu.Name = "OptionMenu";
-			this.OptionMenu.Size = new System.Drawing.Size(99, 22);
+			this.OptionMenu.Size = new System.Drawing.Size(80, 20);
 			this.OptionMenu.Text = "オプション(&O)";
 			// 
 			// MenuItem_AlwayOnTop
 			// 
 			this.MenuItem_AlwayOnTop.CheckOnClick = true;
 			this.MenuItem_AlwayOnTop.Name = "MenuItem_AlwayOnTop";
-			this.MenuItem_AlwayOnTop.Size = new System.Drawing.Size(172, 22);
+			this.MenuItem_AlwayOnTop.Size = new System.Drawing.Size(164, 22);
 			this.MenuItem_AlwayOnTop.Text = "常に最前面に表示";
 			this.MenuItem_AlwayOnTop.Click += new System.EventHandler(this.MenuItem_AlwayOnTop_Click);
 			// 
@@ -336,14 +456,46 @@
 			// 
 			this.MenuItem_StopUpdate.CheckOnClick = true;
 			this.MenuItem_StopUpdate.Name = "MenuItem_StopUpdate";
-			this.MenuItem_StopUpdate.Size = new System.Drawing.Size(172, 22);
+			this.MenuItem_StopUpdate.Size = new System.Drawing.Size(164, 22);
 			this.MenuItem_StopUpdate.Text = "反映を一時停止";
 			this.MenuItem_StopUpdate.Click += new System.EventHandler(this.MenuItem_StopUpdate_Click);
+			// 
+			// MenuItem_ClearScore
+			// 
+			this.MenuItem_ClearScore.Name = "MenuItem_ClearScore";
+			this.MenuItem_ClearScore.Size = new System.Drawing.Size(164, 22);
+			this.MenuItem_ClearScore.Text = "スコアをクリア";
+			this.MenuItem_ClearScore.Click += new System.EventHandler(this.MenuItem_ClearScore_Click);
+			// 
+			// MenuItem_SwitchMode
+			// 
+			this.MenuItem_SwitchMode.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItem_SwitchMode_RoleQueue,
+            this.MenuItem_SwitchMode_OpenQueue});
+			this.MenuItem_SwitchMode.Name = "MenuItem_SwitchMode";
+			this.MenuItem_SwitchMode.Size = new System.Drawing.Size(164, 22);
+			this.MenuItem_SwitchMode.Text = "モード切り替え";
+			// 
+			// MenuItem_SwitchMode_RoleQueue
+			// 
+			this.MenuItem_SwitchMode_RoleQueue.Checked = true;
+			this.MenuItem_SwitchMode_RoleQueue.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.MenuItem_SwitchMode_RoleQueue.Name = "MenuItem_SwitchMode_RoleQueue";
+			this.MenuItem_SwitchMode_RoleQueue.Size = new System.Drawing.Size(134, 22);
+			this.MenuItem_SwitchMode_RoleQueue.Text = "ロールキュー";
+			this.MenuItem_SwitchMode_RoleQueue.Click += new System.EventHandler(this.MenuItem_SwitchRoleQueueMode_Click);
+			// 
+			// MenuItem_SwitchMode_OpenQueue
+			// 
+			this.MenuItem_SwitchMode_OpenQueue.Name = "MenuItem_SwitchMode_OpenQueue";
+			this.MenuItem_SwitchMode_OpenQueue.Size = new System.Drawing.Size(134, 22);
+			this.MenuItem_SwitchMode_OpenQueue.Text = "オープンキュー";
+			this.MenuItem_SwitchMode_OpenQueue.Click += new System.EventHandler(this.MenuItem_SwitchOpenQueueMode_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(161, 6);
 			// 
 			// MenuItem_Language
 			// 
@@ -353,7 +505,7 @@
             this.MenuItem_Language_Japanese,
             this.MenuItem_Language_English});
 			this.MenuItem_Language.Name = "MenuItem_Language";
-			this.MenuItem_Language.Size = new System.Drawing.Size(172, 22);
+			this.MenuItem_Language.Size = new System.Drawing.Size(164, 22);
 			this.MenuItem_Language.Text = "Language(&L)";
 			// 
 			// MenuItem_Language_Automatic
@@ -361,38 +513,38 @@
 			this.MenuItem_Language_Automatic.Checked = true;
 			this.MenuItem_Language_Automatic.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.MenuItem_Language_Automatic.Name = "MenuItem_Language_Automatic";
-			this.MenuItem_Language_Automatic.Size = new System.Drawing.Size(116, 22);
+			this.MenuItem_Language_Automatic.Size = new System.Drawing.Size(112, 22);
 			this.MenuItem_Language_Automatic.Text = "自動";
 			this.MenuItem_Language_Automatic.Click += new System.EventHandler(this.MenuItem_Language_Automatic_Click);
 			// 
 			// toolStripSeparator4
 			// 
 			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(113, 6);
+			this.toolStripSeparator4.Size = new System.Drawing.Size(109, 6);
 			// 
 			// MenuItem_Language_Japanese
 			// 
 			this.MenuItem_Language_Japanese.Name = "MenuItem_Language_Japanese";
-			this.MenuItem_Language_Japanese.Size = new System.Drawing.Size(116, 22);
+			this.MenuItem_Language_Japanese.Size = new System.Drawing.Size(112, 22);
 			this.MenuItem_Language_Japanese.Text = "日本語";
 			this.MenuItem_Language_Japanese.Click += new System.EventHandler(this.MenuItem_Language_Japanese_Click);
 			// 
 			// MenuItem_Language_English
 			// 
 			this.MenuItem_Language_English.Name = "MenuItem_Language_English";
-			this.MenuItem_Language_English.Size = new System.Drawing.Size(116, 22);
+			this.MenuItem_Language_English.Size = new System.Drawing.Size(112, 22);
 			this.MenuItem_Language_English.Text = "English";
 			this.MenuItem_Language_English.Click += new System.EventHandler(this.MenuItem_Language_English_Click);
 			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(169, 6);
+			this.toolStripSeparator3.Size = new System.Drawing.Size(161, 6);
 			// 
 			// MenuItem_Settings
 			// 
 			this.MenuItem_Settings.Name = "MenuItem_Settings";
-			this.MenuItem_Settings.Size = new System.Drawing.Size(172, 22);
+			this.MenuItem_Settings.Size = new System.Drawing.Size(164, 22);
 			this.MenuItem_Settings.Text = "設定(&C)...";
 			this.MenuItem_Settings.Click += new System.EventHandler(this.MenuItem_Settings_Click);
 			// 
@@ -403,25 +555,25 @@
             this.toolStripSeparator2,
             this.MenuItem_Version});
 			this.HelpMenu.Name = "HelpMenu";
-			this.HelpMenu.Size = new System.Drawing.Size(75, 22);
+			this.HelpMenu.Size = new System.Drawing.Size(65, 20);
 			this.HelpMenu.Text = "ヘルプ(&H)";
 			// 
 			// MenuItem_Manual
 			// 
 			this.MenuItem_Manual.Name = "MenuItem_Manual";
-			this.MenuItem_Manual.Size = new System.Drawing.Size(172, 22);
+			this.MenuItem_Manual.Size = new System.Drawing.Size(151, 22);
 			this.MenuItem_Manual.Text = "ヘルプ";
 			this.MenuItem_Manual.Click += new System.EventHandler(this.MenuItem_Manual_Click);
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(169, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(148, 6);
 			// 
 			// MenuItem_Version
 			// 
 			this.MenuItem_Version.Name = "MenuItem_Version";
-			this.MenuItem_Version.Size = new System.Drawing.Size(172, 22);
+			this.MenuItem_Version.Size = new System.Drawing.Size(151, 22);
 			this.MenuItem_Version.Text = "バージョン情報...";
 			this.MenuItem_Version.Click += new System.EventHandler(this.MenuItem_Version_Click);
 			// 
@@ -430,7 +582,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.ClientSize = new System.Drawing.Size(322, 315);
+			this.ClientSize = new System.Drawing.Size(368, 368);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.StartingRateGroupBox);
 			this.Controls.Add(this.ScoreGroupBox);
@@ -452,7 +604,9 @@
 			((System.ComponentModel.ISupportInitialize)(this.WinsUpDown)).EndInit();
 			this.StartingRateGroupBox.ResumeLayout(false);
 			this.StartingRateGroupBox.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.StartingRateUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.SupportStartingRateUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.DamageStartingRateUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.TankStartingRateUpDown)).EndInit();
 			this.groupBox1.ResumeLayout(false);
 			this.MenuBar.ResumeLayout(false);
 			this.MenuBar.PerformLayout();
@@ -471,8 +625,7 @@
 		private System.Windows.Forms.NumericUpDown LosesUpDown;
 		private System.Windows.Forms.Label DrawsLabel;
 		private System.Windows.Forms.NumericUpDown DrawsUpDown;
-		private System.Windows.Forms.Button ResetButton;
-		private System.Windows.Forms.NumericUpDown StartingRateUpDown;
+		private System.Windows.Forms.NumericUpDown TankStartingRateUpDown;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Button WinButton;
 		private System.Windows.Forms.Button DrawButton;
@@ -496,7 +649,18 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 		private System.Windows.Forms.ToolStripMenuItem MenuItem_Language_Japanese;
 		private System.Windows.Forms.ToolStripMenuItem MenuItem_Language_English;
-		private System.Windows.Forms.CheckBox InPlacementCheckbox;
+		private System.Windows.Forms.CheckBox TankInPlacementCheckbox;
+		private System.Windows.Forms.NumericUpDown DamageStartingRateUpDown;
+		private System.Windows.Forms.CheckBox SupportInPlacementCheckbox;
+		private System.Windows.Forms.CheckBox DamageInPlacementCheckbox;
+		private System.Windows.Forms.CheckBox SupportStartingRateEnabledCheckBox;
+		private System.Windows.Forms.CheckBox DamageStartingRateEnabledCheckBox;
+		private System.Windows.Forms.NumericUpDown SupportStartingRateUpDown;
+		private System.Windows.Forms.CheckBox TankStartingRateEnabledCheckBox;
+		private System.Windows.Forms.ToolStripMenuItem MenuItem_ClearScore;
+		private System.Windows.Forms.ToolStripMenuItem MenuItem_SwitchMode;
+		private System.Windows.Forms.ToolStripMenuItem MenuItem_SwitchMode_RoleQueue;
+		private System.Windows.Forms.ToolStripMenuItem MenuItem_SwitchMode_OpenQueue;
 	}
 }
 
